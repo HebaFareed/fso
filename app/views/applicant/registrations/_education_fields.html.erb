@@ -1,0 +1,21 @@
+<div class="nested-fields">
+    <h2>مؤهل تعليمي <span style="font-size:2rem;">(<%= link_to_remove_association "حذف", f %>)</span></h2>
+
+    <div class="row">
+              <div class="col-md-6">
+                <%= f.text_field :degree, autofocus: true, :class=>"form-control", :placeholder=>"الدرجة التعليمية" %>
+              </div>
+              <div class="col-md-6">
+                <%= f.text_field :field, autofocus: true, :class=>"form-control", :placeholder=>"المجال" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.text_field :graduation_place, autofocus: true, :class=>"form-control", :placeholder=>"جهة التخرج" %>
+              </div>
+              <div class="col-md-6">
+                <%= f.text_field :graduation_year, autofocus: true, :class=>"form-control", :placeholder=>"سنة التخرج" %>
+              </div>
+            </div>
+</div>

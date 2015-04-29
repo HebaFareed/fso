@@ -1,0 +1,94 @@
+        <div class="breadcrumps">
+            <div class="content"><%= link_to "السير الذاتية", applicant_index_path %> <span>\</span><p><%= applicant.first_name %> <%= applicant.second_name %></p></div>
+        </div>
+<div class="page-head">
+    <div class=" applicant-title content">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="profile-pic"><i class="fa fa-user"></i> </div>
+        </div>
+        <div class="col-md-7">
+          <p class="name"><%= employer.co_name %></p>
+          <p class="job-title"><%= employer.co_address %></p>
+        </div>
+        <div class="applicant-buttons">
+        <div class="col-md-3">
+          <div class="row">
+              <% if current_employer %>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_employer_registration_path(current_employer), :class => "btn btn-block btn-danger btn-sm" %> </div>
+                <div class="col-md-6"> <%= link_to "تصفح باحثي العمل", applicant_index_path, :class => "btn btn-block btn-danger btn-sm" %></div>
+                <div class="col-md-12"> <a href="#" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div>
+            <%end%>
+          </div>
+          <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<div class="content">
+    <% if @jobs.any? %>
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+      <!-- Three columns of text below the carousel -->
+      <div class="row job-list">
+
+
+      <% @jobs.each do |job| %>
+          
+          <% if job.title == "" %><% job.title = "غير متوفر"%><% end %>
+          <% if job.place == "" %><% job.place =  "غير متوفر"%><%end%>
+          <% if job.experience == "" %><% job.experience = "غير متوفر" %><%end%>
+          <% if job.description == "" %><% job.description = "غير متوفر" %><%end%>
+        <div class="col-md-4">
+        <div class="job-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="job-pic"></div>
+            </div>
+            <div class="col-md-8">
+              <div class="job-title">
+                <a href="<%= job_path(:employer_id) %>" class="employee"> <%= job.title %></a>
+                <a href=" <%= employer_path(:employer_id) %>" class="employer danger"><%= job.employer.co_name %></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-conditions col-md-12">
+              <p><%= job.place %></p>
+              <p><%= job.experience %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-description">
+                <p> <%= job.description %> </p>
+            </div>
+          </div>
+          <div class="row">
+            <% if applicant_signed_in? %>
+             <div class="col-md-6"> <%= link_to "قدم", new_job_request_path(job), :class => "btn btn-block btn-primary" %></div>
+              <% elsif employer_signed_in? %>
+                <% if job.employer == current_employer %>
+                    <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
+                    <%end%>
+              <% else %>
+              
+                <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
+              <%end%>
+            <div class="col-md-6"> <div class="btn btn-block btn-primary">مشاركة</div></div>
+          </div>
+        </div>
+        </div><!-- /job item -->
+          
+      <%end%>
+          </div>
+          </div>
+    </div>
+</div>
+
+    <% else %>
+          <div class="empty-content">
+            <h1>لا توجد وظائف. <% if current_employer %> <%= link_to "أضف وظيفة جديدة", new_job_path(current_employer) %> <% else %><%= link_to "تصفح الوظائف المتاحة", employer_index_path %> <%end%></h1>
+          </div>
+    <%end%>

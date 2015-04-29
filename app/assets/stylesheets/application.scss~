@@ -1,0 +1,701 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+
+$brand-primary: #78B604;
+
+@import "bootstrap";
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+
+html, body {
+  margin: 0 !important;
+  padding:0 !important;
+    height: 100%
+}
+
+
+body {
+  color: #5a5a5a;
+  direction:rtl;
+  font-family: 'Droid Arabic Kufi', serif;
+
+}
+
+.page-head {
+  min-height:50px;
+  color: $brand-primary;
+  padding: 10px 0;
+}
+
+.page-head  .btn-default {
+  background: #fff;
+  color: #78B604;
+}
+
+.page-head .applicant-title .btn {
+  margin: 10px 0 !important;
+
+}
+
+.empty-content {
+    min-height: 450px;
+}
+
+.empty-content h1 {
+    color: #ccc;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.applicant-cv {
+  padding-bottom: 50px;
+}
+
+.page-head .content {
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 20px;
+}
+
+.applicant-cv .content {
+    margin-top: 0 !important;
+}
+
+.applicant-title .profile-pic i {
+  height: 150px;
+  width: 150px;
+  content: "";
+  border-radius: 200px;
+  border: solid 4px $brand-primary;
+  text-align: center;
+    font-size: 6rem;
+    color:#ccc;
+    line-height: 130px;
+}
+
+.applicant-title .img {
+      height: 150px;
+  width: 150px;
+  content: "";
+  border-radius: 200px;
+  border: solid 4px $brand-primary;
+}
+
+.applicant-title .name {
+  font-size: 4rem;
+}
+
+.page-head.registering {
+   color:#fff;
+   background: $brand-primary !important;
+}
+
+.page-head.registering .content {
+  border-bottom:none;
+}
+
+.page-head .applicant-buttons {
+  margin: 2% 0;
+}
+
+.breadcrumps {
+    background: $brand-primary;
+}
+.breadcrumps p, .breadcrumps a {
+  color: #fff !important;
+  display: inline-block;
+  padding: 3px 5px 0 0;
+    font-size: 1.5rem;
+}
+
+.sign-in-form .col-sm-12 {
+  padding: 10px 0;
+}
+
+.main-page h2 {
+  font-family: "Droid Arabic Naskh", serif;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px;
+}
+
+.marketing, .reviews, .price-tables {
+  max-width:90%;
+  margin: 0 5%;
+}
+
+.reviews, .price-tables {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.content {
+  width: 80%;
+    margin: auto 10%;
+}
+
+.page-head .sign-progress .nav li {
+  width: 100px;
+  display: inline-block !important;
+  position:relative;
+  height: 100px;
+}
+
+.company-sign-up {
+  min-height:500px;
+}
+
+.page-head .sign-progress .nav a {
+  height: 90px;
+  width: 90px;
+  border: solid 10px #fff;
+  border-radius: 200px;
+  margin: auto 0;
+  display: block;
+  text-align: center;
+  margin-left: 50px;
+  background: #fff;
+  color: #78B604;
+  font-size: 3rem;
+}
+
+.page-head .sign-progress .nav {
+  width: 550px;
+  display: block;
+  margin: auto;
+}
+
+.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav a.complete {
+
+  color: #fff;
+  background: #78B604;
+  border: solid 10px #fff;
+}
+
+.page-head .sign-progress .split {
+  width: 150px;
+  height:15px;
+  border-top: solid 3px #fff;
+  border-bottom: solid 3px #fff;
+  content: "";
+  background: #fff;
+  display: inline-block;
+  margin: 0 -20px;
+}
+
+.page-head .sign-progress .split.complete {
+  background: #78B604;
+  z-index: 99999;
+  margin-right: -20px;
+}
+
+.company-sign-up .form-control {
+  margin: 10px 0;
+}
+
+.company-sign-up .btn {
+  margin: 10px 0 0;
+}
+/* CUSTOMIZE THE Header
+-------------------------------------------------- */
+
+.header{
+  width:100%;
+  min-height: 100px;
+  -webkit-box-shadow: 0 0 5px 0 #ccc;
+  box-shadow: 0 0 5px 0 #ccc;
+  padding: 0 20px;
+}
+
+.logo img {
+  padding: 0 20px;
+  height: 90px;
+}
+
+.header .nav {
+  max-height:60px;
+  margin-top:50px !important;
+}
+
+.header .nav a {
+  color: #78B604;
+  font-family: 'Droid Arabic Kufi', serif;
+  font-size: 1.8rem;
+
+}
+
+.header .nav a:hover, .nav a:active, .header .nav .active {
+  background:#78B604 !important;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+}
+
+.sign {
+  margin-top:50px;
+}
+
+.sign a.btn-lg {
+  font-family: 'Droid Arabic Kufi', serif;
+  font-size: 1.3rem;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+.search-main-page {
+  width:100%;
+  height: 400px;
+  background: image-url("picjumbo.com_HNCK4011.jpg");
+  background-size: cover;
+  padding: 100px 20px;
+  text-align: center;
+  font-family: 'Droid Arabic Naskh', serif;
+  margin-bottom: 20px;
+}
+
+.search-main-page h1 {
+  padding: 10px 0;
+}
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 60px;
+
+  /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+.job-list {
+  margin-bottom: 15px;
+}
+.job-item {
+
+  min-height: 300px;
+ -webkit-box-shadow: 0 0 2px 0 #ccc;
+  border: 1px solid #ccc;
+  width: 99%;
+  padding: 15px 0;
+  -webkit-box-shadow: 0 0 2px 0 #ccc;
+  box-shadow: 0 0 2px 0 #ccc;
+}
+
+.job-item .row {
+  margin: 0 15px;
+}
+
+.job-item .job-pic {
+  content:" ";
+  height:100px;
+  width: 100px;
+  background: #ddd;
+  border-radius: 200px;
+  margin: 15px 0px;
+  display:inline-block;
+}
+.job-item .job-title {
+  display:inline-block;
+  padding:10% 0;
+}
+.job-item .job-title a {
+  display: block;
+}
+
+.job-item .job-title .employee {
+  font-size: 3rem;
+  line-height: 50px;
+  max-height: 50px;
+  width: 100%;
+}
+
+.job-item .job-title .employer {
+  font-size: 1.8rem;
+}
+
+.job-item .job-conditions {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  text-align: center;
+
+}
+
+.job-item .job-conditions p {
+  font-size: 1.5rem;
+  font-family: 'Droid Arabic Kufi', serif;
+    padding: 2px;
+  margin: 2px auto;
+}
+
+.job-item .label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.job-item .job-description p {
+  font-size: 1.3rem;
+  text-align: right;
+}
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing {
+  margin-bottom: 25px;
+}
+
+.marketing h1 {
+  font-size: 5rem;
+  font-family: "Droid Arabic Naskh", serif;
+  padding: 0 0 10px;
+}
+
+/*Reviews
+---------------------------------------*/
+.reviews p.lead {
+  font-size: 2rem;
+  font-family: "Droid Arabic Naskh", serif;
+}
+.reviews .nav.nav-justified > li > a { position: relative; }
+.reviews .nav.nav-justified > li > a:hover,
+.reviews .nav.nav-justified > li > a:focus { background-color: transparent; }
+.reviews .nav.nav-justified > li > a > .quote {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    opacity: 0;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background-color: #78B604;
+    border-radius: 15px;
+    color: #fff;
+}
+.reviews .nav.nav-justified > li.active > a > .quote { opacity: 1; }
+.reviews .nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px #78B604; }
+.reviews .nav.nav-justified > li > a > img {
+    max-width: 100%;
+    opacity: .3;
+    -webkit-transform: scale(.8,.8);
+            transform: scale(.8,.8);
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.reviews .nav.nav-justified > li.active > a > img,
+.reviews .nav.nav-justified > li:hover > a > img,
+.reviews .nav.nav-justified > li:focus > a > img {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.reviews .tab-pane .tab-inner { padding: 30px 0 20px; }
+
+@media (min-width: 768px) {
+   .reviews  .nav.nav-justified > li > a > .quote {
+        left: auto;
+        top: auto;
+        right: 20px;
+        bottom: 0px;
+    }
+}
+
+/*Prices Table
+---------------------------------------------------*/
+
+
+.plans {
+  width: 836px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.plan {
+  float: left;
+  width: 95%;
+  margin: 20px 2px;
+  padding: 15px 25px;
+  text-align: center;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 0 2px 0 #ccc;
+  box-shadow: 0 0 2px 0 #ccc;
+  min-height: 350px;}
+
+.plan-title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  color: #36bce6;
+}
+
+.plan-price {
+  margin-bottom: 20px;
+  line-height: 1;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fd935a;
+  min-height:46px;
+}
+
+.plan-unit {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #aaa;
+}
+
+.plan-features {
+  margin: 20px auto 15px;
+  padding: 15px 0 0;
+  list-style: none;
+  border-top: 1px solid #e5ded6;
+  text-align: center;
+  min-height:100px;
+}
+
+.plan-feature {
+  line-height: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+.plan-feature + .plan-feature {
+  margin-top: 5px;
+}
+
+.plan-feature-unit {
+  margin-left: 2px;
+  font-size: 16px;
+}
+
+.plan-feature-name {
+  font-size: 13px;
+  font-weight: normal;
+  color: #aaa;
+}
+
+.plan-button {
+  position: relative;
+  display: block;
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background: #fd935c;
+  border-bottom: 2px solid #cf7e3b;
+  border-color: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+.plan-button:active {
+  top: 2px;
+  margin-bottom: 2px;
+  border-bottom: 0;
+}
+
+.plan-highlight {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 170px;
+  border: 4px solid #37bbe6;
+}
+.plan-highlight .plan-button {
+  font-size: 18px;
+  line-height: 49px;
+  background: #37bce5;
+  border-color: #3996b3;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.plan-recommended {
+  width: 99%;
+  margin: -15px auto 15px;
+  padding-bottom: 2px;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.05);
+  background: #37bbe6;
+  border-radius: 0 0 4px 4px;
+}
+
+
+/*Job Search
+------------------------*/
+
+.search-job-filter {
+  background: #7FAF1B;
+  min-height: 100px;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.search-job-filter .dropdown .btn-default{
+  background: #fff;
+  color: #7FAF1B;
+}
+
+.search-job-filter p {
+  margin: 5px 0 0;
+}
+
+.job-filter .job-list .col-md-4 {
+  margin: 20px 0;
+}
+
+.job-filter .job-list .col-md-4 .job-description {
+    min-height: 100px;
+}
+
+.search-job-filter .dropdown span {
+  float: left;
+  margin: 7px auto 0;
+  height: 100%;
+}
+
+.search-job-filter .dropdown ul {
+  width: 100%;
+}
+
+.search-job-filter .dropdown a {
+  color: #7FAF1B;
+}
+.job-list .col-md-3 .job-pic {
+  height: 70px;
+  width: 70px;
+  margin:8px 0 0;
+}
+
+/*Footer
+--------------------------------------------*/
+.wrapper {
+   min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+}
+footer {
+   height:30px;
+   width:100%;
+   background:#78B604;
+  color: #fff;
+  padding: 5px 0px;
+  margin-bottom:0;
+    position: absolute;
+bottom: 0px;
+left: 0px;
+}
+
+footer p {
+  margin-bottom: 0px;
+}
+
+.applicant-cv .detail-description {
+  margin-right: 50px;
+  padding-right: 20px;
+  border-right: solid 1px #ccc;
+}
+
+.applicant-cv .detail-description .title {
+  font-size: 3.5rem;
+}
+
+.applicant-cv .detail-description .company, .applicant-cv .detail-description .graduation-year {
+  font-family: "Droid Arabic Naskh", serif;
+  color: #78B604;
+}
+
+.applicant-cv .detail-description .col-md-6 p {
+  display:inline-block;
+  margin-bottom: 0;
+  vertical-align: baseline;
+}
+
+.applicant-cv .description {
+  color: #999;
+  font-family: "Droid Arabic Naskh", serif;
+}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+  /* Remove the edge padding needed for mobile */
+  .marketing {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}

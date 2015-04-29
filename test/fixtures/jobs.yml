@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  experience: MyText
+  field: MyText
+  place: MyText
+  description: MyText
+  internship: false
+  applicant_id: 
+
+two:
+  title: MyText
+  experience: MyText
+  field: MyText
+  place: MyText
+  description: MyText
+  internship: false
+  applicant_id: 

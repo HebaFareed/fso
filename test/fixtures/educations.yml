@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  degree: MyText
+  field: MyText
+  graduation_year: MyText
+  graduation_place: MyText
+  applicant_id: 
+
+two:
+  degree: MyText
+  field: MyText
+  graduation_year: MyText
+  graduation_place: MyText
+  applicant_id: 

@@ -1,0 +1,73 @@
+<%= form_for(@job) do |f| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="content company-sign-up">
+    <div class="col-md-8 col-md-offset-2">
+<h2>وظيفة\تدريب جديد</h2>
+        <div class="row">
+        <div class="col-md-12">
+             <%= f.select(:internship, [["وظيفة", "false"], ["تدريب", "true"]], {:class =>'form-control'})%>    
+        </div>
+        </div>
+<div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :title, autofocus: true, :class=>"form-control", :placeholder=>"المسمى الوظيفي" %>
+    </div>
+    <div class="col-md-6">
+          <%= f.text_field :experience, autofocus: true, :class=>"form-control", :placeholder=>"الشركة" %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+      <%= f.text_field :place, autofocus: true, :class=>"form-control", :placeholder=>"المكان" %>
+    </div>
+    </div>
+        <div class="row">
+            <div class="col-md-6">
+                 <%= f.text_field :field, autofocus: true, :class=>"form-control experience", :placeholder=>"المؤهل" %>
+            </div>
+    <div class="col-md-6">
+      <%= f.text_field :experience, autofocus: true, :class=>"form-control experience", :placeholder=>"الخبرة" %>
+    </div>
+            
+</div>
+        <div class="row">
+    <div class="col-md-12">
+        <%= f.text_area :description, autofocus: true, :class=>"form-control", :placeholder=>"الوصف" %>
+    </div>
+</div>
+
+<div class="row">
+<div class="col-md-2 col-md-offset-8"><%= f.submit "سجل", :class=>"btn btn-block btn-danger" %></div>
+</div>
+
+</div>
+
+    
+    </div>
+<% end %>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('select').change( function() {
+           if ($(this).val() == "false") {
+               $('input.experience').show();
+           }
+            else {
+               $('input.experience').hide();
+
+            }
+        });
+
+    });
+</script>

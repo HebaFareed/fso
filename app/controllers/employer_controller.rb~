@@ -1,0 +1,22 @@
+class EmployerController < ApplicationController
+    before_action { |c| c.prepare_applicant(params[:id]) }
+
+    def index
+      @employers = Employer.all
+    end
+
+    def show
+      @job = Job(:employer_id)
+    end
+
+    def job
+	@job = @employer.job.all
+    end
+
+   def prepare_applicant(args)
+      @employer = Employer.find(args)
+      unless @employer
+        redirect_to root_path, alert: "Something went wrong!"
+      end
+  end
+end

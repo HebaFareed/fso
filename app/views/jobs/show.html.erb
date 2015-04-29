@@ -1,0 +1,87 @@
+        <div class="breadcrumps">
+            <div class="content"><%= link_to "الوظائف", jobs_path %> <span>\</span><p><%= @job.title %></p></div>
+        </div>
+<div class="page-head">
+    <div class=" applicant-title content">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="profile-pic"> <i class="fa fa-user"></i> </div>
+        </div>
+        <div class="col-md-7">
+          <p class="name"><%= @job.title %></p>
+          <p class="job-title"><%= @job.employer.co_name %></p>
+        </div>
+        <div class="applicant-buttons">
+        <div class="col-md-3">
+          <div class="row">
+              <% if current_employer == @job.employer %>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_job_path(job), :class => "btn btn-block btn-danger btn-sm" %> </div>
+                    <%end%>
+          </div>
+          <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+      <div class=" content">
+        <div class="row">
+        <div class="col-sm-12 details-list">
+            <h2>المتقدمين للعمل</h2>
+         <% if @job_followers %>
+            <%  @job_followers.each do |applicant| %>
+          <div class="col-md-4">
+        <div class="job-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="job-pic"><% if applicant.avatar? %><%= image_tag applicant.avatar.url(:thumbnail) %> <% else %><i class="fa fa-user"></i> <%end%> </div>
+            </div>
+            <div class="col-md-8">
+              <div class="job-title">
+                <a href="<%= applicant_path(applicant)%>" class="employee"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-famale"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></a>
+                <a href="#" class="employer danger"><%= applicant.status %></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-conditions col-md-12">
+              <p><%= applicant.city%></p>
+              <p><%= applicant.education[0].degree %> <%= applicant.education[0].field %> - <%= applicant.education[0].graduation_place %> </p>
+              <p> <%= applicant.education[0].graduation_year %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-description">
+              <p>
+                  <% skills = applicant.skill %>
+              <% if skills.any? %>
+                <% skills.each do |ski| %>
+                    <%= ski.skill %> - 
+                <%end%>
+                <% end %>
+                </p>  
+            </div>
+          </div>
+          <div class="row">
+            <% if current_employer == @job.employer %>
+              <div class="col-md-6 col-md-offset-3"> <%= link_to "تواصل", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
+              <%else%>
+            <div class="col-md-6 col-md-offset-3"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
+              <%end%>
+          </div>
+        </div>
+        </div><!-- /job item -->
+
+          <%end%>
+            
+            <%else %>
+            <div class="empty-content">
+            <h1>لم يتقدم أحد بعد. <% if applicant_signed_in? %><%= link_to "أضف وظيفة جديدة", job_create_follower_path(current_applicant), :method => :post %> <%end%></h1>
+          </div>
+          <% end %>
+
+        </div>
+        </div>
+
+      </div>

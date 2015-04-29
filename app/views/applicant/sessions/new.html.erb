@@ -1,0 +1,28 @@
+<div class="breadcumps"> <h2>تسجيل دخول طالب العمل</h2> </div>
+
+<div class="content">
+<div class="sign-in-form">
+            <div class="col-sm-10 col-sm-offset-1">
+              <%= form_for(applicant, as: applicant_name, url: session_path(applicant_name)) do |f| %>
+                <div class="col-sm-12">
+                  <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "البريد الإلكتروني" %>
+                </div>
+
+                <div class="col-sm-12">
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "كلمة السر" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="col-sm-12">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label "تذكرني" %>
+                  </div>
+                <% end -%>
+
+                <div class="col-sm-4 col-sm-offset-9">
+                  <%= f.submit "دخول", class: "btn btn-block btn-danger" %>
+                </div>
+              <% end %>
+    </div>
+    </div>
+</div>

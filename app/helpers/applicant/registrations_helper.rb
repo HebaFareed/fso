@@ -1,0 +1,2 @@
+module Applicant::RegistrationsHelper
+end

@@ -1,0 +1,52 @@
+<div class="breadcrumps"> <div class="content"> <p>الشركات</p></div> </div>
+
+  <div class="content job-filter">
+
+    <% if @employers.any? %>
+      <div class="row">
+      <!-- Three columns of text below the carousel -->
+      <div class="row job-list">
+
+      <% @employers.each do |employer| %>
+        <div class="col-md-4">
+        <div class="job-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="job-pic"></div>
+            </div>
+            <div class="col-md-8">
+              <div class="job-title">
+                <% job = employer.job[0] %>
+                <a href="<%= employer_path(employer)%>" class="employee"><%= employer.first_name%><%= employer.second_name%></a>
+                <a href="#" class="employer danger"><%= job.title %></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-conditions col-md-12">
+              <p><%= job.place%></p>
+              <p><%= job.experience %></p>
+            </div>(:except => [:index, :new, :create])
+          </div>
+          <div class="row">
+            <div class="job-description">
+              <p> <%= employer.co_desc %> </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6"> <%= link_to "الوظائف", job_employer_path(employer.id), :class => "btn btn-block btn-lg btn-danger" %> </div>
+            <div class="col-md-6"> <%= link_to "التدريبات", internship_employer_path(employer.id), :class => "btn btn-block btn-lg btn-danger" %></div>
+          </div>
+        </div>
+        </div><!-- /job item -->
+
+      <%end%>
+    </div>
+    </div>
+          <% else %>
+          <div class="empty-content">
+            <h1>لا توجد أي شركات بعد. <%= link_to "سجل كشركة جديدة", new_employer_registration_path %></h1>
+          </div>
+    <%end%>
+
+  </div>

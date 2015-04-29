@@ -1,0 +1,19 @@
+module ApplicationHelper
+
+    def employer_name
+    :employer
+  end
+
+  def employer
+    @employer ||= Employer.new
+  end
+
+def applicant_name
+    :applicant
+  end
+
+  def applicant
+    @applicant ||= Applicant.new
+  end
+
+end

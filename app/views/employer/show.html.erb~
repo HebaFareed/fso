@@ -1,0 +1,34 @@
+        <div class="breadcrumps">
+            <div class="content"><%= link_to "السير الذاتية", applicant_index_path %> <span>\</span><p><%= applicant.first_name %> <%= applicant.second_name %></p></div>
+        </div>
+<div class="page-head">
+    <div class=" applicant-title content">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="profile-pic"><i class="fa fa-user"></i> </div>
+        </div>
+        <div class="col-md-7">
+          <p class="name"><%= employer.co_name %></p>
+          <p class="job-title"><%= employer.co_address %></p>
+        </div>
+        <div class="applicant-buttons">
+        <div class="col-md-3">
+          <div class="row">
+              <% if current_employer %>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_employer_registration_path(current_employer), :class => "btn btn-block btn-danger btn-sm" %> </div>
+                <div class="col-md-6"> <%= link_to "تصفح باحثي العمل", applicant_index_path, :class => "btn btn-block btn-danger btn-sm" %></div>
+                <div class="col-md-12"> <a href="#" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div>
+            <%end%>
+          </div>
+          <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+<% if @job.employer? %>
+
+<% end %>
+    

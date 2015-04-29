@@ -1,0 +1,2 @@
+module Employer::RegistrationsHelper
+end

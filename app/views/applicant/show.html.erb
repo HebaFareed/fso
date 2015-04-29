@@ -1,0 +1,83 @@
+        <div class="breadcrumps">
+            <div class="content"><%= link_to "السير الذاتية", applicant_index_path %> <span>\</span><p><%= applicant.first_name %> <%= applicant.second_name %></p></div>
+        </div>
+<div class="page-head">
+    <div class=" applicant-title content">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="profile-pic"> <% if applicant.avatar? %> <%= image_tag @applicant.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%> </div>
+        </div>
+        <div class="col-md-7">
+          <p class="name"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-famale"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></p>
+          <p class="job-title"><%= applicant.status %></p>
+        </div>
+        <div class="applicant-buttons">
+        <div class="col-md-3">
+          <div class="row">
+              <% if current_applicant %>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant), :class => "btn btn-block btn-danger btn-sm" %> </div>
+                <div class="col-md-6"> <%= link_to "تصفح الوظائف", employer_index_path, :class => "btn btn-block btn-danger btn-sm" %></div>
+                <div class="col-md-12"> <a href="#" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div>
+              <% elsif employer_signed_in? %>
+                  <% if current_employer.paid_account || applicant.paid_account %>
+              <div class="col-md-12"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+                  <% end%>
+                <%end%>
+                    <%end%>
+          </div>
+          <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="applicant-cv content">
+        <div class="row">
+        <div class="col-sm-12 details-list">
+         <% if applicant.experience %>
+            <% applicant.experience.each do |experience| %>
+          <div class="detail-item">
+            <h2 class="title">الخبرة</h2>
+            <div class="detail-description experience-list">
+              <div class="row">
+                <div class="item">
+                  <div class="col-md-6"> <p class="title"><%= experience.job_title %></p> <p class="company"><%= experience.company %></p></div>
+                  <div class="col-md-12"> <p class="period"><%= experience.period %></p></div>
+                  <div class="col-md-12"> <p class="description"><%= experience.description %></p></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <%end%>
+          <% end %>
+          <% if applicant.education[0].degree != "" %>
+            <% applicant.education.each do |education| %>
+          <div class="detail-item">
+            <h2 class="title">المؤهل</h2>
+            <div class="detail-description">
+              <div class="row">
+                <div class="col-md-6"> <p class="title"><%= education.degree %> <%= education.field %></p> <p class="graduation-year"><%= education.graduation_year %></p></div>
+                <div class="col-md-12"> <p class="description"> <%= education.graduation_place %></p></div>
+              </div>
+            </div>
+          </div>
+            <%end%><%end%>
+
+
+          <div class="detail-item">
+            <h2 class="title">المهارات</h2>
+            <div class="detail-description">
+              <div class="row">
+                <div class="label label-primary">icdl</div>
+                <div class="label label-primary">excel</div>
+                <div class="label label-primary">management</div>
+                <div class="label label-primary">accounting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>

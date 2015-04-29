@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ملتقى الوظائف السعودي</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- Load Bootstrap RTL theme from CDNJS -->
+  <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header ">
+      <div class="row">
+<div class="col-md-1">
+<div class="logo"><img src="img/temp-logo.png" alt=""/></div>
+</div>
+<div class="col-md-11">
+<ul class="nav nav-pills col-md-7">
+  <li><a href="<%= jobs_path%>">الوظائف</a></li>
+  <li><a href="<%= applicant_index_path%>">باحثي العمل</a></li>
+  <li><a href="">للسيدات فقط</a></li>
+  <li><a href="#">المقابلات</a></li>
+</ul>
+
+<% if applicant_signed_in? %>
+<div class=" col-md-5 sign">
+
+        
+        <div class="col-md-4"> <%= link_to "الصفحة الشخصية", applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
+        
+        <div class="col-md-4"> <%= link_to "الطلبات المقدمة", following_applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
+        <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    الإعدادات
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant) %></li>
+    <li role="presentation"><%= link_to "تسجيل الخروج", destroy_applicant_session_path, :method => :delete%></li>
+  </ul></div>
+
+</div>
+
+<% elsif employer_signed_in? %>
+
+<div class=" col-md-5 sign">
+
+        
+        <div class="col-md-4"> <%= link_to "التدريبات الخاصة", internship_employer_path(current_employer), :method => :get %> </div>
+        
+        <div class="col-md-4"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
+        <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    الإعدادات
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"> <%= link_to "الصفحة الشخصية", employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></li>
+    <li role="presentation"><%= link_to "تسجيل الخروج", destroy_employer_session_path, :method => :delete%></li>
+  </ul></div>
+
+</div>
+    <% else %>
+
+<div class=" col-md-4 sign">
+  <div class="row">
+<div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
+<div class="col-md-6"><a class="btn btn-block btn-lg btn-primary" href="#" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
+</div>
+</div>
+<%end%>
+</div>
+</div>
+</div>
+
+
+<!-- sign-up -->
+<div class="sign-modals">
+<!-- Modal -->
+<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">تسجيل حساب جديد</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#employer" aria-controls="empolyer" role="tab" data-toggle="tab">صاحب عمل</a></li>
+          <li role="presentation"><a href="#employee" aria-controls="employee" role="tab" data-toggle="tab">طالب عمل</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="employer">
+                <div class="col-sm-12">
+                  <div class="col-md-6 ">
+                    <div class="plan row">
+                      <h3 class="plan-title">عادية</h3>
+                      <p class="plan-price">مجاناً</p>
+                      <div class="col-md-10 col-md-offset-1">
+                        <ul class="plan-features">
+                          <li >10 <span class="plan-feature-name">وظائف/تدريبات</span></li>
+                          <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
+
+                        </ul>
+                        <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 ">
+                      <div class="plan row">
+                        <h3 class="plan-title">مميزة</h3>
+                        <p class="plan-price">٢٠$</p>
+                        <div class="col-md-10 col-md-offset-1">
+                          <ul class="plan-features">
+                            <li ><span class="plan-feature-name">وظائف لانهائية!</span></li>
+                            <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
+                          </ul>
+                          <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+
+            </div>
+          </div>
+
+
+          <div role="tabpanel" class="tab-pane" id="employee">
+            <div class="col-sm-12">
+                <div class="col-md-6 ">
+                  <div class="plan row">
+                    <h3 class="plan-title">عادية</h3>
+                    <p class="plan-price">مجاناً</p>
+                    <div class="col-md-10 col-md-offset-1">
+                      <ul class="plan-features">
+                        <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
+
+                      </ul>
+                      <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="plan row">
+                      <h3 class="plan-title">مميزة</h3>
+                      <p class="plan-price">٢٠$</p>
+                      <div class="col-md-10 col-md-offset-1">
+                        <ul class="plan-features">
+                          <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
+                        </ul>
+                        <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+          </div>
+        </div>
+          </div>
+
+          <div class="modal-footer">
+
+      </div>
+        </div>
+
+      </div>
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+
+   <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">تسجيل دخول</h4>
+    </div>
+    <div class="modal-body">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#employer1" aria-controls="empolyer1" role="tab" data-toggle="tab">صاحب عمل</a></li>
+        <li role="presentation"><a href="#employee1" aria-controls="employee1" role="tab" data-toggle="tab">طالب عمل</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="employer1">
+          <div class="sign-in-form">
+            <div class="col-sm-10 col-sm-offset-1">
+              <%= form_for(employer, as: employer_name, url: session_path(employer_name)) do |f| %>
+                <div class="col-sm-12">
+                  <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "البريد الإلكتروني" %>
+                </div>
+
+                <div class="col-sm-12">
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "كلمة السر" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="col-sm-12">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label "تذكرني" %>
+                  </div>
+                <% end -%>
+
+                <div class="col-sm-4 col-sm-offset-9">
+                  <%= f.submit "دخول", class: "btn btn-block btn-danger" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane" id="employee1">
+          <div class="sign-in-form">
+            <div class="col-sm-10 col-sm-offset-1">
+              <%= form_for(applicant, as: applicant_name, url: session_path(applicant_name)) do |f| %>
+                  <div class="col-sm-12">
+                    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "البريد الإلكتروني" %>
+                  </div>
+
+                  <div class="col-sm-12">
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "كلمة السر" %>
+                  </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="col-sm-12">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label "تذكرني" %>
+                  </div>
+                <% end -%>
+
+                <div class="col-sm-4 col-sm-offset-9">
+                  <%= f.submit "دخول", class: "btn btn-block btn-danger" %>
+                </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+
+    </div>
+      </div>
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<%= yield %>
+</div>
+      <!-- FOOTER -->
+      <footer>
+      <div class="text-center"><p>جميع الحقوق محفوظة ©</p></div>
+
+      </footer>
+
+
+</body>
+</html>
