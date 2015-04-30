@@ -1,10 +1,49 @@
-<div class="breadcrumps"><div class="content"> <%= link_to "الصفحة الشخصية", employer_path(:employer_id) %> / <p>الوظائف الخاصة</p> </div></div>
-<div class="page-head content"><div class="row">
-    <div class="col-md-3 pull-left">
-        <%= link_to "أضف وظيفة جديد", new_job_path, :class => "btn btn-block btn-danger"  %>
+<div class="search-job-filter">
+  <div class="content">
+      <h2>الوظائف</h2>
+    <div class="row">
+
+      <div class="col-md-1"><p>بحث حسب:</p></div>
+      <div class="col-md-10">
+
+
+      <div class="col-md-4">
+      <div class="dropdown">
+      <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      الشركة
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+
+  </ul>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="dropdown">
+<button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+التقييم
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+  <input class="form-control" type="text" placeholder="بحث متقدم">
+</div>
+</div>
+<div class="col-md-1"> <a href="#" class="btn btn-block btn-danger">بحث</a></div>
     </div>
-    </div>
-    </div>
+  </div>
+</div>
   <div class="content job-filter">
 
     <% if @jobs %>

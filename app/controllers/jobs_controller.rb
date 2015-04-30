@@ -5,7 +5,9 @@ class JobsController < ApplicationController
   respond_to :html
 
   def index
-    @jobs = Job.all
+    if Job.count != 0
+      @jobs = Job.all
+      end
     respond_with(@jobs)
   end
 

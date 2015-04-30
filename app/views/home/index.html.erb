@@ -47,123 +47,67 @@
 <div class="row">
     <h2>الوظائف المميزة</h2>
       <!-- Three columns of text below the carousel -->
+    <% if @jobs %>
+      <div class="row">
+      <!-- Three columns of text below the carousel -->
       <div class="row job-list">
 
-
-        <div class="col-md-4">
-        <div class="job-item">
+      <% @jobs.each do |job| %>
+          <% employer = job.employer %>
+        <div class="col-md-3">
+                <div class="job-item">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="job-pic"></div>
             </div>
             <div class="col-md-8">
               <div class="job-title">
-                <a href="#" class="employee">محاسب</a>
-                <a href="#" class="employer danger">البنك الأهلي</a>
+                <a href="<%= job_path(employer) %>" class="employee"> <%= job.title %></a>
+                <a href=" <%= employer_path(employer) %>" class="employer danger"><%= job.employer.co_name %></a>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="job-conditions col-md-12">
-              <p>جدة</p>
-              <p>خبرة 2 سنة</p>
+              <p><%= job.place %></p>
+              <p><%= job.experience %></p>
             </div>
-          </div>
-          <div class="row">
-            <div class="label label-info">محاسبة</div>
-            <div class="label label-success">تجارة</div>
           </div>
           <div class="row">
             <div class="job-description">
-              <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق، إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد. </p>
+                <p> <%= job.description %> </p>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-danger">قدم</div></div>
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-primary">مشاركة</div></div>
+            <% if applicant_signed_in? %>
+             <div class="col-md-6"> <%= link_to "قدم",  job_create_follower_path(job), :method => :post, :class => "btn btn-block btn-primary" %></div>
+              <% elsif employer_signed_in? %>
+                <% if job.employer == current_employer %>
+                    <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
+                    <%end%>
+              <% else %>
+              
+                <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
+              <%end%>
+            <div class="col-md-6"> <div class="btn btn-block btn-primary">مشاركة</div></div>
           </div>
         </div>
         </div><!-- /job item -->
-
-
-        <div class="col-md-4">
-          <div class="job-item">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="job-pic"></div>
-            </div>
-            <div class="col-md-8">
-              <div class="job-title">
-                <a href="#" class="employee">مصمم مواقع</a>
-                <a href="#" class="employer danger">جوجل</a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="job-conditions col-md-12">
-              <p>الرياض</p>
-              <p>خبرة 5 سنة</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="label label-info">محاسبة</div>
-            <div class="label label-success">تجارة</div>
-          </div>
-          <div class="row">
-            <div class="job-description">
-              <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق، إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد. </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-danger">قدم</div></div>
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-primary">مشاركة</div></div>
-          </div>
-        </div>
-        </div><!-- /job item -->
-
-
-        <div class="col-md-4">
-          <div class="job-item">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="job-pic"></div>
-            </div>
-            <div class="col-md-8">
-              <div class="job-title">
-                <a href="#" class="employee">محاسب</a>
-                <a href="#" class="employer danger">البنك الأهلي</a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="job-conditions col-md-12">
-              <p>جدة</p>
-              <p>خبرة 2 سنة</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="label label-info">محاسبة</div>
-            <div class="label label-success">تجارة</div>
-          </div>
-          <div class="row">
-            <div class="job-description">
-              <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق، إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد. </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-danger">قدم</div></div>
-            <div class="col-md-6"> <div class="btn btn-block btn-lg btn-primary">مشاركة</div></div>
-          </div>
-        </div>
-        </div><!-- /job item -->
-
-
-      </div><!-- /job list -->
-      <div class="col-md-2 col-md-offset-5"><a href="#" class="btn btn-lg btn-danger btn-block">المزيد</a></div>
+                </div><!-- /job list -->
+      <div class="col-md-2 col-md-offset-5"><a href="<%= jobs_path%>" class="btn btn-lg btn-danger btn-block">المزيد</a></div>
     </div>
+            <%end%>
+    </div>
+    </div>
+    <% else %>
+          <div class="empty-content">
+            <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
+          </div>
+    <%end%>
+          
+
+  </div>
+
 </div>
 
 <div class="reviews text-center">
@@ -248,56 +192,87 @@
   <h2>جدول العروض</h2>
     <div class="row">
 
-    <div class="col-md-3 ">
-      <div class="plan row">
-      <h3 class="plan-title">عادية</h3>
-      <p class="plan-price">مجاناً</p>
-      <div class="col-md-10 col-md-offset-1">
-      <ul class="plan-features">
-        <li >2 <span class="plan-feature-name">وظائف</span></li>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#employer" aria-controls="empolyer" role="tab" data-toggle="tab">صاحب عمل</a></li>
+          <li role="presentation"><a href="#employee" aria-controls="employee" role="tab" data-toggle="tab">طالب عمل</a></li>
+        </ul>
 
-      </ul>
-      <a href="#" class="btn btn-block btn-lg btn-danger">سجل</a>
-      </div>
-    </div>
-    </div>
-<div class="col-md-3 ">
-      <div class="plan row featured">
-      <h3 class="plan-title">نحاسية</h3>
-      <p class="plan-price">$20 <span class="plan-unit">شهرياً</span></p>
-      <div class="col-md-10 col-md-offset-1">
-      <ul class="plan-features">
-        <li >10 <span class="plan-feature-name">وظائف</span></li>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="employer">
+                <div class="col-sm-12">
+                  <div class="col-md-6 ">
+                    <div class="plan row">
+                      <h3 class="plan-title">عادية</h3>
+                      <p class="plan-price">مجاناً</p>
+                      <div class="col-md-10 col-md-offset-1">
+                        <ul class="plan-features">
+                          <li >10 <span class="plan-feature-name">وظائف/تدريبات</span></li>
+                          <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
 
-      </ul>
-      <a href="#" class="btn btn-block btn-lg btn-danger">سجل</a>
-      </div>
-    </div>
-    </div>
-<div class="col-md-3 ">
-      <div class="plan row">
-      <h3 class="plan-title">برونزية</h3>
-      <p class="plan-price">$30 <span class="plan-unit">شهرياً</span></p>
-      <div class="col-md-10 col-md-offset-1">
-      <ul class="plan-features">
-        <li >15 <span class="plan-feature-name">وظائف</span></li>
-      </ul>
-      <a href="#" class="btn btn-block btn-lg btn-danger">سجل</a>
-      </div>
-    </div>
-    </div>
-    <div class="col-md-3 ">
-      <div class="plan row">
-      <h3 class="plan-title">ذهبية</h3>
-      <p class="plan-price">$19 <span class="plan-unit">per month</span></p>
-      <div class="col-md-10 col-md-offset-1">
-      <ul class="plan-features">
-        <li >30 <span class="plan-feature-name">وظائف</span></li>
-      </ul>
-      <a href="#" class="btn btn-block btn-lg btn-danger">سجل</a>
-      </div>
-    </div>
-    </div>
+                        </ul>
+                        <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 ">
+                      <div class="plan row">
+                        <h3 class="plan-title">مميزة</h3>
+                        <p class="plan-price">٢٠$</p>
+                        <div class="col-md-10 col-md-offset-1">
+                          <ul class="plan-features">
+                            <li ><span class="plan-feature-name">وظائف لانهائية!</span></li>
+                            <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
+                          </ul>
+                          <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+
+
+            </div>
+          </div>
+
+
+          <div role="tabpanel" class="tab-pane" id="employee">
+            <div class="col-sm-12">
+                <div class="col-md-6 ">
+                  <div class="plan row">
+                    <h3 class="plan-title">عادية</h3>
+                    <p class="plan-price">مجاناً</p>
+                    <div class="col-md-10 col-md-offset-1">
+                      <ul class="plan-features">
+                        <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
+
+                      </ul>
+                      <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <div class="plan row">
+                      <h3 class="plan-title">مميزة</h3>
+                      <p class="plan-price">٢٠$</p>
+                      <div class="col-md-10 col-md-offset-1">
+                        <ul class="plan-features">
+                          <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
+                        </ul>
+                        <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+          </div>
+        </div>
+          </div>
   </div>
 
 </div>

@@ -15,8 +15,15 @@
 <h2>وظيفة\تدريب جديد</h2>
         <div class="row">
         <div class="col-md-12">
-             <%= f.select(:internship, [["وظيفة", "false"], ["تدريب", "true"]], {:class =>'form-control'})%>    
+             <%= f.select(:internship, [["وظيفة", "false"], ["تدريب", "true"]], {:class =>'form-control internship'})%>    
         </div>
+        </div>
+        <div class="row">
+           <div class="col-md-12">
+              <label>شرط الوظيفة
+                 <%= f.select(:applicant_status, [["سيدة", "women"], ["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"], {:class =>'form-control job_condition'})%>
+               </label>
+            </div>
         </div>
 <div class="row">
     <div class="col-md-6">
@@ -59,14 +66,21 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        $('select').change( function() {
+        $('select.internship').change( function() {
            if ($(this).val() == "false") {
                $('input.experience').show();
+               
            }
             else {
                $('input.experience').hide();
+               $('select.job_condition').hide();
 
             }
+        });
+        
+        $('select.job_condition').change( function() {
+            if ($(this).val() == "fresh-graduate") {
+                 $('input.experience').hide();
         });
 
     });

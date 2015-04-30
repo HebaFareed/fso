@@ -18,10 +18,12 @@
 </div>
 <div class="col-md-11">
 <ul class="nav nav-pills col-md-7">
+  <li><a href="/">الرئيسية</a></li>
   <li><a href="<%= jobs_path%>">الوظائف</a></li>
   <li><a href="<%= applicant_index_path%>">باحثي العمل</a></li>
-  <li><a href="">للسيدات فقط</a></li>
-  <li><a href="#">المقابلات</a></li>
+  <li><a href="<%= home_women_path%>">للسيدات فقط</a></li>
+  <li><a href="<%= home_fresh_graduate_path%>">حديثي التخرج</a></li>
+  <li><a href="<%= home_experienced_path%>">أصحاب الخبرة</a></li>
 </ul>
 
 <% if applicant_signed_in? %>

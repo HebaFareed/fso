@@ -7,6 +7,7 @@ class CreateJobs < ActiveRecord::Migration
       t.text :place
       t.text :description
       t.text :applicant_status
+      t.text :applicant_sex
       t.boolean :internship, default: false
       t.references :employer, index: true
 

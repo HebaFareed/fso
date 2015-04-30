@@ -4,6 +4,14 @@ class Applicant::RegistrationsController < Devise::RegistrationsController
   @applicant = Applicant.new
   1.times { @applicant.education.build }
   1.times { @applicant.skill.build }
+    if @applicant.save
+        if (@applicant.experience.count > 1) && (@applicant.education[0])
+            @applicant.status = "experienced"
+        else
+            @applicant.status = "fresh-graduate"
+        end
+        redirect_to @applicant
+    end
   end
     
   def edit

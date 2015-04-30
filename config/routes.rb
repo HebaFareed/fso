@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :jobs do
       post :create_follower
       get :delete_follower
@@ -7,6 +9,9 @@ Rails.application.routes.draw do
   end
 
   get 'home/index'
+  get 'home/women'
+  get 'home/fresh_graduate'
+  get 'home/experienced'
 
   devise_for :applicants, :controllers => {:registrations => "applicant/registrations", :sessions => "applicant/sessions"}
   devise_for :employers, :controllers => {:registrations => "employer/registrations", :sessions => "employer/sessions"}

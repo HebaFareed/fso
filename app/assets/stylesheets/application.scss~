@@ -92,10 +92,10 @@ body {
     line-height: 130px;
 }
 
-.applicant-title .img {
+.applicant-title .profile-pic img {
       height: 150px;
   width: 150px;
-  content: "";
+
   border-radius: 200px;
   border: solid 4px $brand-primary;
 }
@@ -184,7 +184,7 @@ body {
   margin: auto;
 }
 
-.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav a.complete {
+.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav li.complete a {
 
   color: #fff;
   background: #78B604;
@@ -618,7 +618,11 @@ body {
 .wrapper {
    min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -142px; 
+  margin-bottom: -30px; 
+    padding: 0 0 30px;
+}
+.wrapper:after {
+  height: 30px;
 }
 footer {
    height:30px;
@@ -627,9 +631,7 @@ footer {
   color: #fff;
   padding: 5px 0px;
   margin-bottom:0;
-    position: absolute;
-bottom: 0px;
-left: 0px;
+  
 }
 
 footer p {
