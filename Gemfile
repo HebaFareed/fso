@@ -41,6 +41,7 @@ gem "breadcrumbs_on_rails"
 gem "acts_as_follower"
 gem 'activeadmin', github: 'activeadmin'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'braintree', '~> 2.33.1'
 gem 'figaro', '~> 0.7.0'
 

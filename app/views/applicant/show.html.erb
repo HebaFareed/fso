@@ -8,7 +8,7 @@
           <div class="profile-pic"> <% if applicant.avatar? %> <%= image_tag @applicant.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%> </div>
         </div>
         <div class="col-md-7">
-          <p class="name"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-famale"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></p>
+          <p class="name"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-female"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></p>
           <p class="job-title"><%= applicant.status %></p>
         </div>
         <div class="applicant-buttons">
@@ -22,8 +22,8 @@
                   <% if current_employer.paid_account || applicant.paid_account %>
               <div class="col-md-12"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
                   <% end%>
+                
                 <%end%>
-                    <%end%>
           </div>
           <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
         </div>
@@ -42,7 +42,7 @@
             <div class="detail-description experience-list">
               <div class="row">
                 <div class="item">
-                  <div class="col-md-6"> <p class="title"><%= experience.job_title %></p> <p class="company"><%= experience.company %></p></div>
+                  <div class="col-md-6"> <p class="title"><%= experience.title %></p> <p class="company"><%= experience.company %></p></div>
                   <div class="col-md-12"> <p class="period"><%= experience.period %></p></div>
                   <div class="col-md-12"> <p class="description"><%= experience.description %></p></div>
                 </div>
@@ -70,10 +70,12 @@
             <h2 class="title">المهارات</h2>
             <div class="detail-description">
               <div class="row">
-                <div class="label label-primary">icdl</div>
-                <div class="label label-primary">excel</div>
-                <div class="label label-primary">management</div>
-                <div class="label label-primary">accounting</div>
+                 <% skills = applicant.skill %>
+              <% if skills.any? %>
+                <% skills.each do |ski| %>
+                    <span class="label label-primary"><%= ski.skill %></span>
+                <%end%>
+                <% end %>
               </div>
             </div>
           </div>

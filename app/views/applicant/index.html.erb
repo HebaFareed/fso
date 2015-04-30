@@ -2,65 +2,84 @@
   <div class="content">
       <h2>باحثي العمل</h2>
     <div class="row">
-
+<%= form_tag applicant_index_path, :method => :get do %>
       <div class="col-md-1"><p>بحث حسب:</p></div>
       <div class="col-md-10">
 
 
-      <div class="col-md-4">
+      <div class="col-md-3">
       <div class="dropdown">
-      <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-      الشركة
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+      <select class="btn btn-default btn-block form-control">
+        <option value=" ">الحالة</option>
+        <% @search.facet(:status).rows.each do |facet| %>
+<option value="<%= facet.value %>"><%= facet.value %></option>
+<% end %>
+      </select>
 
-  </ul>
+      
+
 </div>
 </div>
 
-<div class="col-md-4">
-<div class="dropdown">
-<button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-التقييم
-<span class="caret"></span>
-</button>
-<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-<li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
-<li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
-<li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+      <div class="col-md-3">
+      <div class="dropdown">
+      <select class="btn btn-default btn-block form-control">
+        <option value=" ">النوع</option>
+        <% @search.facet(:sex).rows.each do |facet| %>
+<option value="<%= facet.value %>"><%= facet.value %></option>
+<% end %>
+      </select>
+          </div>
+        </div>
 
-</ul>
+            <div class="col-md-3">
+      <div class="dropdown">
+      <select class="btn btn-default btn-block form-control">
+        <option value=" ">المدينة</option>
+        <% @search.facet(:city).rows.each do |facet| %>
+<option value="<%= facet.value %>"><%= facet.value %></option>
+<% end %>
+      </select>
+
+      
+
 </div>
 </div>
-<div class="col-md-4">
-  <input class="form-control" type="text" placeholder="بحث متقدم">
+
+
+        
+<div class="col-md-3">
+  <%= text_field_tag :search, params[:search], :class => "form-control", :placeholder => "بحث متقدم" %>
 </div>
 </div>
-<div class="col-md-1"> <a href="#" class="btn btn-block btn-danger">بحث</a></div>
+<div class="col-md-1"><%= submit_tag "بحث", :class => "btn btn-block btn-danger" %></div>
+        <%end%>
     </div>
   </div>
 </div>
   <div class="content job-filter">
 
-    <% if @applicants.any? %>
+    <% if @applicants_results.any? %>
+      <% if @applicants_results == "no results!" %>
+             <div class="empty-content">
+            <h1>لا يوجد أي باحث عمل بهذه المواصفات، حاول مجدداً.</h1>
+          </div>
+      
+      <%else%>
       <div class="row">
       <!-- Three columns of text below the carousel -->
       <div class="row job-list">
 
-      <% @applicants.each do |applicant| %>
+      <% @applicants_results.each do |applicant| %>
         <div class="col-md-4">
         <div class="job-item">
           <div class="row">
             <div class="col-md-3">
-              <div class="job-pic"><% if applicant.avatar? %><%= image_tag applicant.avatar.url(:thumbnail) %> <% else %><i class="fa fa-user"></i> <%end%> </div>
+              <div class="job-pic"><% if applicant.avatar? %><%= image_tag applicant.avatar.url() %> <% else %><i class="fa fa-user"></i> <%end%> </div>
             </div>
             <div class="col-md-8">
               <div class="job-title">
-                <a href="<%= applicant_path(applicant)%>" class="employee"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-famale"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></a>
+                <a href="<%= applicant_path(applicant)%>" class="employee"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-female"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></a>
                 <a href="#" class="employer danger"><%= applicant.status %></a>
               </div>
             </div>
@@ -73,19 +92,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="job-description">
-              <p>
+            <div class="job-description col-md-12"></span>
+              
                   <% skills = applicant.skill %>
               <% if skills.any? %>
                 <% skills.each do |ski| %>
-                    <%= ski.skill %> - 
+                    <span class="label label-primary"><%= ski.skill %></span>
                 <%end%>
                 <% end %>
-                </p>  
+                 
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
+            <div class="col-md-6 col-md-offset-3"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
           </div>
         </div>
         </div><!-- /job item -->
@@ -93,7 +112,56 @@
       <%end%>
     </div>
     </div>
-          <% else %>
+<%end%>
+          <% elsif @applicants.any? %>
+
+      <div class="row">
+      <!-- Three columns of text below the carousel -->
+      <div class="row job-list">
+
+      <% @applicants.each do |applicant| %>
+        <div class="col-md-4">
+        <div class="job-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="job-pic"><% if applicant.avatar? %><%= image_tag applicant.avatar.url() %> <% else %><i class="fa fa-user"></i> <%end%> </div>
+            </div>
+            <div class="col-md-8">
+              <div class="job-title">
+                <a href="<%= applicant_path(applicant)%>" class="employee"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-female"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></a>
+                <a href="#" class="employer danger"><%= applicant.status %></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-conditions col-md-12">
+              <p><%= applicant.city%></p>
+              <p><%= applicant.education[0].degree %> <%= applicant.education[0].field %> - <%= applicant.education[0].graduation_place %> </p>
+              <p> <%= applicant.education[0].graduation_year %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-description col-md-12"></span>
+              
+                  <% skills = applicant.skill %>
+              <% if skills.any? %>
+                <% skills.each do |ski| %>
+                    <span class="label label-primary"><%= ski.skill %></span>
+                <%end%>
+                <% end %>
+                 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
+          </div>
+        </div>
+        </div><!-- /job item -->
+
+      <%end%>
+    </div>
+    </div>
+<%else%>
           <div class="empty-content">
             <h1>لا يوجد أي باحث عمل بعد. <%= link_to "سجل كباحث عمل", new_applicant_registration_path %></h1>
           </div>

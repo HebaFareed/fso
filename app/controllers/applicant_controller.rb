@@ -4,8 +4,27 @@ class ApplicantController < ApplicationController
   
     
   def index
-      
-    @applicants = Applicant.all
+    
+    
+    
+      @search = Sunspot.search(Applicant) do
+        fulltext params[:query]
+        facet :status
+        with(:status, params[:status]) if params[:status].present?
+        facet :sex
+        with(:sex, params[:sex]) if params[:sex].present?
+        facet :city
+        with(:city, params[:city]) if params[:city].present?
+        paginate(:page => (params[:page] or 1), :per_page => 10)
+      end
+        if @search
+        @applicants_results = @search.results
+        else
+            @applicants_results = "no results!"
+        end
+        @applicants = Applicant.all
+    
+
   end
 
   def show

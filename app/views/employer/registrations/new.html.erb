@@ -9,8 +9,8 @@
 
       <!-- Nav tabs -->
       <ul class="nav" role="tablist">
-        <li role="presentation" class="active"><a href="#contact_info" aria-controls="contact_info" role="tab" data-toggle="tab">١</a></li>
-        <span class="split "></span>
+        <li role="presentation" class="active contact"><a href="#contact_info" aria-controls="contact_info" role="tab" data-toggle="tab">١</a></li>
+        <span class="split contact "></span>
         <li role="presentation"><a href="#company_info" aria-controls="company_info" role="tab" data-toggle="tab">٢</a></li>
       </ul>
 
@@ -66,7 +66,9 @@
                 <%= f.select(:paid_account, [["حساب مجاني", "false"], ["حساب مدفوع", "true"]], {:class =>'form-control'})%>
 	    </div>
             </div>
-
+          <div class="col-md-4 pull-left">
+            <a href="#company_info" aria-controls="company_info" role="tab" data-toggle="tab" id="first-level" class="btn btn-block btn-danger">أكمل</a>    
+          </div>
     </div>
   </div>
 
@@ -93,6 +95,10 @@
           <%= f.text_area :co_desc, autofocus: true, :class=>"form-control", :placeholder=>"وصف الشركة" %>
         </div>
       </div>
+        <div class="col-md-6">
+                <label>شعار الشركة:
+                <%= f.file_field :avatar, :class => 'form-control' %></label>
+        </div>
     </div>
 
   </div>
@@ -108,3 +114,15 @@
 <% end %>
 
 </div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('a#first-level').click( function() {
+            $('li.contact').removeClass('active').addClass('complete');
+            $('span.contact').addClass('complete');
+        });
+
+
+    });
+</script>

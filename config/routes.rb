@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'home/women'
   get 'home/fresh_graduate'
   get 'home/experienced'
+  get 'home/internship'
 
   devise_for :applicants, :controllers => {:registrations => "applicant/registrations", :sessions => "applicant/sessions"}
   devise_for :employers, :controllers => {:registrations => "employer/registrations", :sessions => "employer/sessions"}

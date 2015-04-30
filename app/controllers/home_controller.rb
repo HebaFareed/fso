@@ -20,4 +20,11 @@ if Job.count != 0
 if Job.count != 0
       @jobs = Job.all
       end  end
+    
+      def internship
+      @internships = Job.where('internship'=>true)
+      if @internships.count != 0
+        @jobs = @internships.all
+      end
+  end
 end

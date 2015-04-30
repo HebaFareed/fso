@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Applicant::RegistrationsController < Devise::RegistrationsController
 
   def new
@@ -6,9 +7,9 @@ class Applicant::RegistrationsController < Devise::RegistrationsController
   1.times { @applicant.skill.build }
     if @applicant.save
         if (@applicant.experience.count > 1) && (@applicant.education[0])
-            @applicant.status = "experienced"
+            @applicant.status = "خبير"
         else
-            @applicant.status = "fresh-graduate"
+            @applicant.status = "حديث التخرج"
         end
         redirect_to @applicant
     end
@@ -25,7 +26,7 @@ class Applicant::RegistrationsController < Devise::RegistrationsController
       
   end
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar, :status , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
     devise_parameter_sanitizer.for(:edit) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
   end
 end

@@ -1,5 +1,5 @@
 class EmployerController < ApplicationController
-    before_action(:except => [:index, :new, :create]) { |c| c.prepare_applicant(params[:id]) }
+    before_action(:except => [:index, :new, :create, :internship]) { |c| c.prepare_applicant(params[:id]) }
 
     def index
       @employers = Employer.all

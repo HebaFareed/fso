@@ -10,6 +10,8 @@ class JobsController < ApplicationController
       end
     respond_with(@jobs)
   end
+  
+
 
   def show
        follower = Follow.where(["followable_id = ?", @job.id])
@@ -93,6 +95,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-       params.require(:job).permit(:title, :experience, :field, :place, :internship, :description)
+       params.require(:job).permit(:title, :experience, :field, :place, :internship, :description, :applicant_status)
     end
 end

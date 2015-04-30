@@ -19,6 +19,8 @@
 $brand-primary: #78B604;
 
 @import "bootstrap";
+@import "bootstrap-rtl.min";
+@import "font-awesome";
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 /* GLOBAL STYLES
@@ -321,9 +323,20 @@ body {
   margin: 0 15px;
 }
 
-.job-item .job-pic {
-  content:" ";
-  height:100px;
+.job-item .job-pic i {
+  height: 90px;
+  width: 90px;
+  content: "";
+  border-radius: 200px;
+  border: solid 4px $brand-primary;
+  text-align: center;
+    font-size: 3rem;
+    color:#ccc;
+    line-height: 75px;
+}
+
+.job-item .job-pic img {
+    height:100px;
   width: 100px;
   background: #ddd;
   border-radius: 200px;
