@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430092644) do
+ActiveRecord::Schema.define(version: 20150430151359) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -169,6 +169,11 @@ ActiveRecord::Schema.define(version: 20150430092644) do
 
   add_index "requests", ["applicant_id"], name: "index_requests_on_applicant_id", using: :btree
   add_index "requests", ["job_id"], name: "index_requests_on_job_id", using: :btree
+
+  create_table "searches", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "skills", force: true do |t|
     t.text     "skill"

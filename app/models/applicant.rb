@@ -14,24 +14,15 @@ class Applicant < ActiveRecord::Base
     accepts_nested_attributes_for :experience, :reject_if => :all_blank, :allow_destroy => true
  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-    
-  searchable do
-    text :education_field do
-        education.map { |education| education.field }
-    end
-      
-    text :experience_field do
-        experience.map { |experience| experience.title }
-    end
 
-    text :experience_desc do
-        experience.map { |experience| experience.description }
-    end
-    text :skill_array do
-        skill.map { |skill| skill.skill }
-    end
-    string :status
-    string :sex
-    string :city
+    
+     # It returns the articles whose titles contain one or more words that form the query
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("status like ?", "%#{query}%") 
+
+
+
+
   end
 end
