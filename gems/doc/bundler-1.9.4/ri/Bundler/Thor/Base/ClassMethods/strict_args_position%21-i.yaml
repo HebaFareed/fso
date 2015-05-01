@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: If you want only strict string args (useful when cascading thor classes), call strict_args_position! This is disabled by default to allow dynamic invocations.
+full_name: Bundler::Thor::Base::ClassMethods#strict_args_position!
+is_singleton: false
+name: strict_args_position!
+params: ()
+visibility: public

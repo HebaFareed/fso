@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Dsl#eval_gemfile
+is_singleton: false
+name: eval_gemfile
+params: (gemfile, contents = nil)
+visibility: public

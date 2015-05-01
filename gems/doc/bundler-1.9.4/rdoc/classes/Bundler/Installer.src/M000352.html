@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>install_gem_from_spec (Bundler::Installer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/installer.rb, line 97</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_gem_from_spec</span>(<span class="ruby-identifier">spec</span>, <span class="ruby-identifier">standalone</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">worker</span> = <span class="ruby-value">0</span>)
+      <span class="ruby-comment cmt"># Fetch the build settings, if there are any</span>
+      <span class="ruby-identifier">settings</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-node">&quot;build.#{spec.name}&quot;</span>]
+      <span class="ruby-identifier">messages</span> = <span class="ruby-keyword kw">nil</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">settings</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">with_build_args</span> [<span class="ruby-identifier">settings</span>] <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">messages</span> = <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">install</span>(<span class="ruby-identifier">spec</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">messages</span> = <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">install</span>(<span class="ruby-identifier">spec</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">install_message</span>, <span class="ruby-identifier">post_install_message</span>, <span class="ruby-identifier">debug_message</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">messages</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">install_message</span>.<span class="ruby-identifier">include?</span> <span class="ruby-value str">'Installing'</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">confirm</span> <span class="ruby-identifier">install_message</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">install_message</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">debug</span> <span class="ruby-identifier">debug_message</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">debug_message</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;#{worker}:  #{spec.name} (#{spec.version}) from #{spec.loaded_from}&quot;</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:bin</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">standalone</span>
+        <span class="ruby-identifier">generate_standalone_bundler_executable_stubs</span>(<span class="ruby-identifier">spec</span>)
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:bin</span>]
+        <span class="ruby-identifier">generate_bundler_executable_stubs</span>(<span class="ruby-identifier">spec</span>, <span class="ruby-identifier">:force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">post_install_message</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOSPC</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">InstallError</span>, <span class="ruby-value str">&quot;Your disk is out of space. Free some &quot;</span> \
+        <span class="ruby-value str">&quot;space to be able to install your bundle.&quot;</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-comment cmt"># if install hook failed or gem signature is bad, just die</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">InstallHookError</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">SecurityError</span>)
+
+      <span class="ruby-comment cmt"># other failure, likely a native extension build failure</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;#{e.class}: #{e.message}&quot;</span>
+      <span class="ruby-identifier">msg</span> = <span class="ruby-node">&quot;An error occurred while installing #{spec.name} (#{spec.version}),&quot;</span>
+      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; and Bundler cannot continue.&quot;</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;git&quot;</span>]
+        <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\nMake sure that `gem install&quot;</span>
+        <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{spec.name} -v '#{spec.version}'` succeeds before bundling.&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">debug</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">backtrace</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">InstallError</span>, <span class="ruby-identifier">msg</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

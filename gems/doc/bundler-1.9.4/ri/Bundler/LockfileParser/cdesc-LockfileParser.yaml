@@ -1,0 +1,78 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: dependencies
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: platforms
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: sources
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: specs
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DEPENDENCIES
+  value: "\"DEPENDENCIES\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: PLATFORMS
+  value: "\"PLATFORMS\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: GIT
+  value: "\"GIT\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: GEM
+  value: "\"GEM\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: PATH
+  value: "\"PATH\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SPECS
+  value: "\"  specs:\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: OPTIONS
+  value: "/^  ([a-z]+): (.*)$/i"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TYPES
+  value: "{       GIT  => Bundler::Source::Git,       GEM  => Bundler::Source::Rubygems,       PATH => Bundler::Source::Path,     }"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME_VERSION
+  value: "'(?! )(.*?)(?: \\(([^-]*)(?:-(.*))?\\))?'"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME_VERSION_2
+  value: "%r{^ {2}#{NAME_VERSION}(!)?$}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME_VERSION_4
+  value: "%r{^ {4}#{NAME_VERSION}$}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NAME_VERSION_6
+  value: "%r{^ {6}#{NAME_VERSION}$}"
+full_name: Bundler::LockfileParser
+includes: []
+
+instance_methods: []
+
+name: LockfileParser
+superclass: Object

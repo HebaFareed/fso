@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Bundler::RubygemsIntegration</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Bundler::RubygemsIntegration</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/bundler/rubygems_integration_rb.html">
+                lib/bundler/rubygems_integration.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000236">backport_base_dir</a>&nbsp;&nbsp;
+      <a href="#M000237">backport_cache_file</a>&nbsp;&nbsp;
+      <a href="#M000234">backport_segment_generation</a>&nbsp;&nbsp;
+      <a href="#M000238">backport_spec_file</a>&nbsp;&nbsp;
+      <a href="#M000235">backport_yaml_initialize</a>&nbsp;&nbsp;
+      <a href="#M000213">bin_path</a>&nbsp;&nbsp;
+      <a href="#M000223">build</a>&nbsp;&nbsp;
+      <a href="#M000191">build_args</a>&nbsp;&nbsp;
+      <a href="#M000192">build_args=</a>&nbsp;&nbsp;
+      <a href="#M000224">build_gem</a>&nbsp;&nbsp;
+      <a href="#M000212">clear_paths</a>&nbsp;&nbsp;
+      <a href="#M000210">config_map</a>&nbsp;&nbsp;
+      <a href="#M000197">configuration</a>&nbsp;&nbsp;
+      <a href="#M000225">download_gem</a>&nbsp;&nbsp;
+      <a href="#M000216">ext_lock</a>&nbsp;&nbsp;
+      <a href="#M000219">fetch_all_remote_specs</a>&nbsp;&nbsp;
+      <a href="#M000218">fetch_prerelease_specs</a>&nbsp;&nbsp;
+      <a href="#M000217">fetch_specs</a>&nbsp;&nbsp;
+      <a href="#M000204">gem_bindir</a>&nbsp;&nbsp;
+      <a href="#M000207">gem_cache</a>&nbsp;&nbsp;
+      <a href="#M000203">gem_dir</a>&nbsp;&nbsp;
+      <a href="#M000221">gem_from_path</a>&nbsp;&nbsp;
+      <a href="#M000206">gem_path</a>&nbsp;&nbsp;
+      <a href="#M000200">inflate</a>&nbsp;&nbsp;
+      <a href="#M000193">loaded_specs</a>&nbsp;&nbsp;
+      <a href="#M000194">mark_loaded</a>&nbsp;&nbsp;
+      <a href="#M000209">marshal_spec_dir</a>&nbsp;&nbsp;
+      <a href="#M000195">path</a>&nbsp;&nbsp;
+      <a href="#M000196">platforms</a>&nbsp;&nbsp;
+      <a href="#M000214">preserve_paths</a>&nbsp;&nbsp;
+      <a href="#M000188">provides?</a>&nbsp;&nbsp;
+      <a href="#M000190">provides?</a>&nbsp;&nbsp;
+      <a href="#M000199">read_binary</a>&nbsp;&nbsp;
+      <a href="#M000239">redefine_method</a>&nbsp;&nbsp;
+      <a href="#M000231">replace_bin_path</a>&nbsp;&nbsp;
+      <a href="#M000233">replace_entrypoints</a>&nbsp;&nbsp;
+      <a href="#M000229">replace_gem</a>&nbsp;&nbsp;
+      <a href="#M000232">replace_refresh</a>&nbsp;&nbsp;
+      <a href="#M000211">repository_subdirectories</a>&nbsp;&nbsp;
+      <a href="#M000228">reverse_rubygems_kernel_mixin</a>&nbsp;&nbsp;
+      <a href="#M000198">ruby_engine</a>&nbsp;&nbsp;
+      <a href="#M000227">security_policies</a>&nbsp;&nbsp;
+      <a href="#M000226">security_policy_keys</a>&nbsp;&nbsp;
+      <a href="#M000202">sources</a>&nbsp;&nbsp;
+      <a href="#M000201">sources=</a>&nbsp;&nbsp;
+      <a href="#M000208">spec_cache_dirs</a>&nbsp;&nbsp;
+      <a href="#M000222">spec_from_gem</a>&nbsp;&nbsp;
+      <a href="#M000230">stub_source_index</a>&nbsp;&nbsp;
+      <a href="#M000215">ui=</a>&nbsp;&nbsp;
+      <a href="#M000205">user_home</a>&nbsp;&nbsp;
+      <a href="#M000189">version</a>&nbsp;&nbsp;
+      <a href="#M000187">version</a>&nbsp;&nbsp;
+      <a href="#M000220">with_build_args</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="RubygemsIntegration/AlmostModern.html" class="link">Bundler::RubygemsIntegration::AlmostModern</a><br />
+Class <a href="RubygemsIntegration/Ancient.html" class="link">Bundler::RubygemsIntegration::Ancient</a><br />
+Class <a href="RubygemsIntegration/Future.html" class="link">Bundler::RubygemsIntegration::Future</a><br />
+Class <a href="RubygemsIntegration/Legacy.html" class="link">Bundler::RubygemsIntegration::Legacy</a><br />
+Class <a href="RubygemsIntegration/Modern.html" class="link">Bundler::RubygemsIntegration::Modern</a><br />
+Class <a href="RubygemsIntegration/MoreFuture.html" class="link">Bundler::RubygemsIntegration::MoreFuture</a><br />
+Class <a href="RubygemsIntegration/MoreModern.html" class="link">Bundler::RubygemsIntegration::MoreModern</a><br />
+Class <a href="RubygemsIntegration/Transitional.html" class="link">Bundler::RubygemsIntegration::Transitional</a><br />
+
+    </div>
+
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">require</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">rubygems_require</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">gem_original_require</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">require</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000188" class="method-detail">
+        <a name="M000188"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000188.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000188.html');return false;">
+          <span class="method-name">provides?</span><span class="method-args">(req_str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000187" class="method-detail">
+        <a name="M000187"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000187.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000187.html');return false;">
+          <span class="method-name">version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000236" class="method-detail">
+        <a name="M000236"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000236.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000236.html');return false;">
+          <span class="method-name">backport_base_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This backports base_dir which replaces installation <a
+href="RubygemsIntegration.html#M000195">path</a> Rubygems 1.8+
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000237" class="method-detail">
+        <a name="M000237"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000237.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000237.html');return false;">
+          <span class="method-name">backport_cache_file</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000234" class="method-detail">
+        <a name="M000234"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000234.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000234.html');return false;">
+          <span class="method-name">backport_segment_generation</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This backports the correct segment generation code from Rubygems 1.4+ by
+monkeypatching it into the method in Rubygems 1.3.6 and 1.3.7.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000238" class="method-detail">
+        <a name="M000238"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000238.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000238.html');return false;">
+          <span class="method-name">backport_spec_file</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000235" class="method-detail">
+        <a name="M000235"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000235.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000235.html');return false;">
+          <span class="method-name">backport_yaml_initialize</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+This backport fixes the marshaling of @segments.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000213" class="method-detail">
+        <a name="M000213"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000213.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000213.html');return false;">
+          <span class="method-name">bin_path</span><span class="method-args">(gem, bin, ver)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000223" class="method-detail">
+        <a name="M000223"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000223.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000223.html');return false;">
+          <span class="method-name">build</span><span class="method-args">(spec, skip_validation = false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000191" class="method-detail">
+        <a name="M000191"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000191.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000191.html');return false;">
+          <span class="method-name">build_args</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000192" class="method-detail">
+        <a name="M000192"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000192.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000192.html');return false;">
+          <span class="method-name">build_args=</span><span class="method-args">(args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000224" class="method-detail">
+        <a name="M000224"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000224.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000224.html');return false;">
+          <span class="method-name">build_gem</span><span class="method-args">(gem_dir, spec)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000212" class="method-detail">
+        <a name="M000212"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000212.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000212.html');return false;">
+          <span class="method-name">clear_paths</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000210" class="method-detail">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000210.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000210.html');return false;">
+          <span class="method-name">config_map</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000197" class="method-detail">
+        <a name="M000197"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000197.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000197.html');return false;">
+          <span class="method-name">configuration</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000225" class="method-detail">
+        <a name="M000225"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000225.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000225.html');return false;">
+          <span class="method-name">download_gem</span><span class="method-args">(spec, uri, path)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000216" class="method-detail">
+        <a name="M000216"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000216.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000216.html');return false;">
+          <span class="method-name">ext_lock</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000219" class="method-detail">
+        <a name="M000219"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000219.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000219.html');return false;">
+          <span class="method-name">fetch_all_remote_specs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000218" class="method-detail">
+        <a name="M000218"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000218.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000218.html');return false;">
+          <span class="method-name">fetch_prerelease_specs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000217" class="method-detail">
+        <a name="M000217"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000217.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000217.html');return false;">
+          <span class="method-name">fetch_specs</span><span class="method-args">(all, pre) {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000204" class="method-detail">
+        <a name="M000204"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000204.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000204.html');return false;">
+          <span class="method-name">gem_bindir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000207" class="method-detail">
+        <a name="M000207"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000207.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000207.html');return false;">
+          <span class="method-name">gem_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000203" class="method-detail">
+        <a name="M000203"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000203.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000203.html');return false;">
+          <span class="method-name">gem_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000221" class="method-detail">
+        <a name="M000221"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000221.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000221.html');return false;">
+          <span class="method-name">gem_from_path</span><span class="method-args">(path, policy = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000206" class="method-detail">
+        <a name="M000206"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000206.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000206.html');return false;">
+          <span class="method-name">gem_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000200" class="method-detail">
+        <a name="M000200"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000200.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000200.html');return false;">
+          <span class="method-name">inflate</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000193" class="method-detail">
+        <a name="M000193"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000193.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000193.html');return false;">
+          <span class="method-name">loaded_specs</span><span class="method-args">(name)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000194" class="method-detail">
+        <a name="M000194"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000194.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000194.html');return false;">
+          <span class="method-name">mark_loaded</span><span class="method-args">(spec)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000209" class="method-detail">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000209.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000209.html');return false;">
+          <span class="method-name">marshal_spec_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000195" class="method-detail">
+        <a name="M000195"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000195.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000195.html');return false;">
+          <span class="method-name">path</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000196" class="method-detail">
+        <a name="M000196"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000196.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000196.html');return false;">
+          <span class="method-name">platforms</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000214.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000214.html');return false;">
+          <span class="method-name">preserve_paths</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000190" class="method-detail">
+        <a name="M000190"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000190.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000190.html');return false;">
+          <span class="method-name">provides?</span><span class="method-args">(req_str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000199" class="method-detail">
+        <a name="M000199"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000199.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000199.html');return false;">
+          <span class="method-name">read_binary</span><span class="method-args">(path)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000239" class="method-detail">
+        <a name="M000239"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000239.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000239.html');return false;">
+          <span class="method-name">redefine_method</span><span class="method-args">(klass, method, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000231" class="method-detail">
+        <a name="M000231"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000231.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000231.html');return false;">
+          <span class="method-name">replace_bin_path</span><span class="method-args">(specs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Used to make bin stubs that are not created by bundler work under bundler.
+The new Gem.bin_path only considers gems in <tt>specs</tt>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000233" class="method-detail">
+        <a name="M000233"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000233.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000233.html');return false;">
+          <span class="method-name">replace_entrypoints</span><span class="method-args">(specs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Replace or hook into Rubygems to provide a bundlerized view of the world.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000229" class="method-detail">
+        <a name="M000229"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000229.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000229.html');return false;">
+          <span class="method-name">replace_gem</span><span class="method-args">(specs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000232" class="method-detail">
+        <a name="M000232"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000232.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000232.html');return false;">
+          <span class="method-name">replace_refresh</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Because <a href="../Bundler.html">Bundler</a> has a static view of what
+specs are available, we don&#8216;t refresh, so stub it out.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000211" class="method-detail">
+        <a name="M000211"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000211.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000211.html');return false;">
+          <span class="method-name">repository_subdirectories</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000228" class="method-detail">
+        <a name="M000228"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000228.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000228.html');return false;">
+          <span class="method-name">reverse_rubygems_kernel_mixin</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000198" class="method-detail">
+        <a name="M000198"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000198.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000198.html');return false;">
+          <span class="method-name">ruby_engine</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000227" class="method-detail">
+        <a name="M000227"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000227.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000227.html');return false;">
+          <span class="method-name">security_policies</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000226" class="method-detail">
+        <a name="M000226"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000226.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000226.html');return false;">
+          <span class="method-name">security_policy_keys</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000202.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000202.html');return false;">
+          <span class="method-name">sources</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000201" class="method-detail">
+        <a name="M000201"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000201.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000201.html');return false;">
+          <span class="method-name">sources=</span><span class="method-args">(val)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000208" class="method-detail">
+        <a name="M000208"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000208.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000208.html');return false;">
+          <span class="method-name">spec_cache_dirs</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000222" class="method-detail">
+        <a name="M000222"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000222.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000222.html');return false;">
+          <span class="method-name">spec_from_gem</span><span class="method-args">(path, policy = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000230" class="method-detail">
+        <a name="M000230"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000230.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000230.html');return false;">
+          <span class="method-name">stub_source_index</span><span class="method-args">(specs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000215.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000215.html');return false;">
+          <span class="method-name">ui=</span><span class="method-args">(obj)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000205" class="method-detail">
+        <a name="M000205"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000205.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000205.html');return false;">
+          <span class="method-name">user_home</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000189" class="method-detail">
+        <a name="M000189"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000189.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000189.html');return false;">
+          <span class="method-name">version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000220" class="method-detail">
+        <a name="M000220"></a>
+
+        <div class="method-heading">
+          <a href="RubygemsIntegration.src/M000220.html" target="Code" class="method-signature"
+            onclick="popupCode('RubygemsIntegration.src/M000220.html');return false;">
+          <span class="method-name">with_build_args</span><span class="method-args">(args) {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

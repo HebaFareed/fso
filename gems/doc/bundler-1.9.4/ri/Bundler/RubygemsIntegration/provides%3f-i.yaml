@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubygemsIntegration#provides?
+is_singleton: false
+name: provides?
+params: (req_str)
+visibility: public

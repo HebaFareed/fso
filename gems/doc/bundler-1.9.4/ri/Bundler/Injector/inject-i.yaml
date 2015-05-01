@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Injector#inject
+is_singleton: false
+name: inject
+params: (gemfile_path, lockfile_path)
+visibility: public

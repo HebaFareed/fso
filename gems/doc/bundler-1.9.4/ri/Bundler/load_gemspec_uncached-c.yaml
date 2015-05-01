@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::load_gemspec_uncached
+is_singleton: true
+name: load_gemspec_uncached
+params: (file)
+visibility: public

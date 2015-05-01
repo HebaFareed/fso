@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Workaround for missing Net::HTTPHeader#connection_keep_alive? on Ruby 1.8
+full_name: Net::HTTP::Persistent#connection_keep_alive?
+is_singleton: false
+name: connection_keep_alive?
+params: (header)
+visibility: public

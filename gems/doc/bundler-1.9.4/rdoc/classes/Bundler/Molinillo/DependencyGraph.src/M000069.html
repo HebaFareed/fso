@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>initialize_copy (Bundler::Molinillo::DependencyGraph)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/molinillo/lib/molinillo/dependency_graph.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize_copy</span>(<span class="ruby-identifier">other</span>)
+      <span class="ruby-keyword kw">super</span>
+      <span class="ruby-ivar">@vertices</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">vertices</span>.<span class="ruby-identifier">reduce</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">vertices</span>, (<span class="ruby-identifier">name</span>, <span class="ruby-identifier">vertex</span>)<span class="ruby-operator">|</span>
+        <span class="ruby-identifier">vertices</span>.<span class="ruby-identifier">tap</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">vertex</span>.<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">graph</span> = <span class="ruby-keyword kw">self</span> }
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@root_vertices</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-ivar">@vertices</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">_v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">root_vertices</span>[<span class="ruby-identifier">n</span>] }]
+      <span class="ruby-ivar">@edges</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">edges</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">edge</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">Edge</span>.<span class="ruby-identifier">new</span>(
+          <span class="ruby-identifier">vertex_named</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">origin</span>.<span class="ruby-identifier">name</span>),
+          <span class="ruby-identifier">vertex_named</span>(<span class="ruby-identifier">edge</span>.<span class="ruby-identifier">destination</span>.<span class="ruby-identifier">name</span>),
+          <span class="ruby-identifier">edge</span>.<span class="ruby-identifier">requirements</span>.<span class="ruby-identifier">dup</span>
+        )
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

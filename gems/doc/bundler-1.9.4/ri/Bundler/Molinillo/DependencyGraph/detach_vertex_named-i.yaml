@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Detaches the {#vertex_named} `name` {Vertex} from the graph, recursively removing any non-root vertices that were orphaned in the process @param [String] name @return [void]
+full_name: Bundler::Molinillo::DependencyGraph#detach_vertex_named
+is_singleton: false
+name: detach_vertex_named
+params: (name)
+visibility: public

@@ -1,0 +1,52 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: dependencies
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: evaluate
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VALID_PLATFORMS
+  value: Bundler::Dependency::PLATFORM_MAP.keys.freeze
+full_name: Bundler::Dsl
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: RubyDsl
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: env
+- !ruby/object:RI::MethodSummary 
+  name: eval_gemfile
+- !ruby/object:RI::MethodSummary 
+  name: gem
+- !ruby/object:RI::MethodSummary 
+  name: gemspec
+- !ruby/object:RI::MethodSummary 
+  name: git
+- !ruby/object:RI::MethodSummary 
+  name: git_source
+- !ruby/object:RI::MethodSummary 
+  name: github
+- !ruby/object:RI::MethodSummary 
+  name: group
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: path
+- !ruby/object:RI::MethodSummary 
+  name: platform
+- !ruby/object:RI::MethodSummary 
+  name: platforms
+- !ruby/object:RI::MethodSummary 
+  name: source
+- !ruby/object:RI::MethodSummary 
+  name: to_definition
+name: Dsl
+superclass: Object

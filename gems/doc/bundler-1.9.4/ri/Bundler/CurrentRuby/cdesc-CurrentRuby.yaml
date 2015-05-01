@@ -1,0 +1,100 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Bundler::CurrentRuby
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: jruby?
+- !ruby/object:RI::MethodSummary 
+  name: jruby_18?
+- !ruby/object:RI::MethodSummary 
+  name: jruby_19?
+- !ruby/object:RI::MethodSummary 
+  name: maglev?
+- !ruby/object:RI::MethodSummary 
+  name: mingw?
+- !ruby/object:RI::MethodSummary 
+  name: mingw_18?
+- !ruby/object:RI::MethodSummary 
+  name: mingw_19?
+- !ruby/object:RI::MethodSummary 
+  name: mingw_20?
+- !ruby/object:RI::MethodSummary 
+  name: mingw_21?
+- !ruby/object:RI::MethodSummary 
+  name: mingw_22?
+- !ruby/object:RI::MethodSummary 
+  name: mri?
+- !ruby/object:RI::MethodSummary 
+  name: mri_18?
+- !ruby/object:RI::MethodSummary 
+  name: mri_19?
+- !ruby/object:RI::MethodSummary 
+  name: mri_20?
+- !ruby/object:RI::MethodSummary 
+  name: mri_21?
+- !ruby/object:RI::MethodSummary 
+  name: mri_22?
+- !ruby/object:RI::MethodSummary 
+  name: mswin64?
+- !ruby/object:RI::MethodSummary 
+  name: mswin64_19?
+- !ruby/object:RI::MethodSummary 
+  name: mswin64_20?
+- !ruby/object:RI::MethodSummary 
+  name: mswin64_21?
+- !ruby/object:RI::MethodSummary 
+  name: mswin64_22?
+- !ruby/object:RI::MethodSummary 
+  name: mswin?
+- !ruby/object:RI::MethodSummary 
+  name: mswin_18?
+- !ruby/object:RI::MethodSummary 
+  name: mswin_19?
+- !ruby/object:RI::MethodSummary 
+  name: mswin_20?
+- !ruby/object:RI::MethodSummary 
+  name: mswin_21?
+- !ruby/object:RI::MethodSummary 
+  name: mswin_22?
+- !ruby/object:RI::MethodSummary 
+  name: on_18?
+- !ruby/object:RI::MethodSummary 
+  name: on_19?
+- !ruby/object:RI::MethodSummary 
+  name: on_20?
+- !ruby/object:RI::MethodSummary 
+  name: on_21?
+- !ruby/object:RI::MethodSummary 
+  name: on_22?
+- !ruby/object:RI::MethodSummary 
+  name: rbx?
+- !ruby/object:RI::MethodSummary 
+  name: ruby?
+- !ruby/object:RI::MethodSummary 
+  name: ruby_18?
+- !ruby/object:RI::MethodSummary 
+  name: ruby_19?
+- !ruby/object:RI::MethodSummary 
+  name: ruby_20?
+- !ruby/object:RI::MethodSummary 
+  name: ruby_21?
+- !ruby/object:RI::MethodSummary 
+  name: ruby_22?
+- !ruby/object:RI::MethodSummary 
+  name: x64_mingw?
+- !ruby/object:RI::MethodSummary 
+  name: x64_mingw_20?
+- !ruby/object:RI::MethodSummary 
+  name: x64_mingw_21?
+- !ruby/object:RI::MethodSummary 
+  name: x64_mingw_22?
+name: CurrentRuby
+superclass: Object

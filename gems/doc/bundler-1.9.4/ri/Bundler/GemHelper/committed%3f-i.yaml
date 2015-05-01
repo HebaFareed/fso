@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::GemHelper#committed?
+is_singleton: false
+name: committed?
+params: ()
+visibility: protected

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>report (Bundler::Env)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/env.rb, line 11</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">report</span>(<span class="ruby-identifier">options</span> = {})
+      <span class="ruby-identifier">print_gemfile</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:print_gemfile</span>)
+
+      <span class="ruby-identifier">out</span> = <span class="ruby-value str">&quot;Environment\n\n&quot;</span>
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    Bundler   #{Bundler::VERSION}\n&quot;</span>
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    Rubygems  #{Gem::VERSION}\n&quot;</span>
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    Ruby      #{ruby_version}&quot;</span>
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    GEM_HOME  #{ENV['GEM_HOME']}\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'GEM_HOME'</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'GEM_HOME'</span>].<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    GEM_PATH  #{ENV['GEM_PATH']}\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'GEM_PATH'</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'GEM_HOME'</span>]
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    RVM       #{ENV['rvm_version']}\n&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'rvm_version'</span>]
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    Git       #{git_version}\n&quot;</span>
+      <span class="ruby-node">%w(rubygems-bundler open_gem)</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">specs</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">find_name</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    #{name} (#{specs.map(&amp;:version).join(',')})\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">specs</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\nBundler settings\n\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">setting</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;    &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">setting</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>.<span class="ruby-identifier">pretty_values_for</span>(<span class="ruby-identifier">setting</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;      &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">print_gemfile</span>
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\nGemfile\n\n&quot;</span>
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;    &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">read_file</span>(<span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">default_gemfile</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\n/</span>, <span class="ruby-value str">&quot;\n    &quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Gemfile.lock\n\n&quot;</span>
+        <span class="ruby-identifier">out</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;    &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">read_file</span>(<span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">default_lockfile</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\n/</span>, <span class="ruby-value str">&quot;\n    &quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">out</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

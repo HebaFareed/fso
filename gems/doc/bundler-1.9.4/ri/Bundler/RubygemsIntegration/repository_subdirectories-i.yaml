@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubygemsIntegration#repository_subdirectories
+is_singleton: false
+name: repository_subdirectories
+params: ()
+visibility: public

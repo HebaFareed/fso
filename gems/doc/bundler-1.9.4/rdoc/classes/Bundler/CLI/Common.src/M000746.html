@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>gem_not_found_message (Bundler::CLI::Common)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/cli/common.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">gem_not_found_message</span>(<span class="ruby-identifier">missing_gem_name</span>, <span class="ruby-identifier">alternatives</span>)
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'bundler/similarity_detector'</span>
+      <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;Could not find gem '#{missing_gem_name}'.&quot;</span>
+      <span class="ruby-identifier">alternate_names</span> = <span class="ruby-identifier">alternatives</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:name</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">a</span> }
+      <span class="ruby-identifier">suggestions</span> = <span class="ruby-constant">SimilarityDetector</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">alternate_names</span>).<span class="ruby-identifier">similar_word_list</span>(<span class="ruby-identifier">missing_gem_name</span>)
+      <span class="ruby-identifier">message</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;\nDid you mean #{suggestions}?&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">suggestions</span>
+      <span class="ruby-identifier">message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

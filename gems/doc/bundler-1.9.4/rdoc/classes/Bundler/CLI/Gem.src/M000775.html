@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Bundler::CLI::Gem)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/cli/gem.rb, line 18</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">confirm</span> <span class="ruby-node">&quot;Creating gem '#{name}'...&quot;</span>
+
+      <span class="ruby-identifier">underscored_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'-'</span>, <span class="ruby-value str">'_'</span>)
+      <span class="ruby-identifier">namespaced_path</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-value str">'-'</span>, <span class="ruby-value str">'/'</span>)
+      <span class="ruby-identifier">constant_name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'_'</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">p</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">empty?</span>}.<span class="ruby-identifier">join</span>
+      <span class="ruby-identifier">constant_name</span> = <span class="ruby-identifier">constant_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'-'</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">q</span><span class="ruby-operator">|</span> <span class="ruby-identifier">q</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">q</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'::'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">constant_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/-/</span>
+      <span class="ruby-identifier">constant_array</span> = <span class="ruby-identifier">constant_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'::'</span>)
+      <span class="ruby-identifier">git_user_name</span> = <span class="ruby-value">`git config user.name`</span>.<span class="ruby-identifier">chomp</span>
+      <span class="ruby-identifier">git_user_email</span> = <span class="ruby-value">`git config user.email`</span>.<span class="ruby-identifier">chomp</span>
+
+      <span class="ruby-identifier">config</span> = {
+        <span class="ruby-identifier">:name</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">name</span>,
+        <span class="ruby-identifier">:underscored_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">underscored_name</span>,
+        <span class="ruby-identifier">:namespaced_path</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">namespaced_path</span>,
+        <span class="ruby-identifier">:makefile_path</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{underscored_name}/#{underscored_name}&quot;</span>,
+        <span class="ruby-identifier">:constant_name</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">constant_name</span>,
+        <span class="ruby-identifier">:constant_array</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">constant_array</span>,
+        <span class="ruby-identifier">:author</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">git_user_name</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-value">? </span><span class="ruby-value str">&quot;TODO: Write your name&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">git_user_name</span>,
+        <span class="ruby-identifier">:email</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">git_user_email</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-value">? </span><span class="ruby-value str">&quot;TODO: Write your email address&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">git_user_email</span>,
+        <span class="ruby-identifier">:test</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:test</span>],
+        <span class="ruby-identifier">:ext</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ext</span>],
+        <span class="ruby-identifier">:bin</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:bin</span>],
+        <span class="ruby-identifier">:bundler_version</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bundler_dependency_version</span>
+      }
+      <span class="ruby-identifier">ensure_safe_gem_name</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">constant_array</span>)
+
+      <span class="ruby-identifier">templates</span> = {
+        <span class="ruby-value str">&quot;Gemfile.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Gemfile&quot;</span>,
+        <span class="ruby-value str">&quot;gitignore.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;.gitignore&quot;</span>,
+        <span class="ruby-value str">&quot;lib/newgem.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;lib/#{namespaced_path}.rb&quot;</span>,
+        <span class="ruby-value str">&quot;lib/newgem/version.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;lib/#{namespaced_path}/version.rb&quot;</span>,
+        <span class="ruby-value str">&quot;newgem.gemspec.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{name}.gemspec&quot;</span>,
+        <span class="ruby-value str">&quot;Rakefile.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;Rakefile&quot;</span>,
+        <span class="ruby-value str">&quot;README.md.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;README.md&quot;</span>,
+        <span class="ruby-value str">&quot;bin/console.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bin/console&quot;</span>,
+        <span class="ruby-value str">&quot;bin/setup.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bin/setup&quot;</span>
+      }
+
+      <span class="ruby-identifier">executables</span> = <span class="ruby-node">%w[
+        bin/console
+        bin/setup
+      ]</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ask_and_set</span>(<span class="ruby-identifier">:coc</span>, <span class="ruby-value str">&quot;Do you want to include a code of conduct in gems you generate?&quot;</span>,
+          <span class="ruby-value str">&quot;Codes of conduct can increase contributions to your project by contributors who &quot;</span> \
+          <span class="ruby-value str">&quot;prefer collaborative, safe spaces. You can read more about the code of conduct at &quot;</span> \
+          <span class="ruby-value str">&quot;contributor-covenant.org. Having a code of conduct means agreeing to the responsibility &quot;</span> \
+          <span class="ruby-value str">&quot;of enforcing it, so be sure that you are prepared to do that. For suggestions about &quot;</span> \
+          <span class="ruby-value str">&quot;how to enforce codes of conduct, see bit.ly/coc-enforcement.&quot;</span>
+        )
+        <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">&quot;CODE_OF_CONDUCT.md.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;CODE_OF_CONDUCT.md&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ask_and_set</span>(<span class="ruby-identifier">:mit</span>, <span class="ruby-value str">&quot;Do you want to license your code permissively under the MIT license?&quot;</span>,
+          <span class="ruby-value str">&quot;This means that any other developer or company will be legally allowed to use your code &quot;</span> \
+          <span class="ruby-value str">&quot;for free as long as they admit you created it. You can read more about the MIT license &quot;</span> \
+          <span class="ruby-value str">&quot;at choosealicense.com/licenses/mit.&quot;</span>
+        )
+        <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:mit</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">&quot;LICENSE.txt.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;LICENSE.txt&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">test_framework</span> = <span class="ruby-identifier">ask_and_set_test_framework</span>
+        <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">&quot;.travis.yml.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;.travis.yml&quot;</span>)
+
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">test_framework</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'rspec'</span>
+          <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(
+            <span class="ruby-value str">&quot;rspec.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;.rspec&quot;</span>,
+            <span class="ruby-value str">&quot;spec/spec_helper.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;spec/spec_helper.rb&quot;</span>,
+            <span class="ruby-value str">&quot;spec/newgem_spec.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;spec/#{namespaced_path}_spec.rb&quot;</span>
+          )
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'minitest'</span>
+          <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(
+            <span class="ruby-value str">&quot;test/minitest_helper.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;test/minitest_helper.rb&quot;</span>,
+            <span class="ruby-value str">&quot;test/test_newgem.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;test/test_#{namespaced_path}.rb&quot;</span>
+          )
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">&quot;exe/newgem.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;exe/#{name}&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:bin</span>]
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:ext</span>]
+        <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">merge!</span>(
+          <span class="ruby-value str">&quot;ext/newgem/extconf.rb.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;ext/#{name}/extconf.rb&quot;</span>,
+          <span class="ruby-value str">&quot;ext/newgem/newgem.h.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;ext/#{name}/#{underscored_name}.h&quot;</span>,
+          <span class="ruby-value str">&quot;ext/newgem/newgem.c.tt&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;ext/#{name}/#{underscored_name}.c&quot;</span>
+        )
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">templates</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">src</span>, <span class="ruby-identifier">dst</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">thor</span>.<span class="ruby-identifier">template</span>(<span class="ruby-node">&quot;newgem/#{src}&quot;</span>, <span class="ruby-identifier">target</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dst</span>), <span class="ruby-identifier">config</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">executables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">path</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">file</span>)
+        <span class="ruby-identifier">executable</span> = (<span class="ruby-identifier">path</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">|</span> <span class="ruby-value">0111</span>)
+        <span class="ruby-identifier">path</span>.<span class="ruby-identifier">chmod</span>(<span class="ruby-identifier">executable</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Initializing git repo in #{target}&quot;</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">target</span>) { <span class="ruby-value">`git init`</span>; <span class="ruby-value">`git add .`</span> }
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:edit</span>]
+        <span class="ruby-comment cmt"># Open gemspec in editor</span>
+        <span class="ruby-identifier">thor</span>.<span class="ruby-identifier">run</span>(<span class="ruby-node">&quot;#{options[&quot;edit&quot;]} \&quot;#{target.join(&quot;#{name}.gemspec&quot;)}\&quot;&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

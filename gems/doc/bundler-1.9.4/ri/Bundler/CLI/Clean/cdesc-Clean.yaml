@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::CLI::Clean
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: require_path_or_force
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: Clean
+superclass: Object

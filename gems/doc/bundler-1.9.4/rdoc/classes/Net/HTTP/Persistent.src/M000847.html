@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>detect_idle_timeout (Net::HTTP::Persistent)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/net/http/persistent.rb, line 243</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">detect_idle_timeout</span> <span class="ruby-identifier">uri</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">10</span>
+    <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span> <span class="ruby-identifier">uri</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">Generic</span>)
+    <span class="ruby-identifier">uri</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">'/'</span>
+
+    <span class="ruby-identifier">req</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Head</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">request_uri</span>
+
+    <span class="ruby-identifier">http</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">'net-http-persistent detect_idle_timeout'</span>
+
+    <span class="ruby-identifier">connection</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">connection_for</span> <span class="ruby-identifier">uri</span>
+
+    <span class="ruby-identifier">sleep_time</span> = <span class="ruby-value">0</span>
+
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">request</span> <span class="ruby-identifier">req</span>
+
+      <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;HEAD #{uri} =&gt; #{response.code}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$DEBUG</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPOK</span>) <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;bad response code #{response.code} detecting idle timeout&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sleep_time</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">max</span>
+
+      <span class="ruby-identifier">sleep_time</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+
+      <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;sleeping #{sleep_time}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$DEBUG</span>
+      <span class="ruby-identifier">sleep</span> <span class="ruby-identifier">sleep_time</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">rescue</span>
+    <span class="ruby-comment cmt"># ignore StandardErrors, we've probably found the idle timeout.</span>
+  <span class="ruby-keyword kw">ensure</span>
+    <span class="ruby-identifier">http</span>.<span class="ruby-identifier">shutdown</span>
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">sleep_time</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$!</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

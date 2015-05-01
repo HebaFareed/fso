@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Sets the proxy server. The <tt>proxy</tt> may be the URI of the proxy server, the symbol +:ENV+ which will read the proxy from the environment or nil to disable use of a proxy. See #proxy_from_env for details on setting the proxy from the environment."
+- !ruby/struct:SM::Flow::P 
+  body: If the proxy URI is set after requests have been made, the next request will shut-down and re-open all connections.
+- !ruby/struct:SM::Flow::P 
+  body: The <tt>no_proxy</tt> query parameter can be used to specify hosts which shouldn't be reached via proxy; if set it should be a comma separated list of hostname suffixes, optionally with +:port+ appended, for example <tt>example.com,some.host:8080</tt>.
+full_name: Net::HTTP::Persistent#proxy=
+is_singleton: false
+name: proxy=
+params: (proxy)
+visibility: public

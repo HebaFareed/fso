@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI::Common::ask_for_spec_from
+is_singleton: true
+name: ask_for_spec_from
+params: (specs)
+visibility: public

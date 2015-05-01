@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>task (lib/bundler/vendor/thor/lib/thor/rake_compat.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/thor/lib/thor/rake_compat.rb, line 40</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">task</span>(<span class="ruby-operator">*</span>)
+    <span class="ruby-identifier">task</span> = <span class="ruby-keyword kw">super</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span> = <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Thor</span><span class="ruby-operator">::</span><span class="ruby-constant">RakeCompat</span>.<span class="ruby-identifier">rake_classes</span>.<span class="ruby-identifier">last</span> <span class="ruby-comment cmt"># rubocop:disable AssignmentInCondition</span>
+      <span class="ruby-identifier">non_namespaced_name</span> = <span class="ruby-identifier">task</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>).<span class="ruby-identifier">last</span>
+
+      <span class="ruby-identifier">description</span> = <span class="ruby-identifier">non_namespaced_name</span>
+      <span class="ruby-identifier">description</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">task</span>.<span class="ruby-identifier">arg_names</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; &quot;</span>)
+      <span class="ruby-identifier">description</span>.<span class="ruby-identifier">strip!</span>
+
+      <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">desc</span> <span class="ruby-identifier">description</span>, <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">last_description</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">non_namespaced_name</span>
+      <span class="ruby-constant">Rake</span>.<span class="ruby-identifier">application</span>.<span class="ruby-identifier">last_description</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">:define_method</span>, <span class="ruby-identifier">non_namespaced_name</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">Task</span>[<span class="ruby-identifier">task</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>].<span class="ruby-identifier">invoke</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">task</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SimilarityScore
+  value: Struct.new(:string, :distance)
+full_name: Bundler::SimilarityDetector
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: levenshtein_distance
+- !ruby/object:RI::MethodSummary 
+  name: similar_word_list
+- !ruby/object:RI::MethodSummary 
+  name: similar_words
+name: SimilarityDetector
+superclass: Object

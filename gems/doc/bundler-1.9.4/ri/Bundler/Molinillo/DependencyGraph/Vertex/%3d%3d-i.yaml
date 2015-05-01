@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: eql?
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Boolean] whether the two vertices are equal, determined"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  by a recursive traversal of each {Vertex#successors}\n"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#==
+is_singleton: false
+name: ==
+params: (other)
+visibility: public

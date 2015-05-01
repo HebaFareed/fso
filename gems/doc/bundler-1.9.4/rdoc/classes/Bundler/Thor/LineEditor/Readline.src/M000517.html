@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>readline (Bundler::Thor::LineEditor::Readline)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/thor/lib/thor/line_editor/readline.rb, line 13</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">readline</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">echo?</span>
+          <span class="ruby-operator">::</span><span class="ruby-constant">Readline</span>.<span class="ruby-identifier">completion_append_character</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-comment cmt"># Ruby 1.8.7 does not allow Readline.completion_proc= to receive nil.</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">complete</span> = <span class="ruby-identifier">completion_proc</span>
+            <span class="ruby-operator">::</span><span class="ruby-constant">Readline</span>.<span class="ruby-identifier">completion_proc</span> = <span class="ruby-identifier">complete</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-operator">::</span><span class="ruby-constant">Readline</span>.<span class="ruby-identifier">readline</span>(<span class="ruby-identifier">prompt</span>, <span class="ruby-identifier">add_to_history?</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">super</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

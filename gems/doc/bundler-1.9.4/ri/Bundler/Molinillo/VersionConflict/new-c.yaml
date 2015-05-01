@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [{String =&gt; Resolution::Conflict}] conflicts see {#conflicts}"
+full_name: Bundler::Molinillo::VersionConflict::new
+is_singleton: true
+name: new
+params: (conflicts)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true when proxy should by bypassed for host.
+full_name: Net::HTTP::Persistent#proxy_bypass?
+is_singleton: false
+name: proxy_bypass?
+params: (host, port)
+visibility: public

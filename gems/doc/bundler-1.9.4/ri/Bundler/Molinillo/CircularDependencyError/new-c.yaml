@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Array&lt;DependencyGraph::Vertex&gt;] nodes the nodes in the dependency"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  that caused the error\n"
+full_name: Bundler::Molinillo::CircularDependencyError::new
+is_singleton: true
+name: new
+params: (nodes)
+visibility: public

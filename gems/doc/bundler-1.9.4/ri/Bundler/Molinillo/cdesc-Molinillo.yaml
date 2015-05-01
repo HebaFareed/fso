@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A state that a {Resolution} can be in @attr [String] name @attr [Array&lt;Object&gt;] requirements @attr [DependencyGraph] activated @attr [Object] requirement @attr [Object] possibility @attr [Integer] depth @attr [Set&lt;Object&gt;] conflicts
+  name: ResolutionState
+  value: Struct.new(     :name,     :requirements,     :activated,     :requirement,     :possibilities,     :depth,     :conflicts
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VERSION
+  value: "'0.2.3'"
+full_name: Bundler::Molinillo
+includes: []
+
+instance_methods: []
+
+name: Molinillo
+superclass: 

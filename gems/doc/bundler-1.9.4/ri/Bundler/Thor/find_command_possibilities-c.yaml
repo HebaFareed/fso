@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: this is the logic that takes the command name passed in by the user and determines whether it is an unambiguous substrings of a command or alias name.
+full_name: Bundler::Thor::find_command_possibilities
+is_singleton: true
+name: find_command_possibilities
+params: (meth)
+visibility: protected

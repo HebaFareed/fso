@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Provides information about specifcations and dependencies to the resolver, allowing the {Resolver} class to remain generic while still providing power and flexibility.
+- !ruby/struct:SM::Flow::P 
+  body: This module contains the methods that users of Bundler::Molinillo must to implement, using knowledge of their own model classes.
+constants: []
+
+full_name: Bundler::Molinillo::SpecificationProvider
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dependencies_for
+- !ruby/object:RI::MethodSummary 
+  name: name_for
+- !ruby/object:RI::MethodSummary 
+  name: name_for_explicit_dependency_source
+- !ruby/object:RI::MethodSummary 
+  name: name_for_locking_dependency_source
+- !ruby/object:RI::MethodSummary 
+  name: requirement_satisfied_by?
+- !ruby/object:RI::MethodSummary 
+  name: search_for
+- !ruby/object:RI::MethodSummary 
+  name: sort_dependencies
+name: SpecificationProvider
+superclass: 

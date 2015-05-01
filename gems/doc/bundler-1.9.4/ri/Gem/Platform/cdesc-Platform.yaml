@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: JAVA
+  value: Gem::Platform.new('java') unless defined?(JAVA)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MSWIN
+  value: Gem::Platform.new('mswin32') unless defined?(MSWIN)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MSWIN64
+  value: Gem::Platform.new('mswin64') unless defined?(MSWIN64)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MINGW
+  value: Gem::Platform.new('x86-mingw32') unless defined?(MINGW)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: X64_MINGW
+  value: Gem::Platform.new('x64-mingw32') unless defined?(X64_MINGW)
+full_name: Gem::Platform
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: hash
+name: Platform
+superclass: Object

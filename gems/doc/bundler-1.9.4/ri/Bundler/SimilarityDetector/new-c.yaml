@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: initialize with an array of words to be matched against
+full_name: Bundler::SimilarityDetector::new
+is_singleton: true
+name: new
+params: (corpus)
+visibility: public

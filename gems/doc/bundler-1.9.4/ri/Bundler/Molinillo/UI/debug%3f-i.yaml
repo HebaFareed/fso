@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Whether or not debug messages should be printed. By default, whether or not the `MOLINILLO_DEBUG` environment variable is set.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Boolean]"
+full_name: Bundler::Molinillo::UI#debug?
+is_singleton: false
+name: debug?
+params: ()
+visibility: public

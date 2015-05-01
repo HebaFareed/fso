@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Source::Git#extension_dir_name
+is_singleton: false
+name: extension_dir_name
+params: ()
+visibility: public

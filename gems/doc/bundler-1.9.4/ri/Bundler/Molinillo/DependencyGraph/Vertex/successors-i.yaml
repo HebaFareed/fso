@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Set&lt;Vertex&gt;] the vertices of {#graph} that have an edge with"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  `self` as their {Edge#origin}\n"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#successors
+is_singleton: false
+name: successors
+params: ()
+visibility: public

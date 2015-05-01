@@ -1,0 +1,22 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ask_for_spec_from
+- !ruby/object:RI::MethodSummary 
+  name: gem_not_found_message
+- !ruby/object:RI::MethodSummary 
+  name: select_spec
+- !ruby/object:RI::MethodSummary 
+  name: without_groups_message
+comment: 
+constants: []
+
+full_name: Bundler::CLI::Common
+includes: []
+
+instance_methods: []
+
+name: Common
+superclass: 

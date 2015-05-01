@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>system_bindir (Bundler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler.rb, line 271</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">system_bindir</span>
+      <span class="ruby-comment cmt"># Gem.bindir doesn't always return the location that Rubygems will install</span>
+      <span class="ruby-comment cmt"># system binaries. If you put '-n foo' in your .gemrc, Rubygems will</span>
+      <span class="ruby-comment cmt"># install binstubs there instead. Unfortunately, Rubygems doesn't expose</span>
+      <span class="ruby-comment cmt"># that directory at all, so rather than parse .gemrc ourselves, we allow</span>
+      <span class="ruby-comment cmt"># the directory to be set as well, via `bundle config bindir foo`.</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:system_bindir</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">gem_bindir</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

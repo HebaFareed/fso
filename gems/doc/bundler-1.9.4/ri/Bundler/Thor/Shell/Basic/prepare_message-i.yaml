@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Thor::Shell::Basic#prepare_message
+is_singleton: false
+name: prepare_message
+params: (message, *color)
+visibility: protected

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CurrentRuby#mswin64_22?
+is_singleton: false
+name: mswin64_22?
+params: ()
+visibility: public

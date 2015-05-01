@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>install (Bundler::Source::Rubygems)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/source/rubygems.rb, line 86</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install</span>(<span class="ruby-identifier">spec</span>)
+        <span class="ruby-keyword kw">return</span> [<span class="ruby-node">&quot;Using #{version_message(spec)}&quot;</span>, <span class="ruby-keyword kw">nil</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">installed_specs</span>[<span class="ruby-identifier">spec</span>].<span class="ruby-identifier">any?</span>
+
+        <span class="ruby-comment cmt"># Download the gem to get the spec, because some specs that are returned</span>
+        <span class="ruby-comment cmt"># by rubygems.org are broken and wrong.</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source_uri</span>
+          <span class="ruby-comment cmt"># Check for this spec from other sources</span>
+          <span class="ruby-identifier">uris</span> = [<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source_uri</span>.<span class="ruby-identifier">without_credentials</span>]
+          <span class="ruby-identifier">uris</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">source_uris_for_spec</span>(<span class="ruby-identifier">spec</span>)
+          <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">uniq!</span>
+          <span class="ruby-constant">Installer</span>.<span class="ruby-identifier">ambiguous_gems</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">uris</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uris</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+
+          <span class="ruby-identifier">s</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">spec_from_gem</span>(<span class="ruby-identifier">fetch_gem</span>(<span class="ruby-identifier">spec</span>), <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-value str">&quot;trust-policy&quot;</span>])
+          <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">__swap__</span>(<span class="ruby-identifier">s</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:no_install</span>]
+          <span class="ruby-identifier">path</span> = <span class="ruby-identifier">cached_gem</span>(<span class="ruby-identifier">spec</span>)
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">requires_sudo?</span>
+            <span class="ruby-identifier">install_path</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">tmp</span>(<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">full_name</span>)
+            <span class="ruby-identifier">bin_path</span>     = <span class="ruby-identifier">install_path</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;bin&quot;</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">install_path</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">gem_dir</span>
+            <span class="ruby-identifier">bin_path</span>     = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">system_bindir</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">installed_spec</span> = <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">preserve_paths</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">installed_spec</span> = <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">GemInstaller</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>,
+              <span class="ruby-identifier">:install_dir</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">install_path</span>.<span class="ruby-identifier">to_s</span>,
+              <span class="ruby-identifier">:bin_dir</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bin_path</span>.<span class="ruby-identifier">to_s</span>,
+              <span class="ruby-identifier">:ignore_dependencies</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+              <span class="ruby-identifier">:wrappers</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+              <span class="ruby-identifier">:env_shebang</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+            ).<span class="ruby-identifier">install</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-comment cmt"># SUDO HAX</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">requires_sudo?</span>
+            <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">repository_subdirectories</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">src</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">install_path</span>, <span class="ruby-identifier">name</span>, <span class="ruby-value str">&quot;*&quot;</span>)
+              <span class="ruby-identifier">dst</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">rubygems</span>.<span class="ruby-identifier">gem_dir</span>, <span class="ruby-identifier">name</span>)
+              <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;extensions&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">src</span>).<span class="ruby-identifier">any?</span>
+                <span class="ruby-identifier">src</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">src</span>, <span class="ruby-value str">&quot;*/*&quot;</span>)
+                <span class="ruby-identifier">ext_src</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">src</span>).<span class="ruby-identifier">first</span>
+                <span class="ruby-identifier">ext_src</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">src</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-6</span>], <span class="ruby-value str">''</span>)
+                <span class="ruby-identifier">dst</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dst</span>, <span class="ruby-identifier">ext_src</span>))
+              <span class="ruby-keyword kw">end</span>
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">dst</span>
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">sudo</span> <span class="ruby-node">&quot;cp -R #{src} #{dst}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">src</span>].<span class="ruby-identifier">any?</span>
+            <span class="ruby-keyword kw">end</span>
+
+            <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">executables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">exe</span><span class="ruby-operator">|</span>
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">system_bindir</span>
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">sudo</span> <span class="ruby-node">&quot;cp -R #{install_path}/bin/#{exe} #{Bundler.system_bindir}/&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">installed_spec</span>.<span class="ruby-identifier">loaded_from</span> = <span class="ruby-identifier">loaded_from</span>(<span class="ruby-identifier">spec</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">loaded_from</span> = <span class="ruby-identifier">loaded_from</span>(<span class="ruby-identifier">spec</span>)
+        [<span class="ruby-node">&quot;Installing #{version_message(spec)}&quot;</span>, <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">post_install_message</span>]
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">install_path</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">requires_sudo?</span>
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">remove_entry_secure</span>(<span class="ruby-identifier">install_path</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

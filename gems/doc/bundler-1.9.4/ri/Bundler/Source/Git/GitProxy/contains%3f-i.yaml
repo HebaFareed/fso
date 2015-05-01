@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Source::Git::GitProxy#contains?
+is_singleton: false
+name: contains?
+params: (commit)
+visibility: public

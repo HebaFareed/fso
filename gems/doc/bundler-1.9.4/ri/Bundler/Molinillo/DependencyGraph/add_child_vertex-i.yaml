@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [String] name @param [Object] payload @param [Array&lt;String&gt;] parent_names @param [Object] requirement the requirement that is requiring the child @return [void]"
+full_name: Bundler::Molinillo::DependencyGraph#add_child_vertex
+is_singleton: false
+name: add_child_vertex
+params: (name, payload, parent_names, requirement)
+visibility: public

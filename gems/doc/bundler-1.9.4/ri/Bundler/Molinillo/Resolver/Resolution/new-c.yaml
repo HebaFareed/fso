@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [SpecificationProvider] specification_provider"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  see {#specification_provider}\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [UI] resolver_ui see {#resolver_ui} @param [Array] requested see {#original_requested} @param [DependencyGraph] base see {#base}"
+full_name: Bundler::Molinillo::Resolver::Resolution::new
+is_singleton: true
+name: new
+params: (specification_provider, resolver_ui, requested, base)
+visibility: public

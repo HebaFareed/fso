@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Index#add_source
+is_singleton: false
+name: add_source
+params: (index)
+visibility: public

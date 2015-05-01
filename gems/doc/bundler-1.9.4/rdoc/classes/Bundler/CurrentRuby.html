@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Bundler::CurrentRuby</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Bundler::CurrentRuby</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/bundler/current_ruby_rb.html">
+                lib/bundler/current_ruby.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000689">jruby?</a>&nbsp;&nbsp;
+      <a href="#M000690">jruby_18?</a>&nbsp;&nbsp;
+      <a href="#M000691">jruby_19?</a>&nbsp;&nbsp;
+      <a href="#M000692">maglev?</a>&nbsp;&nbsp;
+      <a href="#M000704">mingw?</a>&nbsp;&nbsp;
+      <a href="#M000705">mingw_18?</a>&nbsp;&nbsp;
+      <a href="#M000706">mingw_19?</a>&nbsp;&nbsp;
+      <a href="#M000707">mingw_20?</a>&nbsp;&nbsp;
+      <a href="#M000708">mingw_21?</a>&nbsp;&nbsp;
+      <a href="#M000709">mingw_22?</a>&nbsp;&nbsp;
+      <a href="#M000682">mri?</a>&nbsp;&nbsp;
+      <a href="#M000683">mri_18?</a>&nbsp;&nbsp;
+      <a href="#M000684">mri_19?</a>&nbsp;&nbsp;
+      <a href="#M000685">mri_20?</a>&nbsp;&nbsp;
+      <a href="#M000686">mri_21?</a>&nbsp;&nbsp;
+      <a href="#M000687">mri_22?</a>&nbsp;&nbsp;
+      <a href="#M000699">mswin64?</a>&nbsp;&nbsp;
+      <a href="#M000700">mswin64_19?</a>&nbsp;&nbsp;
+      <a href="#M000701">mswin64_20?</a>&nbsp;&nbsp;
+      <a href="#M000702">mswin64_21?</a>&nbsp;&nbsp;
+      <a href="#M000703">mswin64_22?</a>&nbsp;&nbsp;
+      <a href="#M000693">mswin?</a>&nbsp;&nbsp;
+      <a href="#M000694">mswin_18?</a>&nbsp;&nbsp;
+      <a href="#M000695">mswin_19?</a>&nbsp;&nbsp;
+      <a href="#M000696">mswin_20?</a>&nbsp;&nbsp;
+      <a href="#M000697">mswin_21?</a>&nbsp;&nbsp;
+      <a href="#M000698">mswin_22?</a>&nbsp;&nbsp;
+      <a href="#M000671">on_18?</a>&nbsp;&nbsp;
+      <a href="#M000672">on_19?</a>&nbsp;&nbsp;
+      <a href="#M000673">on_20?</a>&nbsp;&nbsp;
+      <a href="#M000674">on_21?</a>&nbsp;&nbsp;
+      <a href="#M000675">on_22?</a>&nbsp;&nbsp;
+      <a href="#M000688">rbx?</a>&nbsp;&nbsp;
+      <a href="#M000676">ruby?</a>&nbsp;&nbsp;
+      <a href="#M000677">ruby_18?</a>&nbsp;&nbsp;
+      <a href="#M000678">ruby_19?</a>&nbsp;&nbsp;
+      <a href="#M000679">ruby_20?</a>&nbsp;&nbsp;
+      <a href="#M000680">ruby_21?</a>&nbsp;&nbsp;
+      <a href="#M000681">ruby_22?</a>&nbsp;&nbsp;
+      <a href="#M000710">x64_mingw?</a>&nbsp;&nbsp;
+      <a href="#M000711">x64_mingw_20?</a>&nbsp;&nbsp;
+      <a href="#M000712">x64_mingw_21?</a>&nbsp;&nbsp;
+      <a href="#M000713">x64_mingw_22?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000689" class="method-detail">
+        <a name="M000689"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000689.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000689.html');return false;">
+          <span class="method-name">jruby?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000690" class="method-detail">
+        <a name="M000690"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000690.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000690.html');return false;">
+          <span class="method-name">jruby_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000691" class="method-detail">
+        <a name="M000691"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000691.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000691.html');return false;">
+          <span class="method-name">jruby_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000692" class="method-detail">
+        <a name="M000692"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000692.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000692.html');return false;">
+          <span class="method-name">maglev?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000704" class="method-detail">
+        <a name="M000704"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000704.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000704.html');return false;">
+          <span class="method-name">mingw?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000705" class="method-detail">
+        <a name="M000705"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000705.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000705.html');return false;">
+          <span class="method-name">mingw_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000706" class="method-detail">
+        <a name="M000706"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000706.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000706.html');return false;">
+          <span class="method-name">mingw_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000707" class="method-detail">
+        <a name="M000707"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000707.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000707.html');return false;">
+          <span class="method-name">mingw_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000708" class="method-detail">
+        <a name="M000708"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000708.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000708.html');return false;">
+          <span class="method-name">mingw_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000709" class="method-detail">
+        <a name="M000709"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000709.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000709.html');return false;">
+          <span class="method-name">mingw_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000682" class="method-detail">
+        <a name="M000682"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000682.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000682.html');return false;">
+          <span class="method-name">mri?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000683" class="method-detail">
+        <a name="M000683"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000683.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000683.html');return false;">
+          <span class="method-name">mri_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000684" class="method-detail">
+        <a name="M000684"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000684.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000684.html');return false;">
+          <span class="method-name">mri_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000685" class="method-detail">
+        <a name="M000685"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000685.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000685.html');return false;">
+          <span class="method-name">mri_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000686" class="method-detail">
+        <a name="M000686"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000686.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000686.html');return false;">
+          <span class="method-name">mri_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000687" class="method-detail">
+        <a name="M000687"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000687.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000687.html');return false;">
+          <span class="method-name">mri_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000699" class="method-detail">
+        <a name="M000699"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000699.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000699.html');return false;">
+          <span class="method-name">mswin64?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000700" class="method-detail">
+        <a name="M000700"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000700.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000700.html');return false;">
+          <span class="method-name">mswin64_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000701" class="method-detail">
+        <a name="M000701"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000701.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000701.html');return false;">
+          <span class="method-name">mswin64_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000702" class="method-detail">
+        <a name="M000702"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000702.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000702.html');return false;">
+          <span class="method-name">mswin64_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000703" class="method-detail">
+        <a name="M000703"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000703.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000703.html');return false;">
+          <span class="method-name">mswin64_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000693" class="method-detail">
+        <a name="M000693"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000693.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000693.html');return false;">
+          <span class="method-name">mswin?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000694" class="method-detail">
+        <a name="M000694"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000694.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000694.html');return false;">
+          <span class="method-name">mswin_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000695" class="method-detail">
+        <a name="M000695"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000695.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000695.html');return false;">
+          <span class="method-name">mswin_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000696" class="method-detail">
+        <a name="M000696"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000696.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000696.html');return false;">
+          <span class="method-name">mswin_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000697" class="method-detail">
+        <a name="M000697"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000697.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000697.html');return false;">
+          <span class="method-name">mswin_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000698" class="method-detail">
+        <a name="M000698"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000698.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000698.html');return false;">
+          <span class="method-name">mswin_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000671" class="method-detail">
+        <a name="M000671"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000671.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000671.html');return false;">
+          <span class="method-name">on_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000672" class="method-detail">
+        <a name="M000672"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000672.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000672.html');return false;">
+          <span class="method-name">on_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000673" class="method-detail">
+        <a name="M000673"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000673.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000673.html');return false;">
+          <span class="method-name">on_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000674" class="method-detail">
+        <a name="M000674"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000674.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000674.html');return false;">
+          <span class="method-name">on_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000675" class="method-detail">
+        <a name="M000675"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000675.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000675.html');return false;">
+          <span class="method-name">on_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000688" class="method-detail">
+        <a name="M000688"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000688.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000688.html');return false;">
+          <span class="method-name">rbx?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000676" class="method-detail">
+        <a name="M000676"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000676.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000676.html');return false;">
+          <span class="method-name">ruby?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000677" class="method-detail">
+        <a name="M000677"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000677.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000677.html');return false;">
+          <span class="method-name">ruby_18?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000678" class="method-detail">
+        <a name="M000678"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000678.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000678.html');return false;">
+          <span class="method-name">ruby_19?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000679" class="method-detail">
+        <a name="M000679"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000679.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000679.html');return false;">
+          <span class="method-name">ruby_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000680" class="method-detail">
+        <a name="M000680"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000680.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000680.html');return false;">
+          <span class="method-name">ruby_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000681" class="method-detail">
+        <a name="M000681"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000681.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000681.html');return false;">
+          <span class="method-name">ruby_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000710" class="method-detail">
+        <a name="M000710"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000710.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000710.html');return false;">
+          <span class="method-name">x64_mingw?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000711" class="method-detail">
+        <a name="M000711"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000711.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000711.html');return false;">
+          <span class="method-name">x64_mingw_20?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000712" class="method-detail">
+        <a name="M000712"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000712.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000712.html');return false;">
+          <span class="method-name">x64_mingw_21?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000713" class="method-detail">
+        <a name="M000713"></a>
+
+        <div class="method-heading">
+          <a href="CurrentRuby.src/M000713.html" target="Code" class="method-signature"
+            onclick="popupCode('CurrentRuby.src/M000713.html');return false;">
+          <span class="method-name">x64_mingw_22?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

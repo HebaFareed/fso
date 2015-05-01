@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Make the current command chain accessible with in a Bundler::Thor-(sub)command
+full_name: Bundler::Thor::Invocation#current_command_chain
+is_singleton: false
+name: current_command_chain
+params: ()
+visibility: public

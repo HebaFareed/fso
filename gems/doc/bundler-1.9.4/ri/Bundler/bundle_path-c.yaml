@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns absolute path of where gems are installed on the filesystem.
+full_name: Bundler::bundle_path
+is_singleton: true
+name: bundle_path
+params: ()
+visibility: public

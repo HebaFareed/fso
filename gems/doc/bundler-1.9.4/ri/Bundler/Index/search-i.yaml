@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: "[]"
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Search this index's specs, and any source indexes that this index knows about, returning all of the results.
+full_name: Bundler::Index#search
+is_singleton: false
+name: search
+params: (query, base = nil)
+visibility: public

@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Resolves the requested dependencies into a {DependencyGraph}, locking to the base dependency graph (if specified) @param [Array] requested an array of 'requested' dependencies that the
+- !ruby/struct:SM::Flow::VERB 
+  body: "  {#specification_provider} can understand\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [DependencyGraph,nil] base the base dependency graph to which"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  dependencies should be 'locked'\n"
+full_name: Bundler::Molinillo::Resolver#resolve
+is_singleton: false
+name: resolve
+params: (requested, base = DependencyGraph.new)
+visibility: public

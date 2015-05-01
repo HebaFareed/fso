@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: set_local
+block_params: 
+comment: 
+full_name: Bundler::Settings#[]=
+is_singleton: false
+name: "[]="
+params: (key, value)
+visibility: public

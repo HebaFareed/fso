@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Bundler::CLI::Package)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/cli/package.rb, line 9</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">level</span> = <span class="ruby-value str">&quot;error&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:quiet</span>]
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:path</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:cache_all_platforms</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;all-platforms&quot;</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value str">&quot;all-platforms&quot;</span>)
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:cache_path</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;cache-path&quot;</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value str">&quot;cache-path&quot;</span>)
+
+      <span class="ruby-identifier">setup_cache_all</span>
+      <span class="ruby-identifier">install</span>
+
+      <span class="ruby-comment cmt"># TODO: move cache contents here now that all bundles are locked</span>
+      <span class="ruby-identifier">custom_path</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:path</span>]
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">load</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">custom_path</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

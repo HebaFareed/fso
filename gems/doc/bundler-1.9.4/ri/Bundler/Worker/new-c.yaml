@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a worker pool of specified size
+- !ruby/struct:SM::Flow::P 
+  body: "@param size [Integer] Size of pool @param func [Proc] job to run in inside the worker pool"
+full_name: Bundler::Worker::new
+is_singleton: true
+name: new
+params: (size, func)
+visibility: public

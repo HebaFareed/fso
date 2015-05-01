@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI#outdated
+is_singleton: false
+name: outdated
+params: (*gems)
+visibility: public

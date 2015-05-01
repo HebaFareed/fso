@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: return the specs in the bundler format as an index
+full_name: Bundler::Fetcher#specs
+is_singleton: false
+name: specs
+params: (gem_names, source)
+visibility: public

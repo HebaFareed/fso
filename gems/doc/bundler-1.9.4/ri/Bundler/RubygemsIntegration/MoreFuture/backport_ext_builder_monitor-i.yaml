@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubygemsIntegration::MoreFuture#backport_ext_builder_monitor
+is_singleton: false
+name: backport_ext_builder_monitor
+params: ()
+visibility: public

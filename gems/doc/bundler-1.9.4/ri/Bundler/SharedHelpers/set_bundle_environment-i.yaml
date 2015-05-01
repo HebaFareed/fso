@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::SharedHelpers#set_bundle_environment
+is_singleton: false
+name: set_bundle_environment
+params: ()
+visibility: public

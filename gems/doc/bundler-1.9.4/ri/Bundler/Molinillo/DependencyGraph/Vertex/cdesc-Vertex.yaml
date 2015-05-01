@@ -1,0 +1,72 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Arrary&lt;Object&gt;] the explicit requirements that required"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  this vertex\n"
+  name: explicit_requirements
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [DependencyGraph] the graph this vertex is a node of"
+  name: graph
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [String] the name of the vertex"
+  name: name
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Object] the payload the vertex holds"
+  name: payload
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A vertex in a {DependencyGraph} that encapsulates a {#name} and a {#payload}
+constants: []
+
+full_name: Bundler::Molinillo::DependencyGraph::Vertex
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: ancestor?
+- !ruby/object:RI::MethodSummary 
+  name: descendent?
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: incoming_edges
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: is_reachable_from?
+- !ruby/object:RI::MethodSummary 
+  name: outgoing_edges
+- !ruby/object:RI::MethodSummary 
+  name: path_to?
+- !ruby/object:RI::MethodSummary 
+  name: predecessors
+- !ruby/object:RI::MethodSummary 
+  name: recursive_successors
+- !ruby/object:RI::MethodSummary 
+  name: requirements
+- !ruby/object:RI::MethodSummary 
+  name: shallow_eql?
+- !ruby/object:RI::MethodSummary 
+  name: successors
+name: Vertex
+superclass: Object

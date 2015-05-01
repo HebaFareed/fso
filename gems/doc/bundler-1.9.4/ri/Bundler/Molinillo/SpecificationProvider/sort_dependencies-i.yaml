@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Sort dependencies so that the ones that are easiest to resolve are first. Easiest to resolve is (usually) defined by:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  1) Is this dependency already activated?\n  2) How relaxed are the requirements?\n  3) Are there any conflicts for this dependency?\n  4) How many possibilities are there to satisfy this dependency?\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Array&lt;Object&gt;] dependencies @param [DependencyGraph] activated the current dependency graph in the"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  resolution process.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [{String =&gt; Array&lt;Conflict&gt;}] conflicts @return [Array&lt;Object&gt;] a sorted copy of `dependencies`."
+full_name: Bundler::Molinillo::SpecificationProvider#sort_dependencies
+is_singleton: false
+name: sort_dependencies
+params: (dependencies, activated, conflicts)
+visibility: public

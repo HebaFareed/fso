@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Gem::Specification#extension_dir
+is_singleton: false
+name: extension_dir
+params: ()
+visibility: public

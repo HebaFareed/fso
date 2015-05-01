@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: needed for bundle clean
+full_name: Bundler::EndpointSpecification#bindir
+is_singleton: false
+name: bindir
+params: ()
+visibility: public

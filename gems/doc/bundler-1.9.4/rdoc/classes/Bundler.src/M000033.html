@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>requires_sudo? (Bundler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler.rb, line 280</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">requires_sudo?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@requires_sudo</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@requires_sudo_ran</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">allow_sudo?</span>
+        <span class="ruby-identifier">sudo_present</span> = <span class="ruby-identifier">which</span> <span class="ruby-value str">&quot;sudo&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">sudo_present</span>
+        <span class="ruby-comment cmt"># the bundle path and subdirectories need to be writable for Rubygems</span>
+        <span class="ruby-comment cmt"># to be able to unpack and install gems without exploding</span>
+        <span class="ruby-identifier">path</span> = <span class="ruby-identifier">bundle_path</span>
+        <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">exist?</span>
+
+        <span class="ruby-comment cmt"># bins are written to a different location on OS X</span>
+        <span class="ruby-identifier">bin_dir</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">system_bindir</span>)
+        <span class="ruby-identifier">bin_dir</span> = <span class="ruby-identifier">bin_dir</span>.<span class="ruby-identifier">parent</span> <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">bin_dir</span>.<span class="ruby-identifier">exist?</span>
+
+        <span class="ruby-comment cmt"># if any directory is not writable, we need sudo</span>
+        <span class="ruby-identifier">files</span> = [<span class="ruby-identifier">path</span>, <span class="ruby-identifier">bin_dir</span>] <span class="ruby-operator">|</span> <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">path</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'build_info/*'</span>).<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">|</span> <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">path</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'*'</span>).<span class="ruby-identifier">to_s</span>]
+        <span class="ruby-identifier">sudo_needed</span> = <span class="ruby-identifier">files</span>.<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">f</span>) }
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-ivar">@requires_sudo_ran</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-ivar">@requires_sudo</span> = <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">allow_sudo?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">sudo_present</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">sudo_needed</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

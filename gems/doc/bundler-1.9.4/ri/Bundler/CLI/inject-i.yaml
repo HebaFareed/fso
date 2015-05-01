@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI#inject
+is_singleton: false
+name: inject
+params: (name, version, *gems)
+visibility: public

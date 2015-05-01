@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns commands ready to be printed.
+full_name: Bundler::Thor::Group::printable_commands
+is_singleton: true
+name: printable_commands
+params: (*)
+visibility: public

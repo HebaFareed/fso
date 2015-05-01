@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::SourceList#add_path_source
+is_singleton: false
+name: add_path_source
+params: (options = {})
+visibility: public

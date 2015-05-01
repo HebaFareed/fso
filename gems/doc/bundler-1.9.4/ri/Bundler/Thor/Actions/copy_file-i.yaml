@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  copy_file &quot;README&quot;, &quot;doc/README&quot;\n\n  copy_file &quot;doc/README&quot;\n"
+full_name: Bundler::Thor::Actions#copy_file
+is_singleton: false
+name: copy_file
+params: (source, *args, &block)
+visibility: public

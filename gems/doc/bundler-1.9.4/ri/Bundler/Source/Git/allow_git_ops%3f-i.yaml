@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Source::Git#allow_git_ops?
+is_singleton: false
+name: allow_git_ops?
+params: ()
+visibility: public

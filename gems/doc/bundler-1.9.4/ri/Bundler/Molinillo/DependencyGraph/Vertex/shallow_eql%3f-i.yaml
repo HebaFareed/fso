@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Boolean] whether the two vertices are equal, determined"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  solely by {#name} and {#payload} equality\n"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#shallow_eql?
+is_singleton: false
+name: shallow_eql?
+params: (other)
+visibility: public

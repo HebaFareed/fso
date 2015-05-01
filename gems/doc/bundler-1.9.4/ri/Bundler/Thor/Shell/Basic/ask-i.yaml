@@ -1,0 +1,29 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Asks something to the user and receives a response.
+- !ruby/struct:SM::Flow::P 
+  body: If asked to limit the correct responses, you can pass in an array of acceptable answers. If one of those is not supplied, they will be shown a message stating that one of those answers must be given and re-asked the question.
+- !ruby/struct:SM::Flow::P 
+  body: If asking for sensitive information, the :echo option can be set to false to mask user input from $stdin.
+- !ruby/struct:SM::Flow::P 
+  body: If the required input is a path, then set the path option to true. This will enable tab completion for file paths relative to the current working directory on systems that support Readline.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::P 
+  body: ask(&quot;What is your name?&quot;)
+- !ruby/struct:SM::Flow::P 
+  body: ask(&quot;What is your favorite Neopolitan flavor?&quot;, :limited_to =&gt; [&quot;strawberry&quot;, &quot;chocolate&quot;, &quot;vanilla&quot;])
+- !ruby/struct:SM::Flow::P 
+  body: ask(&quot;What is your password?&quot;, :echo =&gt; false)
+- !ruby/struct:SM::Flow::P 
+  body: ask(&quot;Where should the file be saved?&quot;, :path =&gt; true)
+full_name: Bundler::Thor::Shell::Basic#ask
+is_singleton: false
+name: ask
+params: (statement, *args)
+visibility: public

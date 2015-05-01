@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: no_tasks
+block_params: ""
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: All methods defined inside the given block are not added as commands.
+- !ruby/struct:SM::Flow::P 
+  body: "So you can do:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class MyScript &lt; Bundler::Thor\n    no_commands do\n      def this_is_not_a_command\n      end\n    end\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "You can also add the method and remove it from the command list:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class MyScript &lt; Bundler::Thor\n    def this_is_not_a_command\n    end\n    remove_command :this_is_not_a_command\n  end\n"
+full_name: Bundler::Thor::Base::ClassMethods#no_commands
+is_singleton: false
+name: no_commands
+params: () {|| ...}
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Removes a possibility from `self` @return [PossibilityState] a state with a single possibility,
+- !ruby/struct:SM::Flow::VERB 
+  body: " the possibility that was removed from `self`\n"
+full_name: Bundler::Molinillo::DependencyState#pop_possibility_state
+is_singleton: false
+name: pop_possibility_state
+params: ()
+visibility: public

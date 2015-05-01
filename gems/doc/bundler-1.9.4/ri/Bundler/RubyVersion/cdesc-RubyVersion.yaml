@@ -1,0 +1,38 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: engine
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: engine_version
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: patchlevel
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: version
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::RubyVersion
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: diff
+- !ruby/object:RI::MethodSummary 
+  name: host
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: RubyVersion
+superclass: Object

@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: options
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: prompt
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: available?
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::Thor::LineEditor::Basic
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: readline
+name: Basic
+superclass: Object

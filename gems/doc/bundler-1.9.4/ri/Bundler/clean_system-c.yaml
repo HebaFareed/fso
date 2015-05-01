@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::clean_system
+is_singleton: true
+name: clean_system
+params: (*args)
+visibility: public

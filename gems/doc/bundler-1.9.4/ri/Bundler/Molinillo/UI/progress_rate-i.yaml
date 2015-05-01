@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: How often progress should be conveyed to the user via {#indicate_progress}, in seconds. A third of a second, by default.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Float]"
+full_name: Bundler::Molinillo::UI#progress_rate
+is_singleton: false
+name: progress_rate
+params: ()
+visibility: public

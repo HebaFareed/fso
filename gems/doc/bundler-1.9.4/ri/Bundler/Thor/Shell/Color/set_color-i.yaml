@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set color by using a string or one of the defined constants. If a third option is set to true, it also adds bold to the string. This is based on Highline implementation and it automatically appends CLEAR to the end of the returned String.
+- !ruby/struct:SM::Flow::P 
+  body: Pass foreground, background and bold options to this method as symbols.
+- !ruby/struct:SM::Flow::P 
+  body: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  set_color &quot;Hi!&quot;, :red, :on_white, :bold\n"
+- !ruby/struct:SM::Flow::P 
+  body: "The available colors are:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  :bold\n  :black\n  :red\n  :green\n  :yellow\n  :blue\n  :magenta\n  :cyan\n  :white\n  :on_black\n  :on_red\n  :on_green\n  :on_yellow\n  :on_blue\n  :on_magenta\n  :on_cyan\n  :on_white\n"
+full_name: Bundler::Thor::Shell::Color#set_color
+is_singleton: false
+name: set_color
+params: (string, *colors)
+visibility: public

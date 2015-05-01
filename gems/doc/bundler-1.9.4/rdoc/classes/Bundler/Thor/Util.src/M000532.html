@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>ruby_command (Bundler::Thor::Util)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/thor/lib/thor/util.rb, line 219</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ruby_command</span> <span class="ruby-comment cmt"># rubocop:disable MethodLength</span>
+        <span class="ruby-ivar">@ruby_command</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">ruby_name</span> = <span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">&quot;ruby_install_name&quot;</span>]
+          <span class="ruby-identifier">ruby</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">&quot;bindir&quot;</span>], <span class="ruby-identifier">ruby_name</span>)
+          <span class="ruby-identifier">ruby</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">&quot;EXEEXT&quot;</span>]
+
+          <span class="ruby-comment cmt"># avoid using different name than ruby (on platforms supporting links)</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ruby_name</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;ruby&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:readlink</span>)
+            <span class="ruby-keyword kw">begin</span>
+              <span class="ruby-identifier">alternate_ruby</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">&quot;bindir&quot;</span>], <span class="ruby-value str">&quot;ruby&quot;</span>)
+              <span class="ruby-identifier">alternate_ruby</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">RbConfig</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">&quot;EXEEXT&quot;</span>]
+
+              <span class="ruby-comment cmt"># ruby is a symlink</span>
+              <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">symlink?</span> <span class="ruby-identifier">alternate_ruby</span>
+                <span class="ruby-identifier">linked_ruby</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readlink</span> <span class="ruby-identifier">alternate_ruby</span>
+
+                <span class="ruby-comment cmt"># symlink points to 'ruby_install_name'</span>
+                <span class="ruby-identifier">ruby</span> = <span class="ruby-identifier">alternate_ruby</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">linked_ruby</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">ruby_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">linked_ruby</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">ruby</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NotImplementedError</span> <span class="ruby-comment cmt"># rubocop:disable HandleExceptions</span>
+              <span class="ruby-comment cmt"># just ignore on windows</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-comment cmt"># escape string in case path to ruby executable contain spaces.</span>
+          <span class="ruby-identifier">ruby</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-regexp re">/.*\s.*/</span><span class="ruby-identifier">m</span>, <span class="ruby-value str">'&quot;\&amp;&quot;'</span>)
+          <span class="ruby-identifier">ruby</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

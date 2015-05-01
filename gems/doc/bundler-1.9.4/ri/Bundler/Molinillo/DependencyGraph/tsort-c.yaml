@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Topologically sorts the given vertices. @param [Enumerable&lt;Vertex&gt;] vertices the vertices to be sorted, which must
+- !ruby/struct:SM::Flow::VERB 
+  body: "  all belong to the same graph.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Array&lt;Vertex&gt;] The sorted vertices."
+full_name: Bundler::Molinillo::DependencyGraph::tsort
+is_singleton: true
+name: tsort
+params: (vertices)
+visibility: public

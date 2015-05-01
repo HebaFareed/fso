@@ -1,0 +1,93 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: banner
+- !ruby/object:RI::MethodSummary 
+  name: check_unknown_options!
+- !ruby/object:RI::MethodSummary 
+  name: command_help
+- !ruby/object:RI::MethodSummary 
+  name: default_command
+- !ruby/object:RI::MethodSummary 
+  name: desc
+- !ruby/object:RI::MethodSummary 
+  name: find_command_possibilities
+- !ruby/object:RI::MethodSummary 
+  name: help
+- !ruby/object:RI::MethodSummary 
+  name: long_desc
+- !ruby/object:RI::MethodSummary 
+  name: map
+- !ruby/object:RI::MethodSummary 
+  name: method_option
+- !ruby/object:RI::MethodSummary 
+  name: method_options
+- !ruby/object:RI::MethodSummary 
+  name: package_name
+- !ruby/object:RI::MethodSummary 
+  name: printable_commands
+- !ruby/object:RI::MethodSummary 
+  name: register
+- !ruby/object:RI::MethodSummary 
+  name: stop_on_unknown_option!
+- !ruby/object:RI::MethodSummary 
+  name: subcommand
+- !ruby/object:RI::MethodSummary 
+  name: subcommand_classes
+- !ruby/object:RI::MethodSummary 
+  name: subcommand_help
+- !ruby/object:RI::MethodSummary 
+  name: subcommands
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Task
+  value: "Command # rubocop:disable ConstantName"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HiddenTask
+  value: "HiddenCommand # rubocop:disable ConstantName"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DynamicTask
+  value: "DynamicCommand # rubocop:disable ConstantName"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: UndefinedTaskError
+  value: "UndefinedCommandError # rubocop:disable ConstantName"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: AmbiguousTaskError
+  value: "AmbiguousCommandError # rubocop:disable ConstantName"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Shortcuts for help.
+  name: HELP_MAPPINGS
+  value: "%w[-h -? --help -D]"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Bundler::Thor methods that should not be overwritten by the user.
+  name: THOR_RESERVED_WORDS
+  value: "%w[invoke shell options behavior root destination_root relative_root                            action add_file create_file in_root inside run run_ruby_script]"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: TEMPLATE_EXTNAME
+  value: "\".tt\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"0.19.1\""
+full_name: Bundler::Thor
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Bundler::Thor::Base
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: help
+name: Thor
+superclass: Object

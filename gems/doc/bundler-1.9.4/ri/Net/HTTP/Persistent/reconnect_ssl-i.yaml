@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Forces reconnection of SSL connections.
+full_name: Net::HTTP::Persistent#reconnect_ssl
+is_singleton: false
+name: reconnect_ssl
+params: ()
+visibility: public

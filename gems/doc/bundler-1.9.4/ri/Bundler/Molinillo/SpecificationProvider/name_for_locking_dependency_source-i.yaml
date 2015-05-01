@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [String] the name of the source of 'locked' dependencies, i.e."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  those passed to {Resolver#resolve} directly as the `base`\n"
+full_name: Bundler::Molinillo::SpecificationProvider#name_for_locking_dependency_source
+is_singleton: false
+name: name_for_locking_dependency_source
+params: ()
+visibility: public

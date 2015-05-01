@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: POISON
+  value: Object.new
+full_name: Bundler::Worker
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: deq
+- !ruby/object:RI::MethodSummary 
+  name: enq
+- !ruby/object:RI::MethodSummary 
+  name: stop
+name: Worker
+superclass: Object

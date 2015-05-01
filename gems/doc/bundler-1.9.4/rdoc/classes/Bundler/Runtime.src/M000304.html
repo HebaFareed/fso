@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>clean (Bundler::Runtime)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/runtime.rb, line 131</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean</span>(<span class="ruby-identifier">dry_run</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">gem_bins</span>             = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/bin/*&quot;</span>]
+      <span class="ruby-identifier">git_dirs</span>             = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/bundler/gems/*&quot;</span>]
+      <span class="ruby-identifier">git_cache_dirs</span>       = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/cache/bundler/git/*&quot;</span>]
+      <span class="ruby-identifier">gem_dirs</span>             = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/gems/*&quot;</span>]
+      <span class="ruby-identifier">gem_files</span>            = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/cache/*.gem&quot;</span>]
+      <span class="ruby-identifier">gemspec_files</span>        = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{Gem.dir}/specifications/*.gemspec&quot;</span>]
+      <span class="ruby-identifier">spec_gem_paths</span>       = []
+      <span class="ruby-comment cmt"># need to keep git sources around</span>
+      <span class="ruby-identifier">spec_git_paths</span>       = <span class="ruby-ivar">@definition</span>.<span class="ruby-identifier">spec_git_paths</span>
+      <span class="ruby-identifier">spec_git_cache_dirs</span>  = []
+      <span class="ruby-identifier">spec_gem_executables</span> = []
+      <span class="ruby-identifier">spec_cache_paths</span>     = []
+      <span class="ruby-identifier">spec_gemspec_paths</span>   = []
+      <span class="ruby-identifier">specs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">spec_gem_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">full_gem_path</span>
+        <span class="ruby-comment cmt"># need to check here in case gems are nested like for the rails git repo</span>
+        <span class="ruby-identifier">md</span> = <span class="ruby-regexp re">%r{(.+bundler/gems/.+-[a-f0-9]{7,12})}</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">spec</span>.<span class="ruby-identifier">full_gem_path</span>)
+        <span class="ruby-identifier">spec_git_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">md</span>[<span class="ruby-value">1</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">md</span>
+        <span class="ruby-identifier">spec_gem_executables</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">executables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">executable</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">e</span> = <span class="ruby-node">&quot;#{Bundler.rubygems.gem_bindir}/#{executable}&quot;</span>
+          [<span class="ruby-identifier">e</span>, <span class="ruby-node">&quot;#{e}.bat&quot;</span>]
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">spec_cache_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">cache_file</span>
+        <span class="ruby-identifier">spec_gemspec_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">spec_file</span>
+        <span class="ruby-identifier">spec_git_cache_dirs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">cache_path</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Source</span><span class="ruby-operator">::</span><span class="ruby-constant">Git</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">spec_gem_paths</span>.<span class="ruby-identifier">uniq!</span>
+      <span class="ruby-identifier">spec_gem_executables</span>.<span class="ruby-identifier">flatten!</span>
+
+      <span class="ruby-identifier">stale_gem_bins</span>       = <span class="ruby-identifier">gem_bins</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_gem_executables</span>
+      <span class="ruby-identifier">stale_git_dirs</span>       = <span class="ruby-identifier">git_dirs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_git_paths</span>
+      <span class="ruby-identifier">stale_git_cache_dirs</span> = <span class="ruby-identifier">git_cache_dirs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_git_cache_dirs</span>
+      <span class="ruby-identifier">stale_gem_dirs</span>       = <span class="ruby-identifier">gem_dirs</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_gem_paths</span>
+      <span class="ruby-identifier">stale_gem_files</span>      = <span class="ruby-identifier">gem_files</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_cache_paths</span>
+      <span class="ruby-identifier">stale_gemspec_files</span>  = <span class="ruby-identifier">gemspec_files</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">spec_gemspec_paths</span>
+
+      <span class="ruby-identifier">output</span> = <span class="ruby-identifier">stale_gem_dirs</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gem_dir</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">full_name</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">gem_dir</span>).<span class="ruby-identifier">basename</span>.<span class="ruby-identifier">to_s</span>
+
+        <span class="ruby-identifier">parts</span>   = <span class="ruby-identifier">full_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'-'</span>)
+        <span class="ruby-identifier">name</span>    = <span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">'-'</span>)
+        <span class="ruby-identifier">version</span> = <span class="ruby-identifier">parts</span>.<span class="ruby-identifier">last</span>
+        <span class="ruby-identifier">output</span>  = <span class="ruby-node">&quot;#{name} (#{version})&quot;</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dry_run</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Would have removed #{output}&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Removing #{output}&quot;</span>
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">gem_dir</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">output</span>
+      <span class="ruby-keyword kw">end</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">stale_git_dirs</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gem_dir</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">full_name</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">gem_dir</span>).<span class="ruby-identifier">basename</span>.<span class="ruby-identifier">to_s</span>
+
+        <span class="ruby-identifier">parts</span>    = <span class="ruby-identifier">full_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'-'</span>)
+        <span class="ruby-identifier">name</span>     = <span class="ruby-identifier">parts</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">'-'</span>)
+        <span class="ruby-identifier">revision</span> = <span class="ruby-identifier">parts</span>[<span class="ruby-value">-1</span>]
+        <span class="ruby-identifier">output</span>   = <span class="ruby-node">&quot;#{name} (#{revision})&quot;</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dry_run</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Would have removed #{output}&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Removing #{output}&quot;</span>
+          <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">gem_dir</span>)
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">output</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">dry_run</span>
+        <span class="ruby-identifier">stale_gem_bins</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bin</span><span class="ruby-operator">|</span> <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span>(<span class="ruby-identifier">bin</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">bin</span>) }
+        <span class="ruby-identifier">stale_gem_files</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>) }
+        <span class="ruby-identifier">stale_gemspec_files</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file</span>) }
+        <span class="ruby-identifier">stale_git_cache_dirs</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span> <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">dir</span>) }
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">output</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

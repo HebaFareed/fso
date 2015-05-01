@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Rubygems 1.8.20 and adds the skip_validation parameter, so that's when we start passing it through.
+full_name: Bundler::RubygemsIntegration::MoreModern#build
+is_singleton: false
+name: build
+params: (spec, skip_validation = false)
+visibility: public

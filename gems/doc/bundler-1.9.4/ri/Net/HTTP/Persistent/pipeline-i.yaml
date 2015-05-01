@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: responses
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Pipelines <tt>requests</tt> to the HTTP server at <tt>uri</tt> yielding responses if a block is given. Returns all responses recieved.
+- !ruby/struct:SM::Flow::P 
+  body: See Net::HTTP::Pipeline[http://docs.seattlerb.org/net-http-pipeline/Net/HTTP/Pipeline.html] for further details.
+- !ruby/struct:SM::Flow::P 
+  body: "Only if <tt>net-http-pipeline</tt> was required before <tt>net-http-persistent</tt> #pipeline will be present."
+full_name: Net::HTTP::Persistent#pipeline
+is_singleton: false
+name: pipeline
+params: (uri, requests, &block {|responses| ...}
+visibility: public

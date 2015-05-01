@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Bundler::Molinillo::Resolver::Resolution</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Bundler::Molinillo::Resolver::Resolution</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/bundler/vendor/molinillo/lib/molinillo/resolution_rb.html">
+                lib/bundler/vendor/molinillo/lib/molinillo/resolution.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+A specific resolution from a given {<a
+href="../Resolver.html">Resolver</a>}
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000097">new</a>&nbsp;&nbsp;
+      <a href="#M000098">resolve</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Conflict</td>
+          <td>=</td>
+          <td class="context-item-value">Struct.new(         :requirement,         :requirements,         :existing,         :possibility,         :locked_requirement,         :requirement_trees</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+A conflict that the resolution process encountered @attr [Object]
+requirement the requirement that immediately led to the conflict @attr
+[{String,Nil=&gt;[Object]}] requirements the requirements that caused the
+conflict @attr [Object, nil] existing the existing spec that was in
+conflict with
+
+<pre>
+  the {#possibility}
+</pre>
+<p>
+@attr [Object] possibility the spec that was unable to be activated due
+</p>
+<pre>
+  to a conflict
+</pre>
+<p>
+@attr [Object] locked_requirement the relevant locking requirement. @attr
+[Array&lt;Array&lt;Object&gt;&gt;] requirement_trees the different
+requirement
+</p>
+<pre>
+  trees that led to every requirement for the conflicting name.
+</pre>
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">base</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+@return [<a href="../DependencyGraph.html">DependencyGraph</a>] the base
+dependency graph to which
+
+<pre>
+  dependencies should be 'locked'
+</pre>
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">original_requested</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+@return [Array] the dependencies that were explicitly required
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">resolver_ui</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+@return [<a href="../UI.html">UI</a>] the <a href="../UI.html">UI</a> that
+knows how to communicate feedback about the
+
+<pre>
+  resolution process back to the user
+</pre>
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">specification_provider</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+@return [<a href="../SpecificationProvider.html">SpecificationProvider</a>]
+the provider that knows about
+
+<pre>
+  dependencies, requirements, specifications, versions, etc.
+</pre>
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000097" class="method-detail">
+        <a name="M000097"></a>
+
+        <div class="method-heading">
+          <a href="Resolution.src/M000097.html" target="Code" class="method-signature"
+            onclick="popupCode('Resolution.src/M000097.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(specification_provider, resolver_ui, requested, base)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@param [<a href="../SpecificationProvider.html">SpecificationProvider</a>]
+specification_provider
+</p>
+<pre>
+  see {#specification_provider}
+</pre>
+<p>
+@param [<a href="../UI.html">UI</a>] resolver_ui see {resolver_ui} @param
+[Array] requested see {original_requested} @param [<a
+href="../DependencyGraph.html">DependencyGraph</a>] base see {base}
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000098" class="method-detail">
+        <a name="M000098"></a>
+
+        <div class="method-heading">
+          <a href="Resolution.src/M000098.html" target="Code" class="method-signature"
+            onclick="popupCode('Resolution.src/M000098.html');return false;">
+          <span class="method-name">resolve</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Resolves the {original_requested} dependencies into a full dependency
+</p>
+<pre>
+  graph
+</pre>
+<p>
+@raise [<a href="../ResolverError.html">ResolverError</a>] if successful
+resolution is impossible @return [<a
+href="../DependencyGraph.html">DependencyGraph</a>] the dependency graph of
+successfully resolved
+</p>
+<pre>
+  dependencies
+</pre>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

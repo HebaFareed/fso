@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Object] dependency @see {#dependency} @param [Array&lt;Object&gt;] required_by @see {#required_by}"
+full_name: Bundler::Molinillo::NoSuchDependencyError::new
+is_singleton: true
+name: new
+params: (dependency, required_by = [])
+visibility: public

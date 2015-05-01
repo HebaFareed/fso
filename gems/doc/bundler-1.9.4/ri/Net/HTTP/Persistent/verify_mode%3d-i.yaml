@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets the HTTPS verify mode. Defaults to OpenSSL::SSL::VERIFY_PEER.
+- !ruby/struct:SM::Flow::P 
+  body: Setting this to VERIFY_NONE is a VERY BAD IDEA and should NEVER be used. Securely transfer the correct certificate and update the default certificate store or set the ca file instead.
+full_name: Net::HTTP::Persistent#verify_mode=
+is_singleton: false
+name: verify_mode=
+params: (verify_mode)
+visibility: public

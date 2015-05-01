@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [String] name @return [Vertex,nil] the vertex with the given name"
+full_name: Bundler::Molinillo::DependencyGraph#vertex_named
+is_singleton: false
+name: vertex_named
+params: (name)
+visibility: public

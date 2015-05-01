@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #path_to?"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#descendent?
+is_singleton: false
+name: descendent?
+params: (other)
+visibility: public

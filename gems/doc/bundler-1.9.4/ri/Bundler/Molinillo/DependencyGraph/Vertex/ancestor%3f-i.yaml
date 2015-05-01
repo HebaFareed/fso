@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: is_reachable_from?
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Is there a path from `other` to `self` following edges in the dependency graph? @return true iff there is a path following edges within this {#graph}
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#ancestor?
+is_singleton: false
+name: ancestor?
+params: (other)
+visibility: public

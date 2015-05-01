@@ -1,0 +1,77 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: caches
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: remotes
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: from_lock
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Use the API when installing less than X gems
+  name: API_REQUEST_LIMIT
+  value: "500"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Ask for X gems per API request
+  name: API_REQUEST_SIZE
+  value: "50"
+full_name: Bundler::Source::Rubygems
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: add_remote
+- !ruby/object:RI::MethodSummary 
+  name: cache
+- !ruby/object:RI::MethodSummary 
+  name: cached!
+- !ruby/object:RI::MethodSummary 
+  name: cached_built_in_gem
+- !ruby/object:RI::MethodSummary 
+  name: can_lock?
+- !ruby/object:RI::MethodSummary 
+  name: credless_remotes
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: fetchers
+- !ruby/object:RI::MethodSummary 
+  name: hash
+- !ruby/object:RI::MethodSummary 
+  name: include?
+- !ruby/object:RI::MethodSummary 
+  name: install
+- !ruby/object:RI::MethodSummary 
+  name: name
+- !ruby/object:RI::MethodSummary 
+  name: options
+- !ruby/object:RI::MethodSummary 
+  name: remote!
+- !ruby/object:RI::MethodSummary 
+  name: replace_remotes
+- !ruby/object:RI::MethodSummary 
+  name: source_uris_for_spec
+- !ruby/object:RI::MethodSummary 
+  name: specs
+- !ruby/object:RI::MethodSummary 
+  name: to_lock
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: unmet_deps
+name: Rubygems
+superclass: Source

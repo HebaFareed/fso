@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::RubygemsIntegration::MoreFuture
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: backport_ext_builder_monitor
+- !ruby/object:RI::MethodSummary 
+  name: ext_lock
+name: MoreFuture
+superclass: Future

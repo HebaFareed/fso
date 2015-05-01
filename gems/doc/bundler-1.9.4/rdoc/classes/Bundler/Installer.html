@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Bundler::Installer</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Bundler::Installer</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/bundler/installer_rb.html">
+                lib/bundler/installer.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Environment.html">
+                Environment
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000353">generate_bundler_executable_stubs</a>&nbsp;&nbsp;
+      <a href="#M000350">install</a>&nbsp;&nbsp;
+      <a href="#M000352">install_gem_from_spec</a>&nbsp;&nbsp;
+      <a href="#M000351">run</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ambiguous_gems</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">post_install_messages</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000350" class="method-detail">
+        <a name="M000350"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000350.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000350.html');return false;">
+          <span class="method-name">install</span><span class="method-args">(root, definition, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Begins the installation process for <a href="../Bundler.html">Bundler</a>.
+For more information see the <a href="Installer.html#M000351">run</a>
+method on this class.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000353" class="method-detail">
+        <a name="M000353"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000353.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000353.html');return false;">
+          <span class="method-name">generate_bundler_executable_stubs</span><span class="method-args">(spec, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000352" class="method-detail">
+        <a name="M000352"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000352.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000352.html');return false;">
+          <span class="method-name">install_gem_from_spec</span><span class="method-args">(spec, standalone = false, worker = 0)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000351" class="method-detail">
+        <a name="M000351"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000351.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000351.html');return false;">
+          <span class="method-name">run</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Runs the <a href="Installer.html#M000350">install</a> procedures for a
+specific Gemfile.
+</p>
+<p>
+Firstly, this method will check to see if <a
+href="../Bundler.html#M000005">Bundler.bundle_path</a> exists and if not
+then will create it. This is usually the location of gems on the system, be
+it RVM or at a system path.
+</p>
+<p>
+Secondly, it checks if <a href="../Bundler.html">Bundler</a> has been
+configured to be &quot;frozen&quot; Frozen ensures that the Gemfile and the
+Gemfile.lock file are matching. This stops a situation where a developer
+may update the Gemfile but may not <a href="Installer.html#M000351">run</a>
+`bundle <a href="Installer.html#M000350">install</a>`, which leads to the
+Gemfile.lock file not being correctly updated. If this file is not
+correctly updated then any other developer running `bundle <a
+href="Installer.html#M000350">install</a>` will potentially not <a
+href="Installer.html#M000350">install</a> the correct gems.
+</p>
+<p>
+Thirdly, <a href="../Bundler.html">Bundler</a> checks if there are any
+dependencies specified in the Gemfile using <a
+href="Environment.html#M000183">Bundler::Environment#dependencies</a>. If
+there are no dependencies specified then <a
+href="../Bundler.html">Bundler</a> returns a warning message stating so and
+this method returns.
+</p>
+<p>
+Fourthly, <a href="../Bundler.html">Bundler</a> checks if the default
+lockfile (Gemfile.lock) exists, and if so then proceeds to set up a
+defintion based on the default gemfile (Gemfile) and the default lock file
+(Gemfile.lock). However, this is not the case if the platform is different
+to that which is specified in Gemfile.lock, or if there are any missing
+specs for the gems.
+</p>
+<p>
+Fifthly, <a href="../Bundler.html">Bundler</a> resolves the dependencies
+either through a cache of gems or by remote. This then leads into the gems
+being installed, along with stubs for their executables, but only if the
+&#8212;binstubs option has been passed or Bundler.options[:bin] has been
+set earlier.
+</p>
+<p>
+Sixthly, a new Gemfile.lock is created from the installed gems to ensure
+that the next time that a user runs `bundle <a
+href="Installer.html#M000350">install</a>` they will receive any updates
+from this process.
+</p>
+<p>
+Finally: TODO add documentation for how the standalone process works.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

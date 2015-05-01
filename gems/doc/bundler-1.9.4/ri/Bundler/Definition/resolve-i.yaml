@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Resolve all the dependencies specified in Gemfile. It ensures that dependencies that have been already resolved via locked file and are fresh are reused when resolving dependencies
+- !ruby/struct:SM::Flow::P 
+  body: "@return [SpecSet] resolved dependencies"
+full_name: Bundler::Definition#resolve
+is_singleton: false
+name: resolve
+params: ()
+visibility: public

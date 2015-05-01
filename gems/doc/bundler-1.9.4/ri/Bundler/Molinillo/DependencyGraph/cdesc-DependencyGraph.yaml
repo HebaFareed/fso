@@ -1,0 +1,74 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Set&lt;Edge&gt;] the edges of the dependency graph"
+  name: edges
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [{String =&gt; Vertex}] vertices that have no {Vertex#predecessors},"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  keyed by by {Vertex#name}\n"
+  name: root_vertices
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [{String =&gt; Vertex}] the vertices of the dependency graph, keyed"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  by {Vertex#name}\n"
+  name: vertices
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: tsort
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A directed acyclic graph that is tuned to hold named dependencies
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A directed edge of a {DependencyGraph} @attr [Vertex] origin The origin of the directed edge @attr [Vertex] destination The destination of the directed edge @attr [Array] requirements The requirements the directed edge represents
+  name: Edge
+  value: Struct.new(:origin, :destination, :requirements)
+full_name: Bundler::Molinillo::DependencyGraph
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+- !ruby/object:RI::IncludedModule 
+  name: TSort
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: add_child_vertex
+- !ruby/object:RI::MethodSummary 
+  name: add_edge
+- !ruby/object:RI::MethodSummary 
+  name: add_root_vertex
+- !ruby/object:RI::MethodSummary 
+  name: add_vertex
+- !ruby/object:RI::MethodSummary 
+  name: detach_vertex_named
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: initialize_copy
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: root_vertex_named
+- !ruby/object:RI::MethodSummary 
+  name: tsort_each_child
+- !ruby/object:RI::MethodSummary 
+  name: tsort_each_node
+- !ruby/object:RI::MethodSummary 
+  name: vertex_named
+name: DependencyGraph
+superclass: Object

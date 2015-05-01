@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a URI for an HTTP proxy server from ENV variables.
+- !ruby/struct:SM::Flow::P 
+  body: If <tt>HTTP_PROXY</tt> is set a proxy will be returned.
+- !ruby/struct:SM::Flow::P 
+  body: If <tt>HTTP_PROXY_USER</tt> or <tt>HTTP_PROXY_PASS</tt> are set the URI is given the indicated user and password unless HTTP_PROXY contains either of these in the URI.
+- !ruby/struct:SM::Flow::P 
+  body: The <tt>NO_PROXY</tt> ENV variable can be used to specify hosts which shouldn't be reached via proxy; if set it should be a comma separated list of hostname suffixes, optionally with +:port+ appended, for example <tt>example.com,some.host:8080</tt>. When set to <tt>*</tt> no proxy will be returned.
+- !ruby/struct:SM::Flow::P 
+  body: For Windows users, lowercase ENV variables are preferred over uppercase ENV variables.
+full_name: Net::HTTP::Persistent#proxy_from_env
+is_singleton: false
+name: proxy_from_env
+params: ()
+visibility: public

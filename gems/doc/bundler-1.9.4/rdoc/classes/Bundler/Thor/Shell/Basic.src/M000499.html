@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>ask_simply (Bundler::Thor::Shell::Basic)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/thor/lib/thor/shell/basic.rb, line 392</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ask_simply</span>(<span class="ruby-identifier">statement</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-identifier">default</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:default</span>]
+        <span class="ruby-identifier">message</span> = [<span class="ruby-identifier">statement</span>, (<span class="ruby-node">&quot;(#{default})&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span>), <span class="ruby-keyword kw">nil</span>].<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; &quot;</span>)
+        <span class="ruby-identifier">message</span> = <span class="ruby-identifier">prepare_message</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">color</span>)
+        <span class="ruby-identifier">result</span> = <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Thor</span><span class="ruby-operator">::</span><span class="ruby-constant">LineEditor</span>.<span class="ruby-identifier">readline</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">options</span>)
+
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">result</span>
+
+        <span class="ruby-identifier">result</span>.<span class="ruby-identifier">strip!</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">default</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
+          <span class="ruby-identifier">default</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">result</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

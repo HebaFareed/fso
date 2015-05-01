@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::SharedHelpers#with_clean_git_env
+is_singleton: false
+name: with_clean_git_env
+params: (&block)
+visibility: public

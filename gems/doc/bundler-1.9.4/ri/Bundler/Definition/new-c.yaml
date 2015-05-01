@@ -1,0 +1,37 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: How does the new system work?
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Load information from Gemfile and Lockfile
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Invalidate stale locked specs
+  type: :BULLET
+- !ruby/struct:SM::Flow::VERB 
+  body: " * All specs from stale source are stale\n * All specs that are reachable only through a stale\n   dependency are stale.\n"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: If all fresh dependencies are satisfied by the locked
+  type: :BULLET
+- !ruby/struct:SM::Flow::VERB 
+  body: " specs, then we can try to resolve locally.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param lockfile [Pathname] Path to Gemfile.lock @param dependencies [Array(Bundler::Dependency)] array of dependencies from Gemfile @param sources [Bundler::SourceList] @param unlock [Hash, Boolean, nil] Gems that have been requested"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  to be updated or true if all gems should be updated\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param ruby_version [Bundler::RubyVersion, nil] Requested Ruby Version"
+full_name: Bundler::Definition::new
+is_singleton: true
+name: new
+params: (lockfile, dependencies, sources, unlock, ruby_version = nil)
+visibility: public

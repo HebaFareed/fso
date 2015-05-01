@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Bundler::CLI::Outdated)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/cli/outdated.rb, line 11</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+      <span class="ruby-identifier">sources</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:source</span>])
+
+      <span class="ruby-identifier">gems</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gem_name</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI</span><span class="ruby-operator">::</span><span class="ruby-constant">Common</span>.<span class="ruby-identifier">select_spec</span>(<span class="ruby-identifier">gem_name</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">definition</span>.<span class="ruby-identifier">validate_ruby!</span>
+      <span class="ruby-identifier">current_specs</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">silence</span> { <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">load</span>.<span class="ruby-identifier">specs</span> }
+      <span class="ruby-identifier">current_dependencies</span> = {}
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">silence</span> { <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">load</span>.<span class="ruby-identifier">dependencies</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dep</span><span class="ruby-operator">|</span> <span class="ruby-identifier">current_dependencies</span>[<span class="ruby-identifier">dep</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">dep</span> } }
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gems</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">sources</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-comment cmt"># We're doing a full update</span>
+        <span class="ruby-identifier">definition</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">definition</span>(<span class="ruby-keyword kw">true</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">definition</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">definition</span>(<span class="ruby-identifier">:gems</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">gems</span>, <span class="ruby-identifier">:sources</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sources</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;local&quot;</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">resolve_with_cache!</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">resolve_remotely!</span>
+
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;&quot;</span>
+
+      <span class="ruby-identifier">out_count</span> = <span class="ruby-value">0</span>
+      <span class="ruby-comment cmt"># Loop through the current specs</span>
+      <span class="ruby-identifier">gemfile_specs</span>, <span class="ruby-identifier">dependency_specs</span> = <span class="ruby-identifier">current_specs</span>.<span class="ruby-identifier">partition</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span> <span class="ruby-identifier">current_dependencies</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span> }
+      [<span class="ruby-identifier">gemfile_specs</span>.<span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:name</span>), <span class="ruby-identifier">dependency_specs</span>.<span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:name</span>)].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">current_spec</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">gems</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">gems</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">name</span>)
+
+        <span class="ruby-identifier">dependency</span> = <span class="ruby-identifier">current_dependencies</span>[<span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">name</span>]
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;strict&quot;</span>]
+          <span class="ruby-identifier">active_spec</span> =  <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">specs</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">name</span> }
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">active_spec</span> = <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">index</span>[<span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">name</span>].<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">version</span> }
+          <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">version</span>.<span class="ruby-identifier">prerelease?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-identifier">:pre</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+            <span class="ruby-identifier">active_spec</span> = <span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">delete_if</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:version</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">version</span>.<span class="ruby-identifier">prerelease?</span> }
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">active_spec</span> = <span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">last</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">nil?</span>
+
+        <span class="ruby-identifier">gem_outdated</span> = <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">version</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">version</span>)
+        <span class="ruby-identifier">git_outdated</span> = <span class="ruby-identifier">current_spec</span>.<span class="ruby-identifier">git_version</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">active_spec</span>.<span class="ruby-identifier">git_version</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gem_outdated</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">git_outdated</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">out_count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value str">&quot;pre&quot;</span>]
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;Outdated gems included in the bundle (including pre-releases):&quot;</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;Outdated gems included in the bundle:&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">spec_version</span>    = <span class="ruby-node">&quot;#{active_spec.version}#{active_spec.git_version}&quot;</span>
+          <span class="ruby-identifier">current_version</span> = <span class="ruby-node">&quot;#{current_spec.version}#{current_spec.git_version}&quot;</span>
+          <span class="ruby-identifier">dependency_version</span> = <span class="ruby-node">%|Gemfile specifies &quot;#{dependency.requirement}&quot;|</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dependency</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">dependency</span>.<span class="ruby-identifier">specific?</span>
+          <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;  * #{active_spec.name} (#{spec_version} &gt; #{current_version}) #{dependency_version}&quot;</span>.<span class="ruby-identifier">rstrip</span>
+          <span class="ruby-identifier">out_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">debug</span> <span class="ruby-node">&quot;from #{active_spec.loaded_from}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">out_count</span>.<span class="ruby-identifier">zero?</span>
+        <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;Bundle up to date!\n&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

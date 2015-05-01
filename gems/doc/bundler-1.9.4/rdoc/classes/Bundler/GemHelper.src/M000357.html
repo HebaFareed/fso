@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>install (Bundler::GemHelper)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/gem_helper.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install</span>
+      <span class="ruby-identifier">built_gem_path</span> = <span class="ruby-keyword kw">nil</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;Build #{name}-#{version}.gem into the pkg directory.&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'build'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">built_gem_path</span> = <span class="ruby-identifier">build_gem</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;Build and install #{name}-#{version}.gem into system gems.&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'install'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'build'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">install_gem</span>(<span class="ruby-identifier">built_gem_path</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;Build and install #{name}-#{version}.gem into system gems without network access.&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'install:local'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'build'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">install_gem</span>(<span class="ruby-identifier">built_gem_path</span>, <span class="ruby-identifier">:local</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">desc</span> <span class="ruby-node">&quot;Create tag #{version_tag} and build and push #{name}-#{version}.gem to Rubygems\n&quot;</span> \
+           <span class="ruby-value str">&quot;To prevent publishing in Rubygems use `gem_push=no rake release`&quot;</span>
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'release'</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value str">'build'</span>, <span class="ruby-value str">'release:guard_clean'</span>,
+                         <span class="ruby-value str">'release:source_control_push'</span>, <span class="ruby-value str">'release:rubygem_push'</span>] <span class="ruby-keyword kw">do</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'release:guard_clean'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">guard_clean</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'release:source_control_push'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">tag_version</span> { <span class="ruby-identifier">git_push</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">already_tagged?</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">task</span> <span class="ruby-value str">'release:rubygem_push'</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">rubygem_push</span>(<span class="ruby-identifier">built_gem_path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gem_push?</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-constant">GemHelper</span>.<span class="ruby-identifier">instance</span> = <span class="ruby-keyword kw">self</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

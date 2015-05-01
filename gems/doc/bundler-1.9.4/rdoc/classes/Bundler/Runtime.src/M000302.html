@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>cache (Bundler::Runtime)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/runtime.rb, line 105</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache</span>(<span class="ruby-identifier">custom_path</span> = <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">cache_path</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">app_cache</span>(<span class="ruby-identifier">custom_path</span>)
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">cache_path</span>)
+
+      <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Updating files in #{Bundler.settings.app_cache_path}&quot;</span>
+      <span class="ruby-identifier">specs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">spec</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'bundler'</span>
+        <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:fetch_gem</span>, <span class="ruby-identifier">spec</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:cache_all_platforms</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:fetch_gem</span>, <span class="ruby-keyword kw">true</span>)
+        <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">cache</span>(<span class="ruby-identifier">spec</span>, <span class="ruby-identifier">custom_path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">spec</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:cache</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">cache_path</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;*/.git&quot;</span>)].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">git_dir</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">git_dir</span>)
+        <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">touch</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-value str">&quot;../.bundlecache&quot;</span>, <span class="ruby-identifier">git_dir</span>))
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">prune_cache</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:no_prune</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

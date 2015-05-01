@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A subclass of RubyVersion that implements version, engine and engine_version based upon the current information in the system. It can be used anywhere a RubyVersion object is expected, and can be compared with a RubyVersion object.
+constants: []
+
+full_name: Bundler::SystemRubyVersion
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: engine
+- !ruby/object:RI::MethodSummary 
+  name: engine_version
+- !ruby/object:RI::MethodSummary 
+  name: gem_version
+- !ruby/object:RI::MethodSummary 
+  name: patchlevel
+- !ruby/object:RI::MethodSummary 
+  name: version
+name: SystemRubyVersion
+superclass: RubyVersion

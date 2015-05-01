@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Injector::inject
+is_singleton: true
+name: inject
+params: (new_deps)
+visibility: public

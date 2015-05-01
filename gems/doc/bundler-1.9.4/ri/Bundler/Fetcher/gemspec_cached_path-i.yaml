@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: cached gem specification path, if one exists
+full_name: Bundler::Fetcher#gemspec_cached_path
+is_singleton: false
+name: gemspec_cached_path
+params: (spec_file_name)
+visibility: public

@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Object] the dependency that could not be found"
+  name: dependency
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array&lt;Object&gt;] the specifications that depended upon {#dependency}"
+  name: required_by
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An error caused by searching for a dependency that is completely unknown, i.e. has no versions available whatsoever.
+constants: []
+
+full_name: Bundler::Molinillo::NoSuchDependencyError
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: NoSuchDependencyError
+superclass: ResolverError

@@ -1,0 +1,123 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Inherit from Bundler::Thor::Shell::Basic and add set_color behavior. Check Bundler::Thor::Shell::Basic to see all available methods.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The start of an HTML bold sequence.
+  name: BOLD
+  value: "\"font-weight: bold\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to black.
+  name: BLACK
+  value: "\"color: black\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to red.
+  name: RED
+  value: "\"color: red\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to green.
+  name: GREEN
+  value: "\"color: green\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to yellow.
+  name: YELLOW
+  value: "\"color: yellow\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to blue.
+  name: BLUE
+  value: "\"color: blue\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to magenta.
+  name: MAGENTA
+  value: "\"color: magenta\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to cyan.
+  name: CYAN
+  value: "\"color: cyan\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's foreground HTML color to white.
+  name: WHITE
+  value: "\"color: white\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to black.
+  name: ON_BLACK
+  value: "\"background-color: black\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to red.
+  name: ON_RED
+  value: "\"background-color: red\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to green.
+  name: ON_GREEN
+  value: "\"background-color: green\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to yellow.
+  name: ON_YELLOW
+  value: "\"background-color: yellow\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to blue.
+  name: ON_BLUE
+  value: "\"background-color: blue\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to magenta.
+  name: ON_MAGENTA
+  value: "\"background-color: magenta\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to cyan.
+  name: ON_CYAN
+  value: "\"background-color: cyan\""
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set the terminal's background HTML color to white.
+  name: ON_WHITE
+  value: "\"background-color: white\""
+full_name: Bundler::Thor::Shell::HTML
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ask
+- !ruby/object:RI::MethodSummary 
+  name: can_display_colors?
+- !ruby/object:RI::MethodSummary 
+  name: set_color
+name: HTML
+superclass: Basic

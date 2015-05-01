@@ -1,0 +1,83 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [DependencyGraph] the base dependency graph to which"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  dependencies should be 'locked'\n"
+  name: base
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Integer] the number of resolver iterations in between calls to"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  {#resolver_ui}'s {UI#indicate_progress} method\n"
+  name: iteration_rate
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array] the dependencies that were explicitly required"
+  name: original_requested
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [UI] the UI that knows how to communicate feedback about the"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  resolution process back to the user\n"
+  name: resolver_ui
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [SpecificationProvider] the provider that knows about"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  dependencies, requirements, specifications, versions, etc.\n"
+  name: specification_provider
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Time] the time at which resolution began"
+  name: started_at
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array&lt;ResolutionState&gt;] the stack of states for the resolution"
+  name: states
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A specific resolution from a given {Resolver}
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A conflict that the resolution process encountered @attr [Object] requirement the requirement that immediately led to the conflict @attr [{String,Nil=&gt;[Object]}] requirements the requirements that caused the conflict @attr [Object, nil] existing the existing spec that was in conflict with
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  the {#possibility}\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@attr [Object] possibility the spec that was unable to be activated due"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  to a conflict\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@attr [Object] locked_requirement the relevant locking requirement. @attr [Array&lt;Array&lt;Object&gt;&gt;] requirement_trees the different requirement"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  trees that led to every requirement for the conflicting name.\n"
+  name: Conflict
+  value: Struct.new(         :requirement,         :requirements,         :existing,         :possibility,         :locked_requirement,         :requirement_trees
+full_name: Bundler::Molinillo::Resolver::Resolution
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: resolve
+name: Resolution
+superclass: Object

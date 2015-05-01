@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>message (Bundler::Molinillo::VersionConflict)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/resolver.rb, line 23</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">message</span>
+        <span class="ruby-identifier">conflicts</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">reduce</span>(<span class="ruby-value str">''</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span>, <span class="ruby-identifier">conflict</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%(Bundler could not find compatible versions for gem &quot;#{conflict.requirement.name}&quot;:\n)</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">locked_requirement</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(  In snapshot (Gemfile.lock):\n)</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%(    #{clean_req conflict.locked_requirement}\n)</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(\n)</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(  In Gemfile:\n)</span>
+          <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">requirement_trees</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tree</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">t</span> = <span class="ruby-value str">''</span>
+            <span class="ruby-identifier">depth</span> = <span class="ruby-value">2</span>
+            <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">req</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">t</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'  '</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%(#{clean_req req})</span>
+              <span class="ruby-identifier">t</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%( depends on)</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">tree</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">req</span>
+              <span class="ruby-identifier">t</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(\n)</span>
+              <span class="ruby-identifier">depth</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">t</span>
+          <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">requirement</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'bundler'</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%(\n  Current Bundler version:\n    bundler (#{Bundler::VERSION}))</span>
+            <span class="ruby-identifier">other_bundler_required</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">requirement</span>.<span class="ruby-identifier">requirement</span>.<span class="ruby-identifier">satisfied_by?</span>(<span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">VERSION</span>)
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">requirement</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;bundler&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">other_bundler_required</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;This Gemfile requires a different version of Bundler.\n&quot;</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;Perhaps you need to update Bundler by running `gem install bundler`?\n&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">locked_requirement</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(Running `bundle update` will rebuild your snapshot from scratch, using only\n)</span>
+            <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%(the gems in your Gemfile, which may resolve the conflict.\n)</span>
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">existing</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">conflict</span>.<span class="ruby-identifier">requirement_trees</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+              <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Could not find gem '#{clean_req(conflict.requirement)}', which is required by &quot;</span>
+              <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;gem '#{clean_req(conflict.requirement_trees.first[-2])}', in any of the sources.&quot;</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">o</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Could not find gem '#{clean_req(conflict.requirement)} in any of the sources\n&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">o</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start (Bundler::Thor::Base::ClassMethods)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/thor/lib/thor/base.rb, line 438</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-identifier">given_args</span> = <span class="ruby-constant">ARGV</span>, <span class="ruby-identifier">config</span> = {})
+        <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:shell</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Thor</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">shell</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">dispatch</span>(<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">given_args</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">config</span>)
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Thor</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:debug</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-value str">&quot;THOR_DEBUG&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;1&quot;</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:shell</span>].<span class="ruby-identifier">error</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)
+        <span class="ruby-identifier">exit</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">exit_on_failure?</span>
+      <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EPIPE</span>
+        <span class="ruby-comment cmt"># This happens if a thor command is piped to something like `head`,</span>
+        <span class="ruby-comment cmt"># which closes the pipe when it's done reading. This will also</span>
+        <span class="ruby-comment cmt"># mean that if the pipe is closed, further unnecessary</span>
+        <span class="ruby-comment cmt"># computation will not occur.</span>
+        <span class="ruby-identifier">exit</span>(<span class="ruby-value">0</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

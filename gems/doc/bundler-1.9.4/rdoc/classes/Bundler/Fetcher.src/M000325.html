@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>use_api (Bundler::Fetcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/fetcher.rb, line 237</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">use_api</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@use_api</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@use_api</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">remote_uri</span>.<span class="ruby-identifier">scheme</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;file&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Bundler</span><span class="ruby-operator">::</span><span class="ruby-constant">Fetcher</span>.<span class="ruby-identifier">disable_endpoint</span>
+        <span class="ruby-ivar">@use_api</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">dependency_api_uri</span>)
+        <span class="ruby-ivar">@use_api</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NetworkDownError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">HTTPError</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">AuthenticationRequiredError</span>
+      <span class="ruby-comment cmt"># We got a 401 from the server. Don't fall back to the full index, just fail.</span>
+      <span class="ruby-identifier">raise</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">HTTPError</span>
+      <span class="ruby-ivar">@use_api</span> = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

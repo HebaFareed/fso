@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Is the request <tt>req</tt> idempotent or is retry_change_requests allowed.
+- !ruby/struct:SM::Flow::P 
+  body: If +retried_on_ruby_2+ is true, true will be returned if we are on ruby, retry_change_requests is allowed and the request is not idempotent.
+full_name: Net::HTTP::Persistent#can_retry?
+is_singleton: false
+name: can_retry?
+params: (req, retried_on_ruby_2 = false)
+visibility: public

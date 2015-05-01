@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CurrentRuby#on_21?
+is_singleton: false
+name: on_21?
+params: ()
+visibility: public

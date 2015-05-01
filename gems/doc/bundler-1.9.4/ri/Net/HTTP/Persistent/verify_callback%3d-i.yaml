@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: SSL verification callback.
+full_name: Net::HTTP::Persistent#verify_callback=
+is_singleton: false
+name: verify_callback=
+params: (callback)
+visibility: public

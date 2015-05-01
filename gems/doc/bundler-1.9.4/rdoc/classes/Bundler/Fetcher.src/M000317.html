@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>user_agent (Bundler::Fetcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/fetcher.rb, line 73</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">user_agent</span>
+        <span class="ruby-ivar">@user_agent</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">ruby</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ruby_version</span>
+
+          <span class="ruby-identifier">agent</span> = <span class="ruby-node">&quot;bundler/#{Bundler::VERSION}&quot;</span>
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; rubygems/#{Gem::VERSION}&quot;</span>
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; ruby/#{ruby.version}&quot;</span>
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; (#{ruby.host})&quot;</span>
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; command/#{ARGV.first}&quot;</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ruby</span>.<span class="ruby-identifier">engine</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;ruby&quot;</span>
+            <span class="ruby-comment cmt"># engine_version raises on unknown engines</span>
+            <span class="ruby-identifier">engine_version</span> = <span class="ruby-identifier">ruby</span>.<span class="ruby-identifier">engine_version</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;???&quot;</span>
+            <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{ruby.engine}/#{engine_version}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; options/#{Bundler.settings.all.join(&quot;,&quot;)}&quot;</span>
+
+          <span class="ruby-comment cmt"># add a random ID so we can consolidate runs server-side</span>
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>(<span class="ruby-value">8</span>)
+
+          <span class="ruby-comment cmt"># add any user agent strings set in the config</span>
+          <span class="ruby-identifier">extra_ua</span> = <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">settings</span>[<span class="ruby-identifier">:user_agent</span>]
+          <span class="ruby-identifier">agent</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">extra_ua</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">extra_ua</span>
+
+          <span class="ruby-identifier">agent</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Conveys information about the resolution process to a user.
+constants: []
+
+full_name: Bundler::Molinillo::UI
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: after_resolution
+- !ruby/object:RI::MethodSummary 
+  name: before_resolution
+- !ruby/object:RI::MethodSummary 
+  name: debug
+- !ruby/object:RI::MethodSummary 
+  name: debug?
+- !ruby/object:RI::MethodSummary 
+  name: indicate_progress
+- !ruby/object:RI::MethodSummary 
+  name: output
+- !ruby/object:RI::MethodSummary 
+  name: progress_rate
+name: UI
+superclass: 

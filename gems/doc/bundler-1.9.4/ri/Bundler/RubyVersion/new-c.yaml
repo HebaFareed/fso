@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubyVersion::new
+is_singleton: true
+name: new
+params: (version, patchlevel, engine, engine_version)
+visibility: public

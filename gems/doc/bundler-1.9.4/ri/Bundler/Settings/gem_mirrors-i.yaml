@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Settings#gem_mirrors
+is_singleton: false
+name: gem_mirrors
+params: ()
+visibility: public

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>ssl (Net::HTTP::Persistent)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/net/http/persistent.rb, line 1135</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ssl</span> <span class="ruby-identifier">connection</span>
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-keyword kw">true</span>
+
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">ssl_version</span> = <span class="ruby-ivar">@ssl_version</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@ssl_version</span>
+
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">verify_mode</span> = <span class="ruby-ivar">@verify_mode</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_PEER</span> <span class="ruby-operator">==</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_NONE</span> <span class="ruby-keyword kw">and</span>
+       <span class="ruby-keyword kw">not</span> <span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">:I_KNOW_THAT_OPENSSL_VERIFY_PEER_EQUALS_VERIFY_NONE_IS_WRONG</span>) <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;!!!SECURITY WARNING!!!\n\nThe SSL HTTP connection to:\n\n\#{connection.address}:\#{connection.port}\n\n!!!MAY NOT BE VERIFIED!!!\n\nOn your platform your OpenSSL implementation is broken.\n\nThere is no difference between the values of VERIFY_NONE and VERIFY_PEER.\n\nThis means that attempting to verify the security of SSL connections may not\nwork.  This exposes you to man-in-the-middle exploits, snooping on the\ncontents of your connection and other dangers to the security of your data.\n\nTo disable this warning define the following constant at top-level in your\napplication:\n\nI_KNOW_THAT_OPENSSL_VERIFY_PEER_EQUALS_VERIFY_NONE_IS_WRONG = nil\n\n&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@ca_file</span> <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">ca_file</span> = <span class="ruby-ivar">@ca_file</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">verify_mode</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_PEER</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">verify_callback</span> = <span class="ruby-ivar">@verify_callback</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@verify_callback</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@certificate</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@private_key</span> <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">cert</span> = <span class="ruby-ivar">@certificate</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">key</span>  = <span class="ruby-ivar">@private_key</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">cert_store</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@cert_store</span> <span class="ruby-keyword kw">then</span>
+                              <span class="ruby-ivar">@cert_store</span>
+                            <span class="ruby-keyword kw">else</span>
+                              <span class="ruby-identifier">store</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>
+                              <span class="ruby-identifier">store</span>.<span class="ruby-identifier">set_default_paths</span>
+                              <span class="ruby-identifier">store</span>
+                            <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

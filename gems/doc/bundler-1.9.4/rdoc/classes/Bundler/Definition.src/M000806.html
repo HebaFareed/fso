@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>fixup_dependency_types! (Bundler::Definition)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/definition.rb, line 96</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fixup_dependency_types!</span>
+      <span class="ruby-comment cmt"># XXX This is a temporary workaround for a bug when using rubygems 1.8.15</span>
+      <span class="ruby-comment cmt"># where Gem::Dependency#== matches Gem::Dependency#type. As the lockfile</span>
+      <span class="ruby-comment cmt"># doesn't carry a notion of the dependency type, if you use</span>
+      <span class="ruby-comment cmt"># add_development_dependency in a gemspec that's loaded with the gemspec</span>
+      <span class="ruby-comment cmt"># directive, the lockfile dependencies and resolved dependencies end up</span>
+      <span class="ruby-comment cmt"># with a mismatch on #type.</span>
+      <span class="ruby-comment cmt"># Test coverage to catch a regression on this is in gemspec_spec.rb</span>
+      <span class="ruby-ivar">@dependencies</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ld</span> = <span class="ruby-ivar">@locked_deps</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">name</span> }
+          <span class="ruby-identifier">ld</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@type</span>, <span class="ruby-identifier">d</span>.<span class="ruby-identifier">type</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

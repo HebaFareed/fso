@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Thor::Command#private_method?
+is_singleton: false
+name: private_method?
+params: (instance)
+visibility: protected

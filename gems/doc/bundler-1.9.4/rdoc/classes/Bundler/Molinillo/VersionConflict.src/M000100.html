@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Bundler::Molinillo::VersionConflict)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/vendor/molinillo/lib/molinillo/errors.rb, line 54</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">conflicts</span>)
+      <span class="ruby-identifier">pairs</span> = []
+      <span class="ruby-identifier">conflicts</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:requirements</span>).<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conflicting</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">conflicting</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">source</span>, <span class="ruby-identifier">conflict_requirements</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">conflict_requirements</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">pairs</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">c</span>, <span class="ruby-identifier">source</span>]
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">super</span> <span class="ruby-value str">&quot;Unable to satisfy the following requirements:\n\n&quot;</span> \
+        <span class="ruby-node">&quot;#{pairs.map { |r, d| &quot;- `#{r}` required by `#{d}`&quot; }.join(&quot;\n&quot;)}&quot;</span>
+      <span class="ruby-ivar">@conflicts</span> = <span class="ruby-identifier">conflicts</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: group
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::CLI::Console
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: get_console
+- !ruby/object:RI::MethodSummary 
+  name: get_constant
+- !ruby/object:RI::MethodSummary 
+  name: run
+name: Console
+superclass: Object

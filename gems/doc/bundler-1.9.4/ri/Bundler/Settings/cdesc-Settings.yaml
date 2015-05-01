@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BOOL_KEYS
+  value: "%w(frozen cache_all no_prune disable_local_branch_check gem.mit gem.coc).freeze"
+full_name: Bundler::Settings
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: all
+- !ruby/object:RI::MethodSummary 
+  name: allow_sudo?
+- !ruby/object:RI::MethodSummary 
+  name: app_cache_path
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: gem_mirrors
+- !ruby/object:RI::MethodSummary 
+  name: ignore_config?
+- !ruby/object:RI::MethodSummary 
+  name: local_overrides
+- !ruby/object:RI::MethodSummary 
+  name: locations
+- !ruby/object:RI::MethodSummary 
+  name: path
+- !ruby/object:RI::MethodSummary 
+  name: pretty_values_for
+- !ruby/object:RI::MethodSummary 
+  name: set_global
+- !ruby/object:RI::MethodSummary 
+  name: set_local
+- !ruby/object:RI::MethodSummary 
+  name: without
+- !ruby/object:RI::MethodSummary 
+  name: without=
+name: Settings
+superclass: Object

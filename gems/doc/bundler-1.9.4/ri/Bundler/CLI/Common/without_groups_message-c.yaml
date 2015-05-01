@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI::Common::without_groups_message
+is_singleton: true
+name: without_groups_message
+params: ()
+visibility: public

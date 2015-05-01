@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Source::Rubygems#can_lock?
+is_singleton: false
+name: can_lock?
+params: (spec)
+visibility: public

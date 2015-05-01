@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: dependency_names
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: mirror_for
+comment: 
+constants: []
+
+full_name: Bundler::Source
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: can_lock?
+- !ruby/object:RI::MethodSummary 
+  name: include?
+- !ruby/object:RI::MethodSummary 
+  name: unmet_deps
+- !ruby/object:RI::MethodSummary 
+  name: version_message
+name: Source
+superclass: Object

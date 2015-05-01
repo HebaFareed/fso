@@ -1,0 +1,32 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Comment all lines matching a given regex. It will leave the space which existed before the beginning of the line in tact and will insert a single space after the comment hash.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: path of the file to be changed
+  - !ruby/struct:SM::Flow::LI 
+    label: "flag<Regexp|String>:"
+    body: the regexp or string used to decide which lines to comment
+  - !ruby/struct:SM::Flow::LI 
+    label: "config<Hash>:"
+    body: give :verbose =&gt; false to not log the status.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  comment_lines 'config/initializers/session_store.rb', /cookie_store/\n"
+full_name: Bundler::Thor::Actions#comment_lines
+is_singleton: false
+name: comment_lines
+params: (path, flag, *args)
+visibility: public

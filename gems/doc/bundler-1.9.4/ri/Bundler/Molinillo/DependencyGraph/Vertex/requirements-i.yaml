@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Array&lt;Object&gt;] all of the requirements that required"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  this vertex\n"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#requirements
+is_singleton: false
+name: requirements
+params: ()
+visibility: public

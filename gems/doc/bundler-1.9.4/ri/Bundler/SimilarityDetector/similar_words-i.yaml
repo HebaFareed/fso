@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: return an array of words similar to 'word' from the corpus
+full_name: Bundler::SimilarityDetector#similar_words
+is_singleton: false
+name: similar_words
+params: (word, limit=3)
+visibility: public

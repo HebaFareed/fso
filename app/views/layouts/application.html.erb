@@ -14,7 +14,7 @@
 <div class="logo"><img src="img/temp-logo.png" alt=""/></div>
 </div>
 <div class="col-md-11">
-<ul class="nav nav-pills col-md-7">
+<ul class="nav nav-pills col-md-9">
   <li><a href="/">الرئيسية</a></li>
   <li><a href="<%= jobs_path%>">الوظائف</a></li>
   <li><a href="<%= home_internship_path%>">التدريبات</a></li>
@@ -25,7 +25,7 @@
 </ul>
 
 <% if applicant_signed_in? %>
-<div class=" col-md-5 sign">
+<div class=" col-md-3 sign">
 
         
         <div class="col-md-4"> <%= link_to "الصفحة الشخصية", applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
@@ -44,7 +44,7 @@
 
 <% elsif employer_signed_in? %>
 
-<div class=" col-md-5 sign">
+<div class=" col-md-3 sign">
 
         
         <div class="col-md-4"> <%= link_to "التدريبات الخاصة", internship_employer_path(current_employer), :method => :get %> </div>
@@ -62,10 +62,10 @@
 </div>
     <% else %>
 
-<div class=" col-md-4 sign">
+<div class=" col-md-3 sign">
   <div class="row">
-<div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
-<div class="col-md-6"><a class="btn btn-block btn-lg btn-primary" href="#" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
+<div class="col-md-6"><a class="btn btn-block btn-sm btn-danger" href="#" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
+<div class="col-md-6"><a class="btn btn-block btn-sm btn-primary" href="#" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
 </div>
 </div>
 <%end%>

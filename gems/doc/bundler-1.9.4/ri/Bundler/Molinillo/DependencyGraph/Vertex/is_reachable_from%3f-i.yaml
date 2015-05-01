@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #ancestor?"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#is_reachable_from?
+is_singleton: false
+name: is_reachable_from?
+params: (other)
+visibility: public

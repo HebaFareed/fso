@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: available?
+comment: 
+constants: []
+
+full_name: Bundler::Thor::LineEditor::Readline
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: readline
+name: Readline
+superclass: Basic

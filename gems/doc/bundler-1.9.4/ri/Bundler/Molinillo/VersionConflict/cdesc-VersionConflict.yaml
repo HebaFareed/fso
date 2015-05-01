@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [{String =&gt; Resolution::Conflict}] the conflicts that caused"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  resolution to fail\n"
+  name: conflicts
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An error caused by conflicts in version
+constants: []
+
+full_name: Bundler::Molinillo::VersionConflict
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: clean_req
+- !ruby/object:RI::MethodSummary 
+  name: message
+name: VersionConflict
+superclass: ResolverError

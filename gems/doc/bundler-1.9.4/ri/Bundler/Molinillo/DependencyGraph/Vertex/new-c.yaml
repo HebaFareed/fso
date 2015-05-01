@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@param [DependencyGraph] graph see {#graph} @param [String] name see {#name} @param [Object] payload see {#payload}"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex::new
+is_singleton: true
+name: new
+params: (graph, name, payload)
+visibility: public

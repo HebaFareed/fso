@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: cert=
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Sets this client's OpenSSL::X509::Certificate
+full_name: Net::HTTP::Persistent#certificate=
+is_singleton: false
+name: certificate=
+params: (certificate)
+visibility: public

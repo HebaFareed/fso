@@ -1,0 +1,55 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: dependencies
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: name
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: platform
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: source
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: source_uri
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: version
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: used for Creating Specifications from the Gemcutter Endpoint
+constants: []
+
+full_name: Bundler::EndpointSpecification
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: MatchPlatform
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __swap__
+- !ruby/object:RI::MethodSummary 
+  name: _local_specification
+- !ruby/object:RI::MethodSummary 
+  name: bindir
+- !ruby/object:RI::MethodSummary 
+  name: executables
+- !ruby/object:RI::MethodSummary 
+  name: fetch_platform
+- !ruby/object:RI::MethodSummary 
+  name: post_install_message
+- !ruby/object:RI::MethodSummary 
+  name: require_paths
+name: EndpointSpecification
+superclass: Gem::Specification

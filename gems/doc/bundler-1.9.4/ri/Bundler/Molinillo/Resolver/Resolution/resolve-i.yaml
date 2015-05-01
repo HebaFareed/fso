@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Resolves the {#original_requested} dependencies into a full dependency
+- !ruby/struct:SM::Flow::VERB 
+  body: "  graph\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@raise [ResolverError] if successful resolution is impossible @return [DependencyGraph] the dependency graph of successfully resolved"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  dependencies\n"
+full_name: Bundler::Molinillo::Resolver::Resolution#resolve
+is_singleton: false
+name: resolve
+params: ()
+visibility: public

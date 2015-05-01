@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI::Clean#require_path_or_force
+is_singleton: false
+name: require_path_or_force
+params: ()
+visibility: protected

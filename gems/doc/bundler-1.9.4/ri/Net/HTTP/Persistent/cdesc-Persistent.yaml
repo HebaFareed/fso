@@ -1,0 +1,376 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: An SSL certificate authority. Setting this will set verify_mode to VERIFY_PEER.
+  name: ca_file
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: An SSL certificate store. Setting this will override the default certificate store. See verify_mode for more information.
+  name: cert_store
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: This client's OpenSSL::X509::Certificate
+  name: certificate
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Sends debug_output to this IO via Net::HTTP#set_debug_output.
+  - !ruby/struct:SM::Flow::P 
+    body: Never use this method in production code, it causes a serious security hole.
+  name: debug_output
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Headers that are added to every request using Net::HTTP#add_field
+  name: headers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Maps host:port to an HTTP version. This allows us to enable version specific features.
+  name: http_versions
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Maximum time an unused connection can remain idle before being automatically closed.
+  name: idle_timeout
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The value sent in the Keep-Alive header. Defaults to 30. Not needed for HTTP/1.1 servers.
+  - !ruby/struct:SM::Flow::P 
+    body: This may not work correctly for HTTP/1.0 servers
+  - !ruby/struct:SM::Flow::P 
+    body: This method may be removed in a future version as RFC 2616 does not require this header.
+  name: keep_alive
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Maximum number of requests on a connection before it is considered expired and automatically closed.
+  name: max_requests
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A name for this connection. Allows you to keep your connections apart from everybody else's.
+  name: name
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: List of host suffixes which will not be proxied
+  name: no_proxy
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Seconds to wait until a connection is opened. See Net::HTTP#open_timeout
+  name: open_timeout
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Headers that are added to every request using Net::HTTP#[]=
+  name: override_headers
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: This client's SSL private key
+  name: private_key
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The URL through which requests will be proxied
+  name: proxy_uri
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Seconds to wait until reading one block. See Net::HTTP#read_timeout
+  name: read_timeout
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Enable retries of non-idempotent requests that change data (e.g. POST requests) when the server has disconnected.
+  - !ruby/struct:SM::Flow::P 
+    body: This will in the worst case lead to multiple requests with the same data, but it may be useful for some applications. Take care when enabling this option to ensure it is safe to POST or perform other non-idempotent requests to the server.
+  name: retry_change_requests
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "By default SSL sessions are reused to avoid extra SSL handshakes. Set this to false if you have problems communicating with an HTTPS server like:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  SSL_connect [...] read finished A: unexpected message (OpenSSL::SSL::SSLError)\n"
+  name: reuse_ssl_sessions
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: An array of options for Socket#setsockopt.
+  - !ruby/struct:SM::Flow::P 
+    body: By default the TCP_NODELAY option is set on sockets.
+  - !ruby/struct:SM::Flow::P 
+    body: "To set additional options append them to this array:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  http.socket_options &lt;&lt; [Socket::SOL_SOCKET, Socket::SO_KEEPALIVE, 1]\n"
+  name: socket_options
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: SSL version to use.
+  - !ruby/struct:SM::Flow::P 
+    body: By default, the version will be negotiated automatically between client and server. Ruby 1.9 and newer only.
+  name: ssl_version
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: SSL verification callback. Used when ca_file is set.
+  name: verify_callback
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: HTTPS verify mode. Defaults to OpenSSL::SSL::VERIFY_PEER which verifies the server certificate.
+  - !ruby/struct:SM::Flow::P 
+    body: If no ca_file or cert_store is set the default system certificate store is used.
+  - !ruby/struct:SM::Flow::P 
+    body: You can use <tt>verify_mode</tt> to override any default values.
+  name: verify_mode
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: detect_idle_timeout
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Persistent connections for Net::HTTP
+- !ruby/struct:SM::Flow::P 
+  body: Net::HTTP::Persistent maintains persistent connections across all the servers you wish to talk to. For each host:port you communicate with a single persistent connection is created.
+- !ruby/struct:SM::Flow::P 
+  body: Multiple Net::HTTP::Persistent objects will share the same set of connections.
+- !ruby/struct:SM::Flow::P 
+  body: For each thread you start a new connection will be created. A Net::HTTP::Persistent connection will not be shared across threads.
+- !ruby/struct:SM::Flow::P 
+  body: "You can shut down the HTTP connections when done by calling #shutdown. You should name your Net::HTTP::Persistent object if you intend to call this method."
+- !ruby/struct:SM::Flow::P 
+  body: "Example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'net/http/persistent'\n\n  uri = URI 'http://example.com/awesome/web/service'\n\n  http = Net::HTTP::Persistent.new 'my_app_name'\n\n  # perform a GET\n  response = http.request uri\n\n  # or\n\n  get = Net::HTTP::Get.new uri.request_uri\n  response = http.request get\n\n  # create a POST\n  post_uri = uri + 'create'\n  post = Net::HTTP::Post.new post_uri.path\n  post.set_form_data 'some' =&gt; 'cool data'\n\n  # perform the POST, the URI is always required\n  response http.request post_uri, post\n"
+- !ruby/struct:SM::Flow::P 
+  body: Note that for GET, HEAD and other requests that do not have a body you want to use URI#request_uri not URI#path. The request_uri contains the query params which are sent in the body for other requests.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: SSL
+- !ruby/struct:SM::Flow::P 
+  body: SSL connections are automatically created depending upon the scheme of the URI. SSL connections are automatically verified against the default certificate store for your computer. You can override this by changing verify_mode or by specifying an alternate cert_store.
+- !ruby/struct:SM::Flow::P 
+  body: "Here are the SSL settings, see the individual methods for documentation:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "#certificate        :"
+    body: This client's certificate
+  - !ruby/struct:SM::Flow::LI 
+    label: "#ca_file            :"
+    body: The certificate-authority
+  - !ruby/struct:SM::Flow::LI 
+    label: "#cert_store         :"
+    body: An SSL certificate store
+  - !ruby/struct:SM::Flow::LI 
+    label: "#private_key        :"
+    body: The client's SSL private key
+  - !ruby/struct:SM::Flow::LI 
+    label: "#reuse_ssl_sessions :"
+    body: Reuse a previously opened SSL session for a new connection
+  - !ruby/struct:SM::Flow::LI 
+    label: "#ssl_version        :"
+    body: Which specific SSL version to use
+  - !ruby/struct:SM::Flow::LI 
+    label: "#verify_callback    :"
+    body: For server certificate verification
+  - !ruby/struct:SM::Flow::LI 
+    label: "#verify_mode        :"
+    body: How connections should be verified
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Proxies
+- !ruby/struct:SM::Flow::P 
+  body: "A proxy can be set through #proxy= or at initialization time by providing a second argument to ::new. The proxy may be the URI of the proxy server or <tt>:ENV</tt> which will consult environment variables."
+- !ruby/struct:SM::Flow::P 
+  body: "See #proxy= and #proxy_from_env for details."
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Headers
+- !ruby/struct:SM::Flow::P 
+  body: "Headers may be specified for use in every request. #headers are appended to any headers on the request. #override_headers replace existing headers on the request."
+- !ruby/struct:SM::Flow::P 
+  body: The difference between the two can be seen in setting the User-Agent. Using <tt>http.headers['User-Agent'] = 'MyUserAgent'</tt> will send &quot;Ruby, MyUserAgent&quot; while <tt>http.override_headers['User-Agent'] = 'MyUserAgent'</tt> will send &quot;MyUserAgent&quot;.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Tuning
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Segregation
+- !ruby/struct:SM::Flow::P 
+  body: By providing an application name to ::new you can separate your connections from the connections of other applications.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Idle Timeout
+- !ruby/struct:SM::Flow::P 
+  body: "If a connection hasn't been used for this number of seconds it will automatically be reset upon the next use to avoid attempting to send to a closed connection. The default value is 5 seconds. nil means no timeout. Set through #idle_timeout."
+- !ruby/struct:SM::Flow::P 
+  body: Reducing this value may help avoid the &quot;too many connection resets&quot; error when sending non-idempotent requests while increasing this value will cause fewer round-trips.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Read Timeout
+- !ruby/struct:SM::Flow::P 
+  body: "The amount of time allowed between reading two chunks from the socket. Set through #read_timeout"
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Max Requests
+- !ruby/struct:SM::Flow::P 
+  body: The number of requests that should be made before opening a new connection. Typically many keep-alive capable servers tune this to 100 or less, so the 101st request will fail with ECONNRESET. If unset (default), this value has no effect, if set, connections will be reset on the request after max_requests.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Open Timeout
+- !ruby/struct:SM::Flow::P 
+  body: "The amount of time to wait for a connection to be opened. Set through #open_timeout."
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Socket Options
+- !ruby/struct:SM::Flow::P 
+  body: "Socket options may be set on newly-created connections. See #socket_options for details."
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Non-Idempotent Requests
+- !ruby/struct:SM::Flow::P 
+  body: By default non-idempotent requests will not be retried per RFC 2616. By setting retry_change_requests to true requests will automatically be retried once.
+- !ruby/struct:SM::Flow::P 
+  body: Only do this when you know that retrying a POST or other non-idempotent request is safe for your application and will not create duplicate resources.
+- !ruby/struct:SM::Flow::P 
+  body: "The recommended way to handle non-idempotent requests is the following:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'net/http/persistent'\n\n  uri = URI 'http://example.com/awesome/web/service'\n  post_uri = uri + 'create'\n\n  http = Net::HTTP::Persistent.new 'my_app_name'\n\n  post = Net::HTTP::Post.new post_uri.path\n  # ... fill in POST request\n\n  begin\n    response = http.request post_uri, post\n  rescue Net::HTTP::Persistent::Error\n\n    # POST failed, make a new request to verify the server did not process\n    # the request\n    exists_uri = uri + '...'\n    response = http.get exists_uri\n\n    # Retry if it failed\n    retry if response.code == '404'\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: The method of determining if the resource was created or not is unique to the particular service you are using. Of course, you will want to add protection from infinite looping.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Connection Termination
+- !ruby/struct:SM::Flow::P 
+  body: "If you are done using the Net::HTTP::Persistent instance you may shut down all the connections in the current thread with #shutdown. This is not recommended for normal use, it should only be used when it will be several minutes before you make another HTTP request."
+- !ruby/struct:SM::Flow::P 
+  body: "If you are using multiple threads, call #shutdown in each thread when the thread is done making requests. If you don't call shutdown, that's OK. Ruby will automatically garbage collect and shutdown your HTTP connections when the thread terminates."
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Is OpenSSL available? This test works with autoload
+  name: HAVE_OPENSSL
+  value: "defined? OpenSSL::SSL # :nodoc:"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The version of Net::HTTP::Persistent you are using
+  name: VERSION
+  value: "'2.9.3'"
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Exceptions rescued for automatic retry on ruby 2.0.0. This overlaps with the exception list for ruby 1.x.
+  name: RETRIED_EXCEPTIONS
+  value: "[ # :nodoc:     (Net::ReadTimeout if Net.const_defined? :ReadTimeout),     IOError,     EOFError,     Errno::ECONNRESET,     Errno::ECONNABORTED,     Errno::EPIPE,     (OpenSSL::SSL::SSLError if HAVE_OPENSSL),     Timeout::Error,   ].compact"
+full_name: Net::HTTP::Persistent
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ca_file=
+- !ruby/object:RI::MethodSummary 
+  name: can_retry?
+- !ruby/object:RI::MethodSummary 
+  name: cert=
+- !ruby/object:RI::MethodSummary 
+  name: cert_store=
+- !ruby/object:RI::MethodSummary 
+  name: certificate=
+- !ruby/object:RI::MethodSummary 
+  name: connection_close?
+- !ruby/object:RI::MethodSummary 
+  name: connection_close?
+- !ruby/object:RI::MethodSummary 
+  name: connection_for
+- !ruby/object:RI::MethodSummary 
+  name: connection_keep_alive?
+- !ruby/object:RI::MethodSummary 
+  name: connection_keep_alive?
+- !ruby/object:RI::MethodSummary 
+  name: error_message
+- !ruby/object:RI::MethodSummary 
+  name: escape
+- !ruby/object:RI::MethodSummary 
+  name: expired?
+- !ruby/object:RI::MethodSummary 
+  name: finish
+- !ruby/object:RI::MethodSummary 
+  name: http_version
+- !ruby/object:RI::MethodSummary 
+  name: idempotent?
+- !ruby/object:RI::MethodSummary 
+  name: key=
+- !ruby/object:RI::MethodSummary 
+  name: normalize_uri
+- !ruby/object:RI::MethodSummary 
+  name: pipeline
+- !ruby/object:RI::MethodSummary 
+  name: private_key=
+- !ruby/object:RI::MethodSummary 
+  name: proxy=
+- !ruby/object:RI::MethodSummary 
+  name: proxy_bypass?
+- !ruby/object:RI::MethodSummary 
+  name: proxy_from_env
+- !ruby/object:RI::MethodSummary 
+  name: reconnect
+- !ruby/object:RI::MethodSummary 
+  name: reconnect_ssl
+- !ruby/object:RI::MethodSummary 
+  name: request
+- !ruby/object:RI::MethodSummary 
+  name: reset
+- !ruby/object:RI::MethodSummary 
+  name: shutdown
+- !ruby/object:RI::MethodSummary 
+  name: shutdown_in_all_threads
+- !ruby/object:RI::MethodSummary 
+  name: ssl
+- !ruby/object:RI::MethodSummary 
+  name: ssl_version=
+- !ruby/object:RI::MethodSummary 
+  name: start
+- !ruby/object:RI::MethodSummary 
+  name: unescape
+- !ruby/object:RI::MethodSummary 
+  name: verify_callback=
+- !ruby/object:RI::MethodSummary 
+  name: verify_mode=
+name: Persistent
+superclass: Object

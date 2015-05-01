@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: returns a list of the dependencies
+full_name: Bundler::Index#unmet_dependency_names
+is_singleton: false
+name: unmet_dependency_names
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CurrentRuby#mri_19?
+is_singleton: false
+name: mri_19?
+params: ()
+visibility: public

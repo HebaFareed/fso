@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>request_issue_report_for (Bundler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/friendly_errors.rb, line 43</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">request_issue_report_for</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">info</span> <span class="ruby-value str">&quot;\#{'\342\200\225\342\200\225\342\200\225 ERROR REPORT TEMPLATE \342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225'}\n- What did you do?\n- What did you expect to happen?\n- What happened instead?\n\nError details\n\n\#{e.class}: \#{e.message}\n\#{e.backtrace.join(\&quot;\\n          \&quot;)}\n\n\#{Bundler::Env.new.report(:print_gemfile =&gt; false).gsub(/\\n/, \&quot;\\n      \&quot;).strip}\n\#{'\342\200\225\342\200\225\342\200\225 TEMPLATE END \342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225\342\200\225'}\n\n&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^ {6}/</span>, <span class="ruby-value str">''</span>)
+
+    <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">error</span> <span class="ruby-value str">&quot;Unfortunately, an unexpected error occurred, and Bundler cannot continue.&quot;</span>
+
+    <span class="ruby-constant">Bundler</span>.<span class="ruby-identifier">ui</span>.<span class="ruby-identifier">warn</span> <span class="ruby-value str">&quot;\nFirst, try this link to see if there are any existing issue reports for this error:\n\#{issues_url(e)}\n\nIf there aren't any reports for this error yet, please create copy and paste the report template above into a new issue. Don't forget to anonymize any private data! The new issue form is located at:\nhttps://github.com/bundler/bundler/issues/new\n&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^ {6}/</span>, <span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

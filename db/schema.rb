@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150430151359) do
     t.string   "sex",                    default: "",     null: false
     t.string   "city",                   default: "",     null: false
     t.string   "phone",                  default: "",     null: false
-    t.string   "skills",                 default: "",     null: false
     t.string   "birthday",               default: "",     null: false
     t.string   "status",                 default: "خريج", null: false
     t.boolean  "paid_account",           default: false,  null: false

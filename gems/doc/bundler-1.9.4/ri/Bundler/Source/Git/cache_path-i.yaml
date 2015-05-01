@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This is the path which is going to contain a cache of the git repository. When using the same git repository across different projects, this cache will be shared. When using local git repos, this is set to the local repo.
+full_name: Bundler::Source::Git#cache_path
+is_singleton: false
+name: cache_path
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Fetcher::download_gem_from_uri
+is_singleton: true
+name: download_gem_from_uri
+params: (spec, uri)
+visibility: public

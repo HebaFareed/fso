@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: tsort_each_node
+block_params: v
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Enumerates through the vertices of the graph. @return [Array&lt;Vertex&gt;] The graph's vertices.
+full_name: Bundler::Molinillo::DependencyGraph#each
+is_singleton: false
+name: each
+params: () {|v| ...}
+visibility: public

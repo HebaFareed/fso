@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Bundler::Graph)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/graph.rb, line 6</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">output_file</span>, <span class="ruby-identifier">show_version</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">show_requirements</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">output_format</span> = <span class="ruby-value str">&quot;png&quot;</span>, <span class="ruby-identifier">without</span> = [])
+      <span class="ruby-ivar">@env</span>               = <span class="ruby-identifier">env</span>
+      <span class="ruby-ivar">@output_file</span>       = <span class="ruby-identifier">output_file</span>
+      <span class="ruby-ivar">@show_version</span>      = <span class="ruby-identifier">show_version</span>
+      <span class="ruby-ivar">@show_requirements</span> = <span class="ruby-identifier">show_requirements</span>
+      <span class="ruby-ivar">@output_format</span>     = <span class="ruby-identifier">output_format</span>
+      <span class="ruby-ivar">@without_groups</span>    = <span class="ruby-identifier">without</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_sym</span>)
+
+      <span class="ruby-ivar">@groups</span>            = []
+      <span class="ruby-ivar">@relations</span>         = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>}
+      <span class="ruby-ivar">@node_options</span>      = {}
+      <span class="ruby-ivar">@edge_options</span>      = {}
+
+      <span class="ruby-identifier">_patching_gem_dependency_class</span>
+      <span class="ruby-identifier">_populate_relations</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

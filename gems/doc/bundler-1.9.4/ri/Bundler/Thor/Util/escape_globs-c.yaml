@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a string that has had any glob characters escaped. The glob characters are `* ? { } [ ]`.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Bundler::Thor::Util.escape_globs('[apps]')   # =&gt; '\\[apps\\]'\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/struct:SM::Flow::P 
+  body: String
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Returns
+- !ruby/struct:SM::Flow::P 
+  body: String
+full_name: Bundler::Thor::Util::escape_globs
+is_singleton: true
+name: escape_globs
+params: (path)
+visibility: public

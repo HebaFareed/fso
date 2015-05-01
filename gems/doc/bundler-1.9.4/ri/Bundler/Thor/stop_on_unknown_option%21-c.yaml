@@ -1,0 +1,36 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Stop parsing of options as soon as an unknown option or a regular argument is encountered. All remaining arguments are passed to the command. This is useful if you have a command that can receive arbitrary additional options, and where those additional options should not be handled by Bundler::Thor.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::P 
+  body: To better understand how this is useful, let's consider a command that calls an external command. A user may want to pass arbitrary options and arguments to that command. The command itself also accepts some options, which should be handled by Bundler::Thor.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class_option &quot;verbose&quot;,  :type =&gt; :boolean\n  stop_on_unknown_option! :exec\n  check_unknown_options!  :except =&gt; :exec\n\n  desc &quot;exec&quot;, &quot;Run a shell command&quot;\n  def exec(*args)\n    puts &quot;diagnostic output&quot; if options[:verbose]\n    Kernel.exec(*args)\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Here <tt>exec</tt> can be called with +--verbose+ to get diagnostic output, e.g.:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  $ thor exec --verbose echo foo\n  diagnostic output\n  foo\n"
+- !ruby/struct:SM::Flow::P 
+  body: "But if +--verbose+ is given after <tt>echo</tt>, it is passed to <tt>echo</tt> instead:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  $ thor exec echo --verbose foo\n  --verbose foo\n"
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "Symbol ...:"
+    body: A list of commands that should be affected.
+  type: :NOTE
+full_name: Bundler::Thor::stop_on_unknown_option!
+is_singleton: true
+name: stop_on_unknown_option!
+params: (*command_names)
+visibility: public

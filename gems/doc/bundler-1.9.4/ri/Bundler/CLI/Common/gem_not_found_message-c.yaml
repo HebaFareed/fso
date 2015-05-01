@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI::Common::gem_not_found_message
+is_singleton: true
+name: gem_not_found_message
+params: (missing_gem_name, alternatives)
+visibility: public

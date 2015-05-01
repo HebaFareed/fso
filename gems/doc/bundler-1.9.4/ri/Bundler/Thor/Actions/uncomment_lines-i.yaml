@@ -1,0 +1,32 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Uncomment all lines matching a given regex. It will leave the space which existed before the comment hash in tact but will remove any spacing between the comment hash and the beginning of the line.
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Parameters
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "path<String>:"
+    body: path of the file to be changed
+  - !ruby/struct:SM::Flow::LI 
+    label: "flag<Regexp|String>:"
+    body: the regexp or string used to decide which lines to uncomment
+  - !ruby/struct:SM::Flow::LI 
+    label: "config<Hash>:"
+    body: give :verbose =&gt; false to not log the status.
+  type: :NOTE
+- !ruby/struct:SM::Flow::H 
+  level: 4
+  text: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  uncomment_lines 'config/initializers/session_store.rb', /active_record/\n"
+full_name: Bundler::Thor::Actions#uncomment_lines
+is_singleton: false
+name: uncomment_lines
+params: (path, flag, *args)
+visibility: public

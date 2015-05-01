@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "@return [Fixnum] a hash for the vertex based upon its {#name}"
+full_name: Bundler::Molinillo::DependencyGraph::Vertex#hash
+is_singleton: false
+name: hash
+params: ()
+visibility: public

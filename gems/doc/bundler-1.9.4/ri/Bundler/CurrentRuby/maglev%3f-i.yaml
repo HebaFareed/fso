@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CurrentRuby#maglev?
+is_singleton: false
+name: maglev?
+params: ()
+visibility: public

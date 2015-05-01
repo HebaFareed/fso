@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::UI::Silent#level=
+is_singleton: false
+name: level=
+params: (name)
+visibility: public

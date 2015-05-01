@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the name for the given `dependency`. @note This method should be 'pure', i.e. the return value should depend
+- !ruby/struct:SM::Flow::VERB 
+  body: "  only on the `dependency` parameter.\n"
+- !ruby/struct:SM::Flow::P 
+  body: "@param [Object] dependency @return [String] the name for the given `dependency`."
+full_name: Bundler::Molinillo::SpecificationProvider#name_for
+is_singleton: false
+name: name_for
+params: (dependency)
+visibility: public

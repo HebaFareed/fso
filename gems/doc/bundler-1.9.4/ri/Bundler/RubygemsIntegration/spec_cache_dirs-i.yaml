@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubygemsIntegration#spec_cache_dirs
+is_singleton: false
+name: spec_cache_dirs
+params: ()
+visibility: public

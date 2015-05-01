@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Bundler</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Bundler</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/bundler_rb.html">
+                lib/bundler.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli_rb.html">
+                lib/bundler/cli.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/vendored_thor_rb.html">
+                lib/bundler/vendored_thor.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/fetcher_rb.html">
+                lib/bundler/fetcher.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/rubygems_integration_rb.html">
+                lib/bundler/rubygems_integration.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/injector_rb.html">
+                lib/bundler/injector.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/deprecate_rb.html">
+                lib/bundler/deprecate.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/dep_proxy_rb.html">
+                lib/bundler/dep_proxy.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source_rb.html">
+                lib/bundler/source.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/settings_rb.html">
+                lib/bundler/settings.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/retry_rb.html">
+                lib/bundler/retry.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/constants_rb.html">
+                lib/bundler/constants.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ui/shell_rb.html">
+                lib/bundler/ui/shell.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ui/rg_proxy_rb.html">
+                lib/bundler/ui/rg_proxy.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ui/silent_rb.html">
+                lib/bundler/ui/silent.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/match_platform_rb.html">
+                lib/bundler/match_platform.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/current_ruby_rb.html">
+                lib/bundler/current_ruby.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ruby_dsl_rb.html">
+                lib/bundler/ruby_dsl.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/environment_rb.html">
+                lib/bundler/environment.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/definition_rb.html">
+                lib/bundler/definition.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source/git_rb.html">
+                lib/bundler/source/git.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source/path_rb.html">
+                lib/bundler/source/path.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source/rubygems_rb.html">
+                lib/bundler/source/rubygems.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source/path/installer_rb.html">
+                lib/bundler/source/path/installer.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source/git/git_proxy_rb.html">
+                lib/bundler/source/git/git_proxy.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/gem_installer_rb.html">
+                lib/bundler/gem_installer.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/graph_rb.html">
+                lib/bundler/graph.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ruby_version_rb.html">
+                lib/bundler/ruby_version.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/dsl_rb.html">
+                lib/bundler/dsl.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/gem_helper_rb.html">
+                lib/bundler/gem_helper.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/endpoint_specification_rb.html">
+                lib/bundler/endpoint_specification.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/resolver_rb.html">
+                lib/bundler/resolver.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/friendly_errors_rb.html">
+                lib/bundler/friendly_errors.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/index_rb.html">
+                lib/bundler/index.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/anonymizable_uri_rb.html">
+                lib/bundler/anonymizable_uri.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/similarity_detector_rb.html">
+                lib/bundler/similarity_detector.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/lazy_specification_rb.html">
+                lib/bundler/lazy_specification.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/ui_rb.html">
+                lib/bundler/ui.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/installer_rb.html">
+                lib/bundler/installer.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/psyched_yaml_rb.html">
+                lib/bundler/psyched_yaml.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/console_rb.html">
+                lib/bundler/cli/console.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/update_rb.html">
+                lib/bundler/cli/update.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/clean_rb.html">
+                lib/bundler/cli/clean.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/package_rb.html">
+                lib/bundler/cli/package.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/common_rb.html">
+                lib/bundler/cli/common.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/open_rb.html">
+                lib/bundler/cli/open.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/viz_rb.html">
+                lib/bundler/cli/viz.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/init_rb.html">
+                lib/bundler/cli/init.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/inject_rb.html">
+                lib/bundler/cli/inject.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/outdated_rb.html">
+                lib/bundler/cli/outdated.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/config_rb.html">
+                lib/bundler/cli/config.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/binstubs_rb.html">
+                lib/bundler/cli/binstubs.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/install_rb.html">
+                lib/bundler/cli/install.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/exec_rb.html">
+                lib/bundler/cli/exec.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/show_rb.html">
+                lib/bundler/cli/show.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/gem_rb.html">
+                lib/bundler/cli/gem.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/platform_rb.html">
+                lib/bundler/cli/platform.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/cache_rb.html">
+                lib/bundler/cli/cache.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/cli/check_rb.html">
+                lib/bundler/cli/check.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/vendored_molinillo_rb.html">
+                lib/bundler/vendored_molinillo.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/shared_helpers_rb.html">
+                lib/bundler/shared_helpers.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/worker_rb.html">
+                lib/bundler/worker.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/gem_helpers_rb.html">
+                lib/bundler/gem_helpers.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/lockfile_parser_rb.html">
+                lib/bundler/lockfile_parser.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/env_rb.html">
+                lib/bundler/env.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/source_list_rb.html">
+                lib/bundler/source_list.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/dependency_rb.html">
+                lib/bundler/dependency.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/runtime_rb.html">
+                lib/bundler/runtime.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/deployment_rb.html">
+                lib/bundler/deployment.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/gem_path_manipulation_rb.html">
+                lib/bundler/gem_path_manipulation.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/spec_set_rb.html">
+                lib/bundler/spec_set.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/version_rb.html">
+                lib/bundler/version.rb
+                </a>
+        <br />
+                <a href="../files/lib/bundler/remote_specification_rb.html">
+                lib/bundler/remote_specification.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Some versions of the <a href="Bundler.html">Bundler</a> 1.1 RC series
+introduced corrupted lockfiles. There were two major problems:
+</p>
+<ul>
+<li>multiple copies of the same GIT section appeared in the lockfile
+
+</li>
+<li>when this happened, those sections got multiple copies of gems in those
+sections.
+
+</li>
+</ul>
+<p>
+As a result, <a href="Bundler.html">Bundler</a> 1.1 contains code that
+fixes the earlier corruption. We will remove this fix-up code in <a
+href="Bundler.html">Bundler</a> 1.2.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000021">app_cache</a>&nbsp;&nbsp;
+      <a href="#M000020">app_config_path</a>&nbsp;&nbsp;
+      <a href="#M000006">bin_path</a>&nbsp;&nbsp;
+      <a href="#M000005">bundle_path</a>&nbsp;&nbsp;
+      <a href="#M000018">cache</a>&nbsp;&nbsp;
+      <a href="#M000028">clean_exec</a>&nbsp;&nbsp;
+      <a href="#M000027">clean_system</a>&nbsp;&nbsp;
+      <a href="#M000023">cleanup</a>&nbsp;&nbsp;
+      <a href="#M000041">clear_gemspec_cache</a>&nbsp;&nbsp;
+      <a href="#M000003">configure</a>&nbsp;&nbsp;
+      <a href="#M000045">current_ruby</a>&nbsp;&nbsp;
+      <a href="#M000031">default_bundle_dir</a>&nbsp;&nbsp;
+      <a href="#M000029">default_gemfile</a>&nbsp;&nbsp;
+      <a href="#M000030">default_lockfile</a>&nbsp;&nbsp;
+      <a href="#M000011">definition</a>&nbsp;&nbsp;
+      <a href="#M000010">environment</a>&nbsp;&nbsp;
+      <a href="#M000042">git_present?</a>&nbsp;&nbsp;
+      <a href="#M000015">home</a>&nbsp;&nbsp;
+      <a href="#M000016">install_path</a>&nbsp;&nbsp;
+      <a href="#M000048">issues_url</a>&nbsp;&nbsp;
+      <a href="#M000009">load</a>&nbsp;&nbsp;
+      <a href="#M000039">load_gemspec</a>&nbsp;&nbsp;
+      <a href="#M000040">load_gemspec_uncached</a>&nbsp;&nbsp;
+      <a href="#M000038">load_marshal</a>&nbsp;&nbsp;
+      <a href="#M000012">locked_gems</a>&nbsp;&nbsp;
+      <a href="#M000034">mkdir_p</a>&nbsp;&nbsp;
+      <a href="#M000049">preserve_gem_path</a>&nbsp;&nbsp;
+      <a href="#M000037">read_file</a>&nbsp;&nbsp;
+      <a href="#M000047">request_issue_report_for</a>&nbsp;&nbsp;
+      <a href="#M000008">require</a>&nbsp;&nbsp;
+      <a href="#M000033">requires_sudo?</a>&nbsp;&nbsp;
+      <a href="#M000044">reset!</a>&nbsp;&nbsp;
+      <a href="#M000019">root</a>&nbsp;&nbsp;
+      <a href="#M000013">ruby_scope</a>&nbsp;&nbsp;
+      <a href="#M000043">ruby_version</a>&nbsp;&nbsp;
+      <a href="#M000024">settings</a>&nbsp;&nbsp;
+      <a href="#M000007">setup</a>&nbsp;&nbsp;
+      <a href="#M000017">specs_path</a>&nbsp;&nbsp;
+      <a href="#M000036">sudo</a>&nbsp;&nbsp;
+      <a href="#M000032">system_bindir</a>&nbsp;&nbsp;
+      <a href="#M000022">tmp</a>&nbsp;&nbsp;
+      <a href="#M000004">ui</a>&nbsp;&nbsp;
+      <a href="#M000014">user_bundle_path</a>&nbsp;&nbsp;
+      <a href="#M000035">which</a>&nbsp;&nbsp;
+      <a href="#M000026">with_clean_env</a>&nbsp;&nbsp;
+      <a href="#M000046">with_friendly_errors</a>&nbsp;&nbsp;
+      <a href="#M000025">with_original_env</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="Bundler/GemHelpers.html" class="link">Bundler::GemHelpers</a><br />
+Module <a href="Bundler/MatchPlatform.html" class="link">Bundler::MatchPlatform</a><br />
+Module <a href="Bundler/Molinillo.html" class="link">Bundler::Molinillo</a><br />
+Module <a href="Bundler/RubyDsl.html" class="link">Bundler::RubyDsl</a><br />
+Module <a href="Bundler/SharedHelpers.html" class="link">Bundler::SharedHelpers</a><br />
+Module <a href="Bundler/UI.html" class="link">Bundler::UI</a><br />
+Class <a href="Bundler/AnonymizableURI.html" class="link">Bundler::AnonymizableURI</a><br />
+Class <a href="Bundler/BundlerError.html" class="link">Bundler::BundlerError</a><br />
+Class <a href="Bundler/CLI.html" class="link">Bundler::CLI</a><br />
+Class <a href="Bundler/CurrentRuby.html" class="link">Bundler::CurrentRuby</a><br />
+Class <a href="Bundler/CyclicDependencyError.html" class="link">Bundler::CyclicDependencyError</a><br />
+Class <a href="Bundler/Definition.html" class="link">Bundler::Definition</a><br />
+Class <a href="Bundler/DepProxy.html" class="link">Bundler::DepProxy</a><br />
+Class <a href="Bundler/Dependency.html" class="link">Bundler::Dependency</a><br />
+Class <a href="Bundler/Deployment.html" class="link">Bundler::Deployment</a><br />
+Class <a href="Bundler/Deprecate.html" class="link">Bundler::Deprecate</a><br />
+Class <a href="Bundler/DeprecatedError.html" class="link">Bundler::DeprecatedError</a><br />
+Class <a href="Bundler/Dsl.html" class="link">Bundler::Dsl</a><br />
+Class <a href="Bundler/EndpointSpecification.html" class="link">Bundler::EndpointSpecification</a><br />
+Class <a href="Bundler/Env.html" class="link">Bundler::Env</a><br />
+Class <a href="Bundler/Environment.html" class="link">Bundler::Environment</a><br />
+Class <a href="Bundler/Fetcher.html" class="link">Bundler::Fetcher</a><br />
+Class <a href="Bundler/GemHelper.html" class="link">Bundler::GemHelper</a><br />
+Class <a href="Bundler/GemInstaller.html" class="link">Bundler::GemInstaller</a><br />
+Class <a href="Bundler/GemNotFound.html" class="link">Bundler::GemNotFound</a><br />
+Class <a href="Bundler/GemfileError.html" class="link">Bundler::GemfileError</a><br />
+Class <a href="Bundler/GemfileLockNotFound.html" class="link">Bundler::GemfileLockNotFound</a><br />
+Class <a href="Bundler/GemfileNotFound.html" class="link">Bundler::GemfileNotFound</a><br />
+Class <a href="Bundler/GemspecError.html" class="link">Bundler::GemspecError</a><br />
+Class <a href="Bundler/GitError.html" class="link">Bundler::GitError</a><br />
+Class <a href="Bundler/Graph.html" class="link">Bundler::Graph</a><br />
+Class <a href="Bundler/HTTPError.html" class="link">Bundler::HTTPError</a><br />
+Class <a href="Bundler/Index.html" class="link">Bundler::Index</a><br />
+Class <a href="Bundler/Injector.html" class="link">Bundler::Injector</a><br />
+Class <a href="Bundler/InstallError.html" class="link">Bundler::InstallError</a><br />
+Class <a href="Bundler/InstallHookError.html" class="link">Bundler::InstallHookError</a><br />
+Class <a href="Bundler/Installer.html" class="link">Bundler::Installer</a><br />
+Class <a href="Bundler/InvalidOption.html" class="link">Bundler::InvalidOption</a><br />
+Class <a href="Bundler/LazySpecification.html" class="link">Bundler::LazySpecification</a><br />
+Class <a href="Bundler/LockfileError.html" class="link">Bundler::LockfileError</a><br />
+Class <a href="Bundler/LockfileParser.html" class="link">Bundler::LockfileParser</a><br />
+Class <a href="Bundler/MarshalError.html" class="link">Bundler::MarshalError</a><br />
+Class <a href="Bundler/PathError.html" class="link">Bundler::PathError</a><br />
+Class <a href="Bundler/ProductionError.html" class="link">Bundler::ProductionError</a><br />
+Class <a href="Bundler/RemoteSpecification.html" class="link">Bundler::RemoteSpecification</a><br />
+Class <a href="Bundler/Resolver.html" class="link">Bundler::Resolver</a><br />
+Class <a href="Bundler/Retry.html" class="link">Bundler::Retry</a><br />
+Class <a href="Bundler/RubyVersion.html" class="link">Bundler::RubyVersion</a><br />
+Class <a href="Bundler/RubyVersionMismatch.html" class="link">Bundler::RubyVersionMismatch</a><br />
+Class <a href="Bundler/RubygemsIntegration.html" class="link">Bundler::RubygemsIntegration</a><br />
+Class <a href="Bundler/Runtime.html" class="link">Bundler::Runtime</a><br />
+Class <a href="Bundler/SecurityError.html" class="link">Bundler::SecurityError</a><br />
+Class <a href="Bundler/Settings.html" class="link">Bundler::Settings</a><br />
+Class <a href="Bundler/SimilarityDetector.html" class="link">Bundler::SimilarityDetector</a><br />
+Class <a href="Bundler/Source.html" class="link">Bundler::Source</a><br />
+Class <a href="Bundler/SourceList.html" class="link">Bundler::SourceList</a><br />
+Class <a href="Bundler/SpecSet.html" class="link">Bundler::SpecSet</a><br />
+Class <a href="Bundler/SystemRubyVersion.html" class="link">Bundler::SystemRubyVersion</a><br />
+Class <a href="Bundler/Thor.html" class="link">Bundler::Thor</a><br />
+Class <a href="Bundler/VersionConflict.html" class="link">Bundler::VersionConflict</a><br />
+Class <a href="Bundler/Worker.html" class="link">Bundler::Worker</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ORIGINAL_ENV</td>
+          <td>=</td>
+          <td class="context-item-value">ENV.to_hash</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Deprecate</td>
+          <td>=</td>
+          <td class="context-item-value">::Deprecate</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">Deprecate</td>
+          <td>=</td>
+          <td class="context-item-value">Gem::Deprecate</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">WINDOWS</td>
+          <td>=</td>
+          <td class="context-item-value">RbConfig::CONFIG[&quot;host_os&quot;] =~ %r!(msdos|mswin|djgpp|mingw)!</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FREEBSD</td>
+          <td>=</td>
+          <td class="context-item-value">RbConfig::CONFIG[&quot;host_os&quot;] =~ /bsd/</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">NULL</td>
+          <td>=</td>
+          <td class="context-item-value">WINDOWS ? &quot;NUL&quot; : &quot;/dev/null&quot;</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">YamlSyntaxError</td>
+          <td>=</td>
+          <td class="context-item-value">::Psych::SyntaxError</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">YamlSyntaxError</td>
+          <td>=</td>
+          <td class="context-item-value">::ArgumentError</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">VERSION</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;1.9.4&quot; unless defined?(::Bundler::VERSION)</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+We&#8216;re doing this because we might write tests that deal with other
+versions of bundler and we are unsure how to handle this better.
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">bundle_path</td>
+          <td class="context-item-value">&nbsp;[W]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">rubygems</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">ui</td>
+          <td class="context-item-value">&nbsp;[W]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000021.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000021.html');return false;">
+          <span class="method-name">app_cache</span><span class="method-args">(custom_path = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000020.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000020.html');return false;">
+          <span class="method-name">app_config_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000006.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000006.html');return false;">
+          <span class="method-name">bin_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns absolute location of where binstubs are installed to.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000005.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000005.html');return false;">
+          <span class="method-name">bundle_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns absolute path of where gems are installed on the filesystem.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000018" class="method-detail">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000018.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000018.html');return false;">
+          <span class="method-name">cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000028" class="method-detail">
+        <a name="M000028"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000028.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000028.html');return false;">
+          <span class="method-name">clean_exec</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000027" class="method-detail">
+        <a name="M000027"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000027.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000027.html');return false;">
+          <span class="method-name">clean_system</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000023.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000023.html');return false;">
+          <span class="method-name">cleanup</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000041" class="method-detail">
+        <a name="M000041"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000041.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000041.html');return false;">
+          <span class="method-name">clear_gemspec_cache</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000003.html');return false;">
+          <span class="method-name">configure</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000045" class="method-detail">
+        <a name="M000045"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000045.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000045.html');return false;">
+          <span class="method-name">current_ruby</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns current version of Ruby
+</p>
+<p>
+@return [<a href="Bundler/CurrentRuby.html">CurrentRuby</a>] Current
+version of Ruby
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000031" class="method-detail">
+        <a name="M000031"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000031.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000031.html');return false;">
+          <span class="method-name">default_bundle_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000029" class="method-detail">
+        <a name="M000029"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000029.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000029.html');return false;">
+          <span class="method-name">default_gemfile</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000030" class="method-detail">
+        <a name="M000030"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000030.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000030.html');return false;">
+          <span class="method-name">default_lockfile</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000011.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000011.html');return false;">
+          <span class="method-name">definition</span><span class="method-args">(unlock = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an instance of <a
+href="Bundler/Definition.html">Bundler::Definition</a> for given Gemfile
+and lockfile
+</p>
+<p>
+@param unlock [Hash, Boolean, nil] Gems that have been requested
+</p>
+<pre>
+  to be updated or true if all gems should be updated
+</pre>
+<p>
+@return [<a href="Bundler/Definition.html">Bundler::Definition</a>]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000010.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000010.html');return false;">
+          <span class="method-name">environment</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000042" class="method-detail">
+        <a name="M000042"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000042.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000042.html');return false;">
+          <span class="method-name">git_present?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000015.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000015.html');return false;">
+          <span class="method-name">home</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000016.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000016.html');return false;">
+          <span class="method-name">install_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000048.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000048.html');return false;">
+          <span class="method-name">issues_url</span><span class="method-args">(exception)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000009.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000009.html');return false;">
+          <span class="method-name">load</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000039" class="method-detail">
+        <a name="M000039"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000039.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000039.html');return false;">
+          <span class="method-name">load_gemspec</span><span class="method-args">(file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000040" class="method-detail">
+        <a name="M000040"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000040.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000040.html');return false;">
+          <span class="method-name">load_gemspec_uncached</span><span class="method-args">(file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000038" class="method-detail">
+        <a name="M000038"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000038.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000038.html');return false;">
+          <span class="method-name">load_marshal</span><span class="method-args">(data)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000012.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000012.html');return false;">
+          <span class="method-name">locked_gems</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000034" class="method-detail">
+        <a name="M000034"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000034.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000034.html');return false;">
+          <span class="method-name">mkdir_p</span><span class="method-args">(path)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000049.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000049.html');return false;">
+          <span class="method-name">preserve_gem_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000037" class="method-detail">
+        <a name="M000037"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000037.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000037.html');return false;">
+          <span class="method-name">read_file</span><span class="method-args">(file)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000047" class="method-detail">
+        <a name="M000047"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000047.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000047.html');return false;">
+          <span class="method-name">request_issue_report_for</span><span class="method-args">(e)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000008.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000008.html');return false;">
+          <span class="method-name">require</span><span class="method-args">(*groups)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000033" class="method-detail">
+        <a name="M000033"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000033.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000033.html');return false;">
+          <span class="method-name">requires_sudo?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000044" class="method-detail">
+        <a name="M000044"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000044.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000044.html');return false;">
+          <span class="method-name">reset!</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000019" class="method-detail">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000019.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000019.html');return false;">
+          <span class="method-name">root</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000013.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000013.html');return false;">
+          <span class="method-name">ruby_scope</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000043" class="method-detail">
+        <a name="M000043"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000043.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000043.html');return false;">
+          <span class="method-name">ruby_version</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000024.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000024.html');return false;">
+          <span class="method-name">settings</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000007.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000007.html');return false;">
+          <span class="method-name">setup</span><span class="method-args">(*groups)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000017" class="method-detail">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000017.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000017.html');return false;">
+          <span class="method-name">specs_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000036" class="method-detail">
+        <a name="M000036"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000036.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000036.html');return false;">
+          <span class="method-name">sudo</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000032" class="method-detail">
+        <a name="M000032"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000032.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000032.html');return false;">
+          <span class="method-name">system_bindir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000022.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000022.html');return false;">
+          <span class="method-name">tmp</span><span class="method-args">(name = Process.pid.to_s)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000004.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000004.html');return false;">
+          <span class="method-name">ui</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000014.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000014.html');return false;">
+          <span class="method-name">user_bundle_path</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000035.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000035.html');return false;">
+          <span class="method-name">which</span><span class="method-args">(executable)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000026" class="method-detail">
+        <a name="M000026"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000026.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000026.html');return false;">
+          <span class="method-name">with_clean_env</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000046" class="method-detail">
+        <a name="M000046"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000046.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000046.html');return false;">
+          <span class="method-name">with_friendly_errors</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000025" class="method-detail">
+        <a name="M000025"></a>
+
+        <div class="method-heading">
+          <a href="Bundler.src/M000025.html" target="Code" class="method-signature"
+            onclick="popupCode('Bundler.src/M000025.html');return false;">
+          <span class="method-name">with_original_env</span><span class="method-args">() {|| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

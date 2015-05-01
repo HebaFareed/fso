@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Bundler::Fetcher)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/fetcher.rb, line 104</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">remote_uri</span>)
+      <span class="ruby-ivar">@redirect_limit</span> = <span class="ruby-value">5</span>  <span class="ruby-comment cmt"># How many redirects to allow in one request</span>
+      <span class="ruby-ivar">@api_timeout</span>    = <span class="ruby-value">10</span> <span class="ruby-comment cmt"># How long to wait for each API call</span>
+      <span class="ruby-ivar">@max_retries</span>    = <span class="ruby-value">3</span>  <span class="ruby-comment cmt"># How many retries for the API call</span>
+
+      <span class="ruby-ivar">@anonymizable_uri</span> = <span class="ruby-identifier">configured_uri_for</span>(<span class="ruby-identifier">remote_uri</span>)
+
+      <span class="ruby-constant">Socket</span>.<span class="ruby-identifier">do_not_reverse_lookup</span> = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">connection</span> <span class="ruby-comment cmt"># create persistent connection</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

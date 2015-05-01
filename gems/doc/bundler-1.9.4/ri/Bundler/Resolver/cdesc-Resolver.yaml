@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: resolve
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: ALL
+  value: Bundler::Dependency::PLATFORM_MAP.values.uniq.freeze
+full_name: Bundler::Resolver
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Molinillo::UI
+- !ruby/object:RI::IncludedModule 
+  name: Molinillo::SpecificationProvider
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: after_resolution
+- !ruby/object:RI::MethodSummary 
+  name: before_resolution
+- !ruby/object:RI::MethodSummary 
+  name: debug
+- !ruby/object:RI::MethodSummary 
+  name: debug?
+- !ruby/object:RI::MethodSummary 
+  name: indicate_progress
+- !ruby/object:RI::MethodSummary 
+  name: start
+name: Resolver
+superclass: Object

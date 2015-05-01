@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Thor::Shell::Color#can_display_colors?
+is_singleton: false
+name: can_display_colors?
+params: ()
+visibility: protected

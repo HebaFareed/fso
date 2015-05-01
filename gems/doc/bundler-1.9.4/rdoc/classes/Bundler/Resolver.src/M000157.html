@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>start (Bundler::Resolver)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/bundler/resolver.rb, line 198</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-identifier">requirements</span>)
+      <span class="ruby-identifier">verify_gemfile_dependencies_are_found!</span>(<span class="ruby-identifier">requirements</span>)
+      <span class="ruby-identifier">dg</span> = <span class="ruby-ivar">@resolver</span>.<span class="ruby-identifier">resolve</span>(<span class="ruby-identifier">requirements</span>, <span class="ruby-ivar">@base_dg</span>)
+      <span class="ruby-identifier">dg</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:payload</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_specs</span>).<span class="ruby-identifier">flatten</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Molinillo</span><span class="ruby-operator">::</span><span class="ruby-constant">VersionConflict</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">VersionConflict</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">conflicts</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">uniq</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Molinillo</span><span class="ruby-operator">::</span><span class="ruby-constant">CircularDependencyError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">names</span> = <span class="ruby-identifier">e</span>.<span class="ruby-identifier">dependencies</span>.<span class="ruby-identifier">sort_by</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:name</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;gem '#{d.name}'&quot;</span>}
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">CyclicDependencyError</span>, <span class="ruby-value str">&quot;Your Gemfile requires gems that depend&quot;</span> \
+        <span class="ruby-value str">&quot; on each other, creating an infinite loop. Please remove&quot;</span> \
+        <span class="ruby-node">&quot; #{names.count &gt; 1 ? 'either ' : '' }#{names.join(' or ')}&quot;</span> \
+        <span class="ruby-value str">&quot; and try again.&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

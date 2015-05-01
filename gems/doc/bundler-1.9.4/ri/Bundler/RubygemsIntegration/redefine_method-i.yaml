@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::RubygemsIntegration#redefine_method
+is_singleton: false
+name: redefine_method
+params: (klass, method, &block)
+visibility: public

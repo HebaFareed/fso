@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: http://www.informit.com/articles/article.aspx?p=683059&amp;seqNum=36
+full_name: Bundler::SimilarityDetector#levenshtein_distance
+is_singleton: false
+name: levenshtein_distance
+params: (this, that, ins=2, del=2, sub=1)
+visibility: protected

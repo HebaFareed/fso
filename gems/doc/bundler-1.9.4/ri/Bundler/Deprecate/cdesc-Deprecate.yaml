@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: skip_during
+comment: 
+constants: []
+
+full_name: Bundler::Deprecate
+includes: []
+
+instance_methods: []
+
+name: Deprecate
+superclass: Object

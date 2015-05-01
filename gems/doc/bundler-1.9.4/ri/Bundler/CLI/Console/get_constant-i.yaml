@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::CLI::Console#get_constant
+is_singleton: false
+name: get_constant
+params: (name)
+visibility: public

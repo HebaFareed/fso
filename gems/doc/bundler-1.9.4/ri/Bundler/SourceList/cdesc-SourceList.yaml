@@ -1,0 +1,48 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: git_sources
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: path_sources
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: Bundler::SourceList
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_git_source
+- !ruby/object:RI::MethodSummary 
+  name: add_path_source
+- !ruby/object:RI::MethodSummary 
+  name: add_rubygems_remote
+- !ruby/object:RI::MethodSummary 
+  name: add_rubygems_source
+- !ruby/object:RI::MethodSummary 
+  name: all_sources
+- !ruby/object:RI::MethodSummary 
+  name: cached!
+- !ruby/object:RI::MethodSummary 
+  name: get
+- !ruby/object:RI::MethodSummary 
+  name: lock_sources
+- !ruby/object:RI::MethodSummary 
+  name: remote!
+- !ruby/object:RI::MethodSummary 
+  name: replace_sources!
+- !ruby/object:RI::MethodSummary 
+  name: rubygems_primary_remotes
+- !ruby/object:RI::MethodSummary 
+  name: rubygems_remotes
+- !ruby/object:RI::MethodSummary 
+  name: rubygems_sources
+name: SourceList
+superclass: Object

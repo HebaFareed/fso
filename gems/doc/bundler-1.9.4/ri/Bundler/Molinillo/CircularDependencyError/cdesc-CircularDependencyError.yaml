@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/object:SM::Flow::LIST 
+    contents: 
+    - !ruby/struct:SM::Flow::LI 
+      label: Set<Object>
+      body: the dependencies responsible for causing the error
+    type: :LABELED
+  name: dependencies
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An error caused by attempting to fulfil a dependency that was circular
+- !ruby/struct:SM::Flow::P 
+  body: "@note This exception will be thrown iff a {Vertex} is added to a"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  {DependencyGraph} that has a {DependencyGraph::Vertex#path_to?} an\n  existing {DependencyGraph::Vertex}\n"
+constants: []
+
+full_name: Bundler::Molinillo::CircularDependencyError
+includes: []
+
+instance_methods: []
+
+name: CircularDependencyError
+superclass: ResolverError

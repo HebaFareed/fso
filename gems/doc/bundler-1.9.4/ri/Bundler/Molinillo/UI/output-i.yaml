@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The {IO} object that should be used to print output. `STDOUT`, by default.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [IO]"
+full_name: Bundler::Molinillo::UI#output
+is_singleton: false
+name: output
+params: ()
+visibility: public

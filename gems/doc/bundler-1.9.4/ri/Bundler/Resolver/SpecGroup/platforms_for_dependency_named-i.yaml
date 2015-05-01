@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Bundler::Resolver::SpecGroup#platforms_for_dependency_named
+is_singleton: false
+name: platforms_for_dependency_named
+params: (dependency)
+visibility: public

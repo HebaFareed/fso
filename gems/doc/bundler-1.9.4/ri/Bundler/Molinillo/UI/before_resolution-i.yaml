@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Called before resolution begins.
+- !ruby/struct:SM::Flow::P 
+  body: "@return [void]"
+full_name: Bundler::Molinillo::UI#before_resolution
+is_singleton: false
+name: before_resolution
+params: ()
+visibility: public
