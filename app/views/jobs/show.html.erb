@@ -8,7 +8,7 @@
           <div class="profile-pic"> <i class="fa fa-user"></i> </div>
         </div>
         <div class="col-md-7">
-          <p class="name"><%= @job.title %></p>
+          <p class="name"><% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %><%= @job.title %></p>
           <p class="job-title"><%= @job.employer.co_name %></p>
         </div>
         <div class="applicant-buttons">

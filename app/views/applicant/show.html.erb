@@ -18,7 +18,7 @@
                 <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant), :class => "btn btn-block btn-danger btn-sm" %> </div>
                 <div class="col-md-6"> <%= link_to "تصفح الوظائف", employer_index_path, :class => "btn btn-block btn-danger btn-sm" %></div>
                 <div class="col-md-12"> <a href="#" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div>
-              <% elsif employer_signed_in? %>
+              <% else %>
                   <% if current_employer.paid_account || applicant.paid_account %>
               <div class="col-md-12"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
                   <% end%>

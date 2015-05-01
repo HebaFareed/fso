@@ -13,15 +13,17 @@
 <div class="content company-sign-up">
     <div class="col-md-8 col-md-offset-2">
 <h2>وظيفة\تدريب جديد</h2>
+
+        
         <div class="row">
-        <div class="col-md-12">
-             <%= f.select(:internship, [["وظيفة", "false"], ["تدريب", "true"]], {:class =>'form-control internship'})%>    
-        </div>
+          <div class="col-md-12">
+            <%= f.select(:sex, [["للرجال", "male"], ["للسيدات", "female"], ["للرجال والسيدات", "both"] ], {include_blank: 'النوع'}, {:class =>'form-control'})%>
+            </div>
         </div>
         <div class="row">
            <div class="col-md-12">
               <label>شرط الوظيفة
-                 <%= f.select(:applicant_status, [["سيدة", "women"], ["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {:class =>'form-control job_condition'})%>
+                 <%= f.select(:applicant_status, ["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {:class =>'form-control job_condition'})%>
                </label>
             </div>
         </div>

@@ -11,19 +11,26 @@
     <div class="header ">
       <div class="row">
 <div class="col-md-1">
-<div class="logo"><img src="img/temp-logo.png" alt=""/></div>
+<div class="logo"><%= image_tag "temp-logo.png" %></div>
 </div>
 <div class="col-md-11">
-<ul class="nav nav-pills col-md-9">
+    <div class="col-md-9 ">
+<ul class="nav nav-pills">
   <li><a href="/">الرئيسية</a></li>
-  <li><a href="<%= jobs_path%>">الوظائف</a></li>
-  <li><a href="<%= home_internship_path%>">التدريبات</a></li>
-  <li><a href="<%= applicant_index_path%>">باحثي العمل</a></li>
-  <li><a href="<%= home_women_path%>">للسيدات فقط</a></li>
+  <li>
+      <a class="dropdown-toggle" data-toggle="dropdown" href="<%= jobs_path%>" role="button" aria-expanded="false">
+      الوظائف <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li> <a href="<%= home_men_path%>">للرجال فقط</a> </li>
+      <li><a href="<%= home_women_path%>">للسيدات فقط</a></li>
   <li><a href="<%= home_fresh_graduate_path%>">حديثي التخرج</a></li>
   <li><a href="<%= home_experienced_path%>">أصحاب الخبرة</a></li>
+    </ul>
+  <li><a href="<%= applicant_index_path%>">باحثي العمل</a></li>
+  
 </ul>
-
+</div>
 <% if applicant_signed_in? %>
 <div class=" col-md-3 sign">
 
@@ -47,10 +54,9 @@
 <div class=" col-md-3 sign">
 
         
-        <div class="col-md-4"> <%= link_to "التدريبات الخاصة", internship_employer_path(current_employer), :method => :get %> </div>
         
-        <div class="col-md-4"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
-        <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <div class="col-md-6"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
+        <div class="col-md-6"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     الإعدادات
     <span class="caret"></span>
   </button>

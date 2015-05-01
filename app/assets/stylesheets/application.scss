@@ -16,7 +16,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 
-$brand-primary: #78B604;
+$brand-primary: #006C35;
 
 @import "bootstrap";
 @import "bootstrap-rtl.min";
@@ -50,7 +50,7 @@ body {
 
 .page-head  .btn-default {
   background: #fff;
-  color: #78B604;
+  color: $brand-primary;
 }
 
 .page-head .applicant-title .btn {
@@ -175,7 +175,7 @@ body {
   text-align: center;
   margin-left: 50px;
   background: #fff;
-  color: #78B604;
+  color: $brand-primary;
   font-size: 3rem;
 }
 
@@ -185,10 +185,10 @@ body {
   margin: auto;
 }
 
-.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav li.complete a {
+.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav li.complete a, .page-head .sign-progress .nav li.active a {
 
   color: #fff;
-  background: #78B604;
+  background: $brand-primary;
   border: solid 10px #fff;
 }
 
@@ -204,7 +204,7 @@ body {
 }
 
 .page-head .sign-progress .split.complete {
-  background: #78B604;
+  background: $brand-primary;
   z-index: 99999;
   margin-right: -20px;
 }
@@ -238,14 +238,14 @@ body {
 }
 
 .header .nav a {
-  color: #78B604;
+  color: $brand-primary;
   font-family: 'Droid Arabic Kufi', serif;
   font-size: 1.8rem;
 
 }
 
 .header .nav a:hover, .nav a:active, .header .nav .active {
-  background:#78B604 !important;
+  background:$brand-primary !important;
   border-radius: 5px 5px 0 0;
   color: #fff;
 }
@@ -265,7 +265,7 @@ body {
 .search-main-page {
   width:100%;
   height: 400px;
-  background: image-url("picjumbo.com_HNCK4011.jpg");
+  background: image-url("background.jpg");
   background-size: cover;
   padding: 100px 20px;
   text-align: center;
@@ -324,23 +324,24 @@ body {
 }
 
 .job-item .job-pic i {
-  height: 90px;
-  width: 90px;
+  height: 70px;
+  width: 70px;
   content: "";
   border-radius: 200px;
   border: solid 4px $brand-primary;
   text-align: center;
     font-size: 3rem;
     color:#ccc;
-    line-height: 75px;
+    line-height: 65px;
 }
 
 .job-item .job-pic img {
-    height:90px;
-  width: 90px;
+    height:70px;
+  width: 70px;
   background: #ddd;
   border-radius: 200px;
-  margin: 15px 0px;
+    border: solid 4px $brand-primary;
+  margin: 5px 0px;
   display:inline-block;
 }
 .job-item .job-title {
@@ -352,14 +353,13 @@ body {
 }
 
 .job-item .job-title .employee {
-  font-size: 3rem;
-  line-height: 50px;
+  font-size: 2.5rem;
   max-height: 50px;
   width: 100%;
 }
 
 .job-item .job-title .employer {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .job-item .job-conditions {
@@ -379,6 +379,8 @@ body {
 .job-item .label {
   font-size: 1rem;
   text-align: center;
+  display: inline-block;
+  margin: 2px 0;
 }
 
 .job-item .job-description p {
@@ -420,12 +422,12 @@ body {
     width: 30px;
     height: 30px;
     padding: 5px;
-    background-color: #78B604;
+    background-color: $brand-primary;
     border-radius: 15px;
     color: #fff;
 }
 .reviews .nav.nav-justified > li.active > a > .quote { opacity: 1; }
-.reviews .nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px #78B604; }
+.reviews .nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px $brand-primary; }
 .reviews .nav.nav-justified > li > a > img {
     max-width: 100%;
     opacity: .3;
@@ -583,7 +585,7 @@ body {
 ------------------------*/
 
 .search-job-filter {
-  background: #7FAF1B;
+  background: $brand-primary;
   min-height: 100px;
   color: #fff;
   padding: 20px 0;
@@ -591,7 +593,7 @@ body {
 
 .search-job-filter .dropdown .btn-default{
   background: #fff;
-  color: #7FAF1B;
+  color: $brand-primary;
 }
 
 .search-job-filter p {
@@ -617,7 +619,7 @@ body {
 }
 
 .search-job-filter .dropdown a {
-  color: #7FAF1B;
+  color: $brand-primary;
 }
 .job-list .col-md-3 .job-pic {
   height: 70px;
@@ -639,7 +641,7 @@ body {
 footer {
    height:30px;
    width:100%;
-   background:#78B604;
+   background:$brand-primary;
   color: #fff;
   padding: 5px 0px;
   margin-bottom:0;
@@ -662,7 +664,7 @@ footer p {
 
 .applicant-cv .detail-description .company, .applicant-cv .detail-description .graduation-year {
   font-family: "Droid Arabic Naskh", serif;
-  color: #78B604;
+  color: $brand-primary;
 }
 
 .applicant-cv .detail-description .col-md-6 p {

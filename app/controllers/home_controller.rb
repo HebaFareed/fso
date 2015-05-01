@@ -10,6 +10,11 @@ class HomeController < ApplicationController
       @jobs = Job.all
       end
   end
+  def men
+   if Job.count != 0
+      @jobs = Job.all
+      end
+  end
     
   def fresh_graduate
 if Job.count != 0

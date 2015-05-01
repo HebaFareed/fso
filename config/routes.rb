@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'home/women'
+  get 'home/men'
   get 'home/fresh_graduate'
   get 'home/experienced'
   get 'home/internship'

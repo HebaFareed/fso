@@ -52,7 +52,7 @@
       <div class="row job-list">
 
       <% @jobs.each do |job| %>
-          <% if job.applicant_status == "women" %>
+          <% if job.sex == "women" %>
           <% employer = job.employer %>
         <div class="col-md-3">
                 <div class="job-item">
@@ -62,7 +62,7 @@
             </div>
             <div class="col-md-8">
               <div class="job-title">
-                <a href="<%= job_path(employer) %>" class="employee"> <%= job.title %></a>
+                <a href="<%= job_path(employer) %>" class="employee"><% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
                 <a href=" <%= employer_path(employer) %>" class="employer danger"><%= job.employer.co_name %></a>
               </div>
             </div>

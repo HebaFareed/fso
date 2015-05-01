@@ -1,0 +1,109 @@
+<div class="search-job-filter">
+  <div class="content">
+      <h2>وظائف للسيدات فقط</h2>
+    <div class="row">
+
+      <div class="col-md-1"><p>بحث حسب:</p></div>
+      <div class="col-md-10">
+
+
+      <div class="col-md-4">
+      <div class="dropdown">
+      <button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      الشركة
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+
+  </ul>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="dropdown">
+<button class="btn btn-default btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+التقييم
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">جوجل</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">البنك الأهلي</a></li>
+<li role="presentation"><a role="menuitem" tabindex="-1" href="#">الملتقى السعودي</a></li>
+
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+  <input class="form-control" type="text" placeholder="بحث متقدم">
+</div>
+</div>
+<div class="col-md-1"> <a href="#" class="btn btn-block btn-danger">بحث</a></div>
+    </div>
+  </div>
+</div>
+  <div class="content job-filter">
+
+    <% if @jobs %>
+      <div class="row">
+      <!-- Three columns of text below the carousel -->
+      <div class="row job-list">
+
+      <% @jobs.each do |job| %>
+          <% if job.sex == "men" %>
+          <% employer = job.employer %>
+        <div class="col-md-3">
+                <div class="job-item">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="job-pic"><% if job.employer.avatar? %> <%= image_tag job.employer.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%></div>
+            </div>
+            <div class="col-md-8">
+              <div class="job-title">
+                <a href="<%= job_path(employer) %>" class="employee"><% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
+                <a href=" <%= employer_path(employer) %>" class="employer danger"><%= job.employer.co_name %></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-conditions col-md-12">
+              <p><%= job.place %></p>
+              <p><%= job.experience %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="job-description">
+                <p> <%= job.description %> </p>
+            </div>
+          </div>
+          <div class="row">
+            <% if applicant_signed_in? %>
+             <div class="col-md-6"> <%= link_to "قدم",  job_create_follower_path(job), :method => :post, :class => "btn btn-block btn-primary" %></div>
+              <% elsif employer_signed_in? %>
+                <% if job.employer == current_employer %>
+                    <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
+                    <%end%>
+              <% else %>
+              
+                <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
+              <%end%>
+            <div class="col-md-6"> <div class="btn btn-block btn-primary">مشاركة</div></div>
+          </div>
+        </div>
+        </div><!-- /job item -->
+          
+            <%end%>
+          <%end%>
+    </div>
+    </div>
+    <% else %>
+          <div class="empty-content">
+            <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
+          </div>
+    <%end%>
+          
+
+  </div>
+</div>

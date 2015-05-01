@@ -37,16 +37,24 @@
             <h2>المعلومات الشخصية</h2>
             <div class="form col-md-6 col-md-offset-3">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <%= f.text_field :first_name, autofocus: true, :class=>"form-control", :placeholder=>"الاسم الأول" %>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <%= f.text_field :second_name, autofocus: true, :class=>"form-control", :placeholder=>"اسم العائلة" %>
               </div>
-              <div class="col-md-4">
+              </div>
+                <div class="row">
+              <div class="col-md-12">
                 <%= f.select(:sex, [["ذكر", "male"], ["أنثى", "female"]], {include_blank: 'النوع'}, {:class =>'form-control'})%>
               </div>
             </div>
+                
+                <div class="row">
+                <div class="col-md-12">
+                    <%= f.select(:applicant_status, ["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {include_blank: 'الحالة'}, {:class =>'form-control job_condition'})%>
+                    </div>
+                </div>
 
             <div class="row">
               <div class="col-md-12">
