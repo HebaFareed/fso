@@ -31,16 +31,16 @@
       <div class="row job-list">
 
       <% @applicants.each do |applicant| %>
-        <div class="col-md-4">
-        <div class="job-item">
+        <div class="col-md-3">
+        <div class="job-item <%= applicant.status %>">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="job-pic"><% if applicant.avatar? %><%= image_tag applicant.avatar.url() %> <% else %><i class="fa fa-user"></i> <%end%> </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
               <div class="job-title">
                 <a href="<%= applicant_path(applicant)%>" class="employee"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-female"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></a>
-                <a href="#" class="employer danger"><%= applicant.status %></a>
+                <a href="#" class="employer danger"><% if applicant.status == "fresh-graduate" %>خريج<% elsif applicant.status == "experienced"%>صاحب خبرة <%end%></p</a>
               </div>
             </div>
           </div>
@@ -66,10 +66,10 @@
           </div>
           <div class="row">
             <% if applicant.paid_account %>
-              <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+              <div class="col-md-6"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
               <% elsif employer_signed_in? %>
                 <% if current_employer.paid_account %>
-                 <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+                 <div class="col-md-6"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
                 <%end%>
                   <% end%>
               <!-- Modal -->
@@ -86,13 +86,12 @@
         <label>رقم التليفون</label><p><%= applicant.phone%></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
 </div>
-            <div class="col-md-6"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
+            <div class="col-md-6"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-danger" %> </div>
           </div>
         </div>
         </div><!-- /job item -->

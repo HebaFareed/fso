@@ -1,4 +1,4 @@
-class EmployerController < ApplicationController
+class EmployersController < ApplicationController
     before_action(:except => [:index, :new, :create, :internship]) { |c| c.prepare_applicant(params[:id]) }
 
     def index
@@ -26,14 +26,6 @@ class EmployerController < ApplicationController
 
    end
 
-   def after_sign_up_path_for(employer)
-         if @employer.paid_account
-           new_payment_path
-         else
-            employer_path(@employer)
-         end
-
-   end
 
    def prepare_applicant(args)
       @employer = Employer.find(args)

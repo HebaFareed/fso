@@ -1,5 +1,5 @@
 <% title "وظائف للخريجين الجدد"%>
-<div class="search-job-filter">
+<div class="search-job-filter fresh-gradaute">
   <div class="content">
       <h2>وظائف للخريجين الجدد</h2>
     <div class="row">
@@ -38,27 +38,29 @@
                     <% if job.applicant_status == "fresh-graduate" %>
           <% employer = job.employer %>
         <div class="col-md-3">
-                <div class="job-item">
+                <div class="job-item <%= job.applicant_status %>">
+
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="job-pic"><% if job.employer.avatar? %> <%= image_tag job.employer.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%></div>
             </div>
             <div class="col-md-8">
               <div class="job-title">
-                <a href="<%= job_path(employer) %>" class="employee"><% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
-                <a href=" <%= employer_path(employer) %>" class="employer danger"><%= job.employer.co_name %></a>
+                <a href="<%= job_path(:employer_id) %>" class="employee"> <% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
+                <a href=" <%= employer_path(:employer_id) %>" class="employer danger"><%= job.employer.co_name %></a>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="job-conditions col-md-12">
+              <% if job.applicant_status == "fresh-graduate" %><p>خريج</p> <% elsif job.applicant_status == "experienced"%><p>صاحب خبرة</p> <%end%></p>
               <p><%= job.place %></p>
               <p><%= job.experience %></p>
             </div>
           </div>
           <div class="row">
             <div class="job-description">
-                <p> <%= job.description %> </p>
+                <p> <%= truncate(job.description) %> </p>
             </div>
           </div>
           <div class="row">
@@ -76,6 +78,7 @@
           </div>
         </div>
         </div><!-- /job item -->
+
 
             <%end%>
           <%end%>

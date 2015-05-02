@@ -220,7 +220,7 @@ body {
 #sign-in .nav-tabs a, #sign-up .nav-tabs a {
   font-size: 2rem;
 }
-#sign-up .nav-tabs li.active a, #sign-up .nav-tabs li.active a {
+#sign-up .nav-tabs li.active a, #sign-in .nav-tabs li.active a {
   background: $brand-primary;
   color: #fff;
 }
@@ -316,15 +316,35 @@ body {
 .job-list {
   margin-bottom: 15px;
 }
+
+.job-list .col-md-3 {
+  margin-top: 10px;
+}
 .job-item {
 
   min-height: 300px;
  -webkit-box-shadow: 0 0 2px 0 #ccc;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   width: 99%;
   padding: 15px 0;
   -webkit-box-shadow: 0 0 2px 0 #ccc;
   box-shadow: 0 0 2px 0 #ccc;
+}
+
+.job-item.experienced {
+  border-color: #62A4CB;
+}
+
+.search-job-filter.experienced {
+  background: #62A4CB;
+}
+
+.job-item.fresh-graduate {
+  border-color: #00A651;
+}
+
+.search-job-filter.fresh-graduate, .search-job-filter.female {
+  background: #F93A6B;
 }
 
 .job-item .row {
@@ -355,6 +375,7 @@ body {
 .job-item .job-title {
   display:inline-block;
   padding:10% 0;
+  min-height: 130px;
 }
 .job-item .job-title a {
   display: block;
@@ -362,7 +383,6 @@ body {
 
 .job-item .job-title .employee {
   font-size: 2.5rem;
-  max-height: 50px;
   width: 100%;
 }
 
@@ -394,6 +414,7 @@ body {
 .job-item .job-description p {
   font-size: 1.3rem;
   text-align: right;
+  padding: 5px 0;
 }
 
 /* Pad the edges of the mobile views a bit */
@@ -608,11 +629,9 @@ body {
   margin: 5px 0 0;
 }
 
-.job-filter .job-list .col-md-4 {
-  margin: 20px 0;
-}
 
-.job-filter .job-list .col-md-4 .job-description {
+
+.job-filter .job-list .job-item .job-description {
     min-height: 100px;
 }
 

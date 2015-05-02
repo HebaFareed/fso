@@ -6,7 +6,7 @@ class JobsController < ApplicationController
 
   def index
   @q = Job.ransack(params[:q])
-  @jobs = @q.result 
+  @jobs = @q.result
   end
 
 
@@ -93,6 +93,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-       params.require(:job).permit(:title, :experience, :field, :place, :internship, :description, :applicant_status)
+       params.require(:job).permit(:title, :experience, :field, :place, :internship, :description, :applicant_status, :sex)
     end
 end
