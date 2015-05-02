@@ -55,7 +55,7 @@
 
       <% @jobs.each do |job| %>
           <% employer = job.employer %>
-        <div class="col-md-4">                <div class="job-item">
+        <div class="col-md-3">                <div class="job-item">
           <div class="row">
             <div class="col-md-3">
               <div class="job-pic"><% if job.employer.avatar? %> <%= image_tag job.employer.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%></div>
