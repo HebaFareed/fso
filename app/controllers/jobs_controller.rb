@@ -5,12 +5,10 @@ class JobsController < ApplicationController
   respond_to :html
 
   def index
-    if Job.count != 0
-      @jobs = Job.all
-      end
-    respond_with(@jobs)
+  @q = Job.ransack(params[:q])
+  @jobs = @q.result 
   end
-  
+
 
 
   def show
@@ -55,21 +53,21 @@ class JobsController < ApplicationController
     @job.destroy
     respond_with(@job)
   end
-    
+
   def create_follower
     @job = Job.find(params[:job_id])
     @applicant = current_applicant
     current_applicant.follow(@job)
     redirect_to @job
   end
- 
+
   def destroy_follower
     @job = Job.find(params[:job_id])
     @applicant = current_applicant
     current_applicant.stop_following(@job)
   end
- 
-    
+
+
   def follower
     follower = Follow.where(["followable_id = ?", @job.id])
     follower_ids = follower.collect{|f| f.follower_id}
@@ -81,17 +79,17 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
     end
 
-    
+
     def require_employer
       unless (current_employer)
         redirect_to new_employer_registration_path, alert: "You can only edit this for your account."
       end
     end
-    
+
     def require_authority(args)
-       unless current_employer && (@job.employer == current_employer) 
+       unless current_employer && (@job.employer == current_employer)
         redirect_to root_path, alert: "You can only edit this for your account."
-      end 
+      end
     end
 
     def job_params

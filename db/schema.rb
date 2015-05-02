@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501210700) do
+ActiveRecord::Schema.define(version: 20150502141111) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -47,21 +47,21 @@ ActiveRecord::Schema.define(version: 20150501210700) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "applicants", force: true do |t|
-    t.string   "email",                  default: "",     null: false
-    t.string   "encrypted_password",     default: "",     null: false
-    t.string   "first_name",             default: "",     null: false
-    t.string   "second_name",            default: "",     null: false
-    t.string   "sex",                    default: "",     null: false
-    t.string   "city",                   default: "",     null: false
-    t.string   "phone",                  default: "",     null: false
-    t.string   "skills",                 default: "",     null: false
-    t.string   "birthday",               default: "",     null: false
-    t.string   "status",                 default: "خريج", null: false
-    t.boolean  "paid_account",           default: false,  null: false
+    t.string   "email",                             default: "",     null: false
+    t.string   "encrypted_password",                default: "",     null: false
+    t.string   "first_name",                        default: "",     null: false
+    t.string   "second_name",                       default: "",     null: false
+    t.string   "sex",                               default: "",     null: false
+    t.string   "city",                              default: "",     null: false
+    t.string   "phone",                             default: "",     null: false
+    t.string   "skills",                            default: "",     null: false
+    t.string   "birthday",                          default: "",     null: false
+    t.string   "status",                            default: "خريج", null: false
+    t.boolean  "paid_account",                      default: false,  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,      null: false
+    t.integer  "sign_in_count",                     default: 0,      null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150501210700) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.float    "payment_amount",         limit: 24, default: 10.0
   end
 
   add_index "applicants", ["email"], name: "index_applicants_on_email", unique: true, using: :btree
@@ -90,20 +91,20 @@ ActiveRecord::Schema.define(version: 20150501210700) do
   add_index "educations", ["applicant_id"], name: "index_educations_on_applicant_id", using: :btree
 
   create_table "employers", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "first_name",             default: "",    null: false
-    t.string   "second_name",            default: "",    null: false
-    t.string   "phone",                  default: "",    null: false
-    t.string   "co_name",                default: "",    null: false
-    t.string   "co_type",                default: "",    null: false
-    t.string   "co_address",             default: "",    null: false
-    t.string   "co_desc",                default: "",    null: false
-    t.boolean  "paid_account",           default: false, null: false
+    t.string   "email",                             default: "",    null: false
+    t.string   "encrypted_password",                default: "",    null: false
+    t.string   "first_name",                        default: "",    null: false
+    t.string   "second_name",                       default: "",    null: false
+    t.string   "phone",                             default: "",    null: false
+    t.string   "co_name",                           default: "",    null: false
+    t.string   "co_type",                           default: "",    null: false
+    t.string   "co_address",                        default: "",    null: false
+    t.string   "co_desc",                           default: "",    null: false
+    t.boolean  "paid_account",                      default: false, null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150501210700) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.float    "payment_amount",         limit: 24, default: 10.0
   end
 
   add_index "employers", ["email"], name: "index_employers_on_email", unique: true, using: :btree

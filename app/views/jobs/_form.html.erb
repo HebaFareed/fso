@@ -14,7 +14,7 @@
     <div class="col-md-8 col-md-offset-2">
 <h2>وظيفة\تدريب جديد</h2>
 
-        
+
         <div class="row">
           <div class="col-md-12">
             <%= f.select(:sex, [["للرجال", "male"], ["للسيدات", "female"], ["للرجال والسيدات", "both"] ], {include_blank: 'النوع'}, {:class =>'form-control'})%>
@@ -23,7 +23,7 @@
         <div class="row">
            <div class="col-md-12">
               <label>شرط الوظيفة
-                 <%= f.select(:applicant_status, ["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {:class =>'form-control job_condition'})%>
+                 <%= f.select(:applicant_status, [["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {:class =>'form-control job_condition'})%>
                </label>
             </div>
         </div>
@@ -48,7 +48,7 @@
     <div class="col-md-6">
       <%= f.text_field :experience, autofocus: true, :class=>"form-control experience", :placeholder=>"الخبرة" %>
     </div>
-            
+
 </div>
         <div class="row">
     <div class="col-md-12">
@@ -62,7 +62,7 @@
 
 </div>
 
-    
+
     </div>
 <% end %>
 
@@ -71,7 +71,7 @@
         $('select.internship').change( function() {
            if ($(this).val() == "false") {
                $('input.experience').show();
-               
+
            }
             else {
                $('input.experience').hide();
@@ -79,7 +79,7 @@
 
             }
         });
-        
+
         $('select.job_condition').change( function() {
             if ($(this).val() == "fresh-graduate") {
                  $('input.experience').hide();

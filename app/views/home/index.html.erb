@@ -31,6 +31,7 @@
 
     </div>
     <div class="col-md-1"><a href="" class="btn btn-block btn-danger">بحث</a></div>
+
   </div>
   </div>
 </div>
@@ -85,7 +86,7 @@
                     <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
                     <%end%>
               <% else %>
-              
+
                 <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
               <%end%>
             <div class="col-md-6"> <div class="btn btn-block btn-primary">مشاركة</div></div>
@@ -96,7 +97,7 @@
                 </div><!-- /job list -->
       <div class="col-md-2 col-md-offset-5"><a href="<%= jobs_path%>" class="btn btn-lg btn-danger btn-block">المزيد</a></div>
     </div>
-            
+
     </div>
     </div>
     <% else %>
@@ -104,7 +105,7 @@
             <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
           </div>
     <%end%>
-          
+
 
   </div>
 

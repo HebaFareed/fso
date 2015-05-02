@@ -1,3 +1,4 @@
+        <% title "عرض الوظيفة"%>
         <div class="breadcrumps">
             <div class="content"><%= link_to "الوظائف", jobs_path %> <span>\</span><p><%= @job.title %></p></div>
         </div>
@@ -57,10 +58,10 @@
                   <% skills = applicant.skill %>
               <% if skills.any? %>
                 <% skills.each do |ski| %>
-                    <%= ski.skill %> - 
+                    <%= ski.skill %> -
                 <%end%>
                 <% end %>
-                </p>  
+                </p>
             </div>
           </div>
           <div class="row">
@@ -74,7 +75,7 @@
         </div><!-- /job item -->
 
           <%end%>
-            
+
             <%else %>
             <div class="empty-content">
             <h1>لم يتقدم أحد بعد. <% if applicant_signed_in? %><%= link_to "أضف وظيفة جديدة", job_create_follower_path(current_applicant), :method => :post %> <%end%></h1>

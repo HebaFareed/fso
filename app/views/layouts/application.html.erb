@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ملتقى الوظائف السعودي</title>
+  <title>ملتقى الوظائف السعودي | <%= yield(:title) %></title>
+  <%= include_gon %>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,27 +18,26 @@
 <div class="col-md-11">
     <div class="col-md-9 ">
 <ul class="nav nav-pills">
-  <li><a href="/">الرئيسية</a></li>
+  <li <% if current_page?(root_path)%> class="active" <%end%>><a href="/">الرئيسية</a></li>
   <li>
-      <a class="dropdown-toggle" data-toggle="dropdown" href="<%= jobs_path%>" role="button" aria-expanded="false">
+      <a class="dropdown-toggle <% if current_page?(jobs_path) || current_page?(home_women_path) || current_page?(home_fresh_graduate_path)%> active <%end%>" data-toggle="dropdown" href="<%= jobs_path%>" role="button" aria-expanded="false">
       الوظائف <span class="caret"></span>
     </a>
     <ul class="dropdown-menu" role="menu">
-      <li> <a href="<%= home_men_path%>">للرجال فقط</a> </li>
+      <li> <a href="<%= jobs_path%>">جميع الوظائف</a> </li>
       <li><a href="<%= home_women_path%>">للسيدات فقط</a></li>
   <li><a href="<%= home_fresh_graduate_path%>">حديثي التخرج</a></li>
-  <li><a href="<%= home_experienced_path%>">أصحاب الخبرة</a></li>
     </ul>
-  <li><a href="<%= applicant_index_path%>">باحثي العمل</a></li>
-  
+  <li <% if current_page?(applicants_path)%> class="active" <%end%>><a href="<%= applicants_path%>">باحثي العمل</a></li>
+
 </ul>
 </div>
 <% if applicant_signed_in? %>
 <div class=" col-md-3 sign">
 
-        
+
         <div class="col-md-4"> <%= link_to "الصفحة الشخصية", applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
-        
+
         <div class="col-md-4"> <%= link_to "الطلبات المقدمة", following_applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
         <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     الإعدادات
@@ -53,8 +54,8 @@
 
 <div class=" col-md-3 sign">
 
-        
-        
+
+
         <div class="col-md-6"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
         <div class="col-md-6"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     الإعدادات
@@ -70,8 +71,8 @@
 
 <div class=" col-md-3 sign">
   <div class="row">
-<div class="col-md-6"><a class="btn btn-block btn-sm btn-danger" href="#" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
-<div class="col-md-6"><a class="btn btn-block btn-sm btn-primary" href="#" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
+<div class="col-md-6"><a class="btn btn-block btn-sm btn-danger" href="#sign_up" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
+<div class="col-md-6"><a class="btn btn-block btn-sm btn-primary" href="#sign_in" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
 </div>
 </div>
 <%end%>
@@ -93,7 +94,7 @@
       </div>
       <div class="modal-body">
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
           <li role="presentation" class="active"><a href="#employer" aria-controls="empolyer" role="tab" data-toggle="tab">صاحب عمل</a></li>
           <li role="presentation"><a href="#employee" aria-controls="employee" role="tab" data-toggle="tab">طالب عمل</a></li>
         </ul>

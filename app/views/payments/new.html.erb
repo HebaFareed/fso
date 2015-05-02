@@ -1,0 +1,16 @@
+<% title "الدفع الإلكتروني"%>
+<div class="content">
+ <div class="row">
+      <h2 class="mbs">الدفع الإلكتروني</h2>
+  <%= form_tag payments_path do%>
+    <p>من فضلك أدخل البيانات المطلوبة:</p>
+     <div class="row">
+    <div class="col-md-10 col-md-offset-1"><div id="dropin"></div></div>
+         </div>
+     <div class="row">
+    <div class="col-md-3 pull-left"><%=submit_tag "ادفع 10$", class: "btn btn-block btn-danger" %></div>
+         </div>
+  <%end%>
+    </div>
+
+</div>

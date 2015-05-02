@@ -4,11 +4,13 @@ class JobController < ApplicationController
   before_action(:except => [:index, :new, :create]) { |c| c.prepare_job(params[:id]) }
 
   def index
-    @job = Job.all
+    @q = Job.ransack(params[:q])
+    @applicants = @q.result.includes() 
+
   end
 
   def show
-    
+
   end
 
   def edit

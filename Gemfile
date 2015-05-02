@@ -32,7 +32,6 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'sunspot_rails'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '~> 1.3.4'
@@ -40,8 +39,10 @@ gem "cocoon"
 gem "breadcrumbs_on_rails"
 gem "acts_as_follower"
 gem 'activeadmin', github: 'activeadmin'
-gem 'rails-simple-search'
-gem 'recurly'
+gem 'ransack'
+gem 'braintree', '~> 2.33.1'
+gem 'figaro', '~> 0.7.0'
+gem 'gon', '~> 5.1.2'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 

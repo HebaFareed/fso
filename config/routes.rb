@@ -15,15 +15,15 @@ Rails.application.routes.draw do
   get 'home/experienced'
   get 'home/internship'
 
-  devise_for :applicants, :controllers => {:registrations => "applicant/registrations", :sessions => "applicant/sessions"}
-  devise_for :employers, :controllers => {:registrations => "employer/registrations", :sessions => "employer/sessions"}
+  devise_for :applicants, :controllers => {:registrations => "applicants/registrations", :sessions => "applicants/sessions"}
+  devise_for :employers, :controllers => {:registrations => "employers/registrations", :sessions => "employers/sessions"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
   root "home#index"
-   resources :applicant do
+   resources :applicants do
    member do
       get :profile
       get :show
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     end
    end
 
-   resources :employer  do
+   resources :employers  do
    member do
       get :show
       get :job
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
    end
 
+resources :payments, only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
