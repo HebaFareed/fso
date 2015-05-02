@@ -49,7 +49,7 @@
             <div class="job-description col-md-12"></span>
               
                   <% skills = applicant.skill %>
-              <% if skills.any? %>
+              <% if skills.any? %>online payment
                 <% skills.each do |ski| %>
                     <span class="label label-primary"><%= ski.skill %></span>
                 <%end%>
@@ -58,8 +58,12 @@
             </div>
           </div>
           <div class="row">
-            <% if current_employer.paid_account || applicant.paid_account %>
+            <% if applicant.paid_account %>
               <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+              <% elsif current_employer? %>
+                <% if current_employer.paid_account %>
+                 <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+                <%end%>
                   <% end%>
             <div class="col-md-6"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-lg btn-danger" %> </div>
           </div>
