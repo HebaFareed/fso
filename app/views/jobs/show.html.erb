@@ -9,14 +9,14 @@
           <div class="profile-pic"> <i class="fa fa-user"></i> </div>
         </div>
         <div class="col-md-7">
-          <p class="name"><% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %><%= @job.title %></p>
+          <p class="name"><% if @job.sex == "male" %> <i class="fa fa-male"></i> <% elsif @job.sex == "female" %> <i class="fa fa-female"></i> <% end %><%= @job.title %></p>
           <p class="job-title"><%= @job.employer.co_name %></p>
         </div>
         <div class="applicant-buttons">
         <div class="col-md-3">
           <div class="row">
               <% if current_employer == @job.employer %>
-                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_job_path(job), :class => "btn btn-block btn-danger btn-sm" %> </div>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_job_path(@job), :class => "btn btn-block btn-danger btn-sm" %> </div>
                     <%end%>
           </div>
           <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>

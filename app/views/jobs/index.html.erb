@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-8">
               <div class="job-title">
-                <a href="<%= job_path(:employer_id) %>" class="employee"> <% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
+                <a href="<%= job_path(:job_id) %>" class="employee"> <% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
                 <a href=" <%= employer_path(:employer_id) %>" class="employer danger"><%= job.employer.co_name %></a>
               </div>
             </div>
