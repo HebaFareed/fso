@@ -78,7 +78,7 @@
           </div>
           <%end%>
           <% end %>
-          <% if applicant.education[0].degree != "" %>
+          <% if applicant.education[0] %>
             <% applicant.education.each do |education| %>
           <div class="detail-item">
             <h2 class="title">المؤهل</h2>
