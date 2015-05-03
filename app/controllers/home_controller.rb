@@ -1,28 +1,40 @@
 class HomeController < ApplicationController
   def index
       if Job.count != 0
-      @jobs = Job.all.order('created_at DESC').take(4)
+        @jobs = Job.all.order('created_at DESC').take(4)
       end
+
   end
 
-  def women
-   @q = Job.ransack(params[:q])
-      @jobs = @q.result
+  def women_jobs
+    @q = Job.where(:sex => "female").ransack(params[:q])
+    @jobs = @q.result
   end
-  def men
-   @q = Job.ransack(params[:q])
-      @jobs = @q.result
+
+  def men_jobs
+    @q = Job.where(:sex => "male").ransack(params[:q])
+    @jobs = @q.result
+  end
+
+  def women_applicants
+    @q = Applicant.where(:sex => "female").ransack(params[:q])
+    @applicants = @q.result
+  end
+
+  def men_applicants
+    @q = Applicant.where(:sex => "male").ransack(params[:q])
+    @applicants = @q.result
   end
 
   def fresh_graduate
-@q = Job.ransack(params[:q])
-      @jobs = @q.result
-      end
+    @q = Job.where(:applicant_status => "fresh-graduate").ransack(params[:q])
+    @jobs = @q.result
+  end
 
   def experienced
-@q = Job.ransack(params[:q])
-      @jobs = @q.result
-      end
+    @q = Job.where(:applicant_status => "experienced").ransack(params[:q])
+    @jobs = @q.result
+  end
 
       def internship
       @internships = Job.where('internship'=>true)

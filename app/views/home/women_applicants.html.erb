@@ -1,7 +1,7 @@
-<% title "باحثي العمل"%>
-<div class="search-job-filter">
+<% title "باحثات العمل"%>
+<div class="search-job-filter female">
   <div class="content">
-      <h2>باحثي العمل</h2>
+      <h2>باحثات العمل</h2>
     <div class="row">
           <%= search_form_for @q do |f| %>
         <div class="col-md-1"><p>بحث حسب:</p></div>
@@ -25,7 +25,7 @@
 
 
           <% if @applicants.any? %>
- <%= render "applicants-list"%>
+ <%= render "applicants/applicants_list"%>
 <%else%>
           <div class="empty-content">
             <h1>لا يوجد أي باحث عمل بعد. <%= link_to "سجل كباحث عمل", new_applicant_registration_path %></h1>

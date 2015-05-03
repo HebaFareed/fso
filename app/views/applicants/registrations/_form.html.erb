@@ -1,35 +1,9 @@
-      <div class="page-head registering">
-        <div class="content">
-        <div class="breadcrumbs"> <h4>تسجيل حساب الشركة</p></div>
-        <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        <div class="sign-progress">
-
-
-
-            <!-- Nav tabs -->
-            <ul class="nav" role="tablist">
-              <li role="presentation" class="active"><a href="#contact_info" aria-controls="contact_info" role="tab" data-toggle="tab">١</a></li>
-              <span class="split "></span>
-              <li role="presentation"><a href="#education" aria-controls="education" role="tab" data-toggle="tab">٢</a></li>
-              <span class="split"></span>
-              <li role="presentation"><a href="#experience" aria-controls="experiance" role="tab" data-toggle="tab">٣</a></li>
-            </ul>
-
-
-
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
-
-
-
-<div class="company-sign-up content">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :multipart => true }) do |f| %>
-  <%= devise_error_messages! %>
+
+<%= devise_error_messages! %>
+
+
 
       <!-- Tab panes -->
         <div class="tab-content">
@@ -37,16 +11,24 @@
             <h2>المعلومات الشخصية</h2>
             <div class="form col-md-6 col-md-offset-3">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <%= f.text_field :first_name, autofocus: true, :class=>"form-control", :placeholder=>"الاسم الأول" %>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <%= f.text_field :second_name, autofocus: true, :class=>"form-control", :placeholder=>"اسم العائلة" %>
               </div>
-              <div class="col-md-4">
-                <%= f.select(:sex, [["male", "ذكر"], ["female", "أنثى"]], {include_blank: 'النوع'}, {:class =>'form-control'})%>
+              </div>
+                <div class="row">
+              <div class="col-md-12">
+                <%= f.select(:sex, [["ذكر", "male"], ["أنثى", "female"]], {include_blank: 'النوع'}, {:class =>'form-control'})%>
               </div>
             </div>
+
+                <div class="row">
+                <div class="col-md-12">
+                    <%= f.select(:status, [["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {include_blank: 'الحالة'}, {:class =>'form-control job_condition'})%>
+                    </div>
+                </div>
 
             <div class="row">
               <div class="col-md-12">
@@ -78,17 +60,21 @@
             </div>
 	    <div class="row">
             <div class="col-md-6">
-                <%= f.select(:paid_account, [["false", "حساب مجاني"], ["true", "حساب مدفوع"]], {:class =>'form-control'})%>
+                <%= f.select(:paid_account, [["حساب مجاني", "false"], ["حساب مدفوع", "true"]], {:class =>'form-control btn-block'})%>
 	    </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-12">
-                <%= f.file_field :avatar %>
+              <div class="col-md-6">
+                <label>الصورة الشخصية:
+                <%= f.file_field :avatar, :class => 'form-control' %></label>
               </div>
             </div>
+                <div class="col-md-4 pull-left">
+            <a href="#education" aria-controls="education" role="tab" data-toggle="tab" id="first-level" class="btn btn-block btn-danger">أكمل</a>
           </div>
+          </div>
+
         </div>
+
 
         <div role="tabpanel" class="tab-pane" id="education">
 
@@ -98,8 +84,10 @@
             <%= f.fields_for :education do |builder| %>
               <%= render "education_fields", :f => builder %>
             <% end %>
-            <div class="col-sm-3 col-sm-offset-9"><%= link_to_add_association 'أضف مؤهل تعليمي', f, :education, class: "btn btn-block btn-danger" %></div>
-
+            <div class="col-sm-3 col-sm-offset-9"><%= link_to_add_association 'أضف مؤهل', f, :education, class: "btn btn-block btn-danger" %></div>
+            <div class="col-md-4 pull-left">
+            <a href="#experience" aria-controls="experience" role="tab" data-toggle="tab" id="second-level" class="btn btn-block btn-danger">أكمل</a>
+          </div>
           </div>
 
         </div>
@@ -107,30 +95,49 @@
         <div role="tabpanel" class="tab-pane" id="experience">
           <h2>المهارات\الخبرة</h2>
           <div class="form col-md-6 col-md-offset-3">
+<h2>المهارات</h2>
             <%= f.fields_for :skill do |builder| %>
                 <%= render "skill_fields", :f => builder %>
             <% end %>
-            <div class="col-sm-3 col-sm-offset-9"><%= link_to_add_association 'أضف مهارة جديدة', f, :skill, class: "btn btn-block btn-danger" %></div>
+            <div class="col-sm-4 pull-left"><%= link_to_add_association 'أضف مهارة', f, :skill, class: "btn btn-block btn-danger" %></div>
           </div>
          <div class="row">
           <div class="form col-md-6 col-md-offset-3">
-            <%= f.fields_for :experience do |builder| %>
+              <h2>الخبرات</h2>
+            <%= f.fields_for :experience do |builder| %>li
                 <%= render "experience_fields", :f => builder %>
             <% end %>
-            <div class="col-sm-3 col-sm-offset-9"><%= link_to_add_association 'أضف خبرة', f, :experience, class: "btn btn-block btn-danger" %></div>
+              <div class="row">
+            <div class="col-sm-4 pull-left"><%= link_to_add_association 'أضف خبرة', f, :experience, class: "btn btn-block btn-danger" %></div>
+                  </div>
+                      <div class="row">
+      <div class="col-md-4 pull-left"><%= f.submit "سجل", :class=>"btn btn-block btn-danger" %></div>
+  </div>
           </div>
          </div>
-            
+
 
         </div>
 
 
 </div>
 
-  <div class="row">
-      <div class="col-md-2 col-md-offset-8"><%= f.submit "سجل", :class=>"btn btn-block btn-danger" %></div>
-  </div>
+
 
 <% end %>
 
-</div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('a#first-level').click( function() {
+            $('li.contact-li').removeClass('active').addClass('complete');
+            $('span.contact-li').addClass('complete');
+        });
+        $('a#second-level').click( function() {
+            $('li.education-li').removeClass('active').addClass('complete');
+            $('span.education-li').addClass('complete');
+        });
+
+    });
+</script>

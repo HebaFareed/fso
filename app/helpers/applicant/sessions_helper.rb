@@ -1,2 +1,0 @@
-module Applicant::SessionsHelper
-end

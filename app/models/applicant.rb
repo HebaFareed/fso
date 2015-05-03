@@ -15,14 +15,6 @@ class Applicant < ActiveRecord::Base
  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-    
-     # It returns the articles whose titles contain one or more words that form the query
-  def self.search(query)
-    # where(:title, query) -> This would return an exact match of the query
-    where("status like ?", "%#{query}%") 
 
-
-
-
-  end
+ validates_presence_of :first_name, :second_name, :sex, :status, :phone, :city, :account_paid
 end

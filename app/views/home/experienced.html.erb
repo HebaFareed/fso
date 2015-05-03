@@ -30,64 +30,7 @@
   <div class="content job-filter">
 
     <% if @jobs.count > 0 %>
-      <div class="row">
-      <!-- Three columns of text below the carousel -->
-      <div class="row job-list">
-
-      <% @jobs.each do |job| %>
-                    <% if job.applicant_status == "experienced" %>
-
-          <% employer = job.employer %>
-        <div class="col-md-3">
-                <div class="job-item <%= job.applicant_status %>">
-
-          <div class="row">
-            <div class="col-md-4">
-              <div class="job-pic"><% if job.employer.avatar? %> <%= image_tag job.employer.avatar.url(:medium) %> <% else %> <i class="fa fa-user"></i> <%end%></div>
-            </div>
-            <div class="col-md-8">
-              <div class="job-title">
-                <a href="<%= job_path(job) %>" class="employee"> <% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
-                <a href=" <%= employer_path(:employer_id) %>" class="employer danger"><%= job.employer.co_name %></a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="job-conditions col-md-12">
-              <% if job.applicant_status == "fresh-graduate" %><p>خريج</p> <% elsif job.applicant_status == "experienced"%><p>صاحب خبرة</p> <%end%></p>
-              <p><%= job.place %></p>
-              <p><%= job.experience %></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="job-description">
-                <p> <%= truncate(job.description) %> </p>
-            </div>
-          </div>
-          <div class="row">
-            <% if applicant_signed_in? %>
-             <div class="col-md-6"> <%= link_to "قدم",  job_create_follower_path(job), :method => :post, :class => "btn btn-block btn-primary" %></div>
-              <% elsif employer_signed_in? %>
-                <% if job.employer == current_employer %>
-                    <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
-                    <%end%>
-              <% else %>
-
-                <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
-              <%end%>
-            <div class="col-md-6"> <div class="btn btn-block btn-primary">مشاركة</div></div>
-          </div>
-        </div>
-        </div><!-- /job item -->
-<%else%>
-<div class="empty-content">
-  <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
-</div>
-
-
-            <%end%><%end%>
-    </div>
-    </div>
+      <%= render "/jobs/job_list"%>
     <% else %>
           <div class="empty-content">
             <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
@@ -96,4 +39,3 @@
 
 
   </div>
-</div>

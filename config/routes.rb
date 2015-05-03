@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   get 'home/index'
-  get 'home/women'
-  get 'home/men'
+  get 'home/women_jobs'
+  get 'home/men_jobs'
+  get 'home/women_applicants'
+  get 'home/men_applicants'
   get 'home/fresh_graduate'
   get 'home/experienced'
   get 'home/internship'
@@ -21,6 +23,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  resources :courses do
+    post :create_follower
+    get :delete_follower
+    get :block_follower
+  end
 
   root "home#index"
    resources :applicants do

@@ -1,0 +1,29 @@
+<div class="content courses">
+<h2>الدورات التدريبية</h2>
+<% if @courses.count > 0 %>
+  <% @courses.each do |course| %>
+  <div class="row course_item">
+    <div class="col-md-10">
+      <div class="col-md-6"><p>التدريب: <%= course.title %></p></div>
+      <div class="col-md-6"><p>الوصف: <%= course.description %></p></div>
+    </div>
+    <div class="col-md-2">
+      <% if applicant_signed_in? %>
+        <% if course.followed_by?(current_applicant) %>
+          <a href="<%= course.link%>" class="btn btn-block btn-primary">رابط التحميل</a>
+        <%else%>
+          <%= link_to "قدم",  course_create_follower_path(course), :method => :post, :class => "btn btn-block btn-danger" %>
+        <%end%>
+      <%else%>
+        <%= link_to "قدم",  new_applicant_registration_path, :method => :post, :class => "btn btn-block btn-danger" %>
+      <%end%>
+    </div>
+  </div>
+
+  <%end%>
+<% else %>
+  <div class="empty-content">
+    <p>لا توجد دورات تدريبية بعد</p>
+  </div>
+<%end%>
+</div>

@@ -2,6 +2,16 @@
         <div class="breadcrumps">
             <div class="content"><%= link_to "السير الذاتية", applicants_path %> <span>\</span><p><%= applicant.first_name %> <%= applicant.second_name %></p></div>
         </div>
+
+        <!-- Error Message -->
+ <% flash.each do |name, msg| %>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<%= content_tag :div, msg, class: name %>
+</div>
+<% end -%>
+
 <div class="page-head">
     <div class=" applicant-title content">
       <div class="row">
@@ -17,8 +27,8 @@
           <div class="row">
               <% if current_applicant %>
                 <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant), :class => "btn btn-block btn-danger btn-sm" %> </div>
-                <div class="col-md-6"> <%= link_to "تصفح الوظائف", employer_index_path, :class => "btn btn-block btn-danger btn-sm" %></div>
-                <div class="col-md-12"> <a href="#" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div>
+                <div class="col-md-6"> <%= link_to "تصفح الوظائف", employers_path, :class => "btn btn-block btn-danger btn-sm" %></div>
+                <% if applicant.paid_account != true %><div class="col-md-12"> <a href="<%= new_payment_path%>" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div><%end%>
               <% else %>
                             <div class="row">
             <% if applicant.paid_account %>
@@ -51,7 +61,6 @@
 
                 <%end%>
           </div>
-          <div class="col-md-12"><a href="" class="btn btn-block btn-default">مشاركة</a></div>
         </div>
       </div>
       </div>

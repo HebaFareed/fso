@@ -1,7 +1,7 @@
-<% title "الوظائف"%>
-<div class="search-job-filter">
+<% title "وظائف للسيدات فقط"%>
+<div class="search-job-filter female">
   <div class="content">
-      <h2>الوظائف</h2>
+      <h2>وظائف للسيدات فقط</h2>
   <div class="row">
         <%= search_form_for @q do |f| %>
       <div class="col-md-1"><p>بحث حسب:</p></div>
@@ -30,7 +30,7 @@
   <div class="content job-filter">
 
     <% if @jobs.count > 0 %>
-      <%= render "job_list" %>
+      <%= render "/jobs/job_list" %>
     <% else %>
           <div class="empty-content">
             <h1>لم تسجل أي وظيفة بعد. <%= link_to "أضف وظيفة جديدة", new_job_path %></h1>
@@ -39,4 +39,3 @@
 
 
   </div>
-</div>
