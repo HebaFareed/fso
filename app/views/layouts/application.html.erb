@@ -3,9 +3,7 @@
 <head>
   <title>ملتقى الوظائف السعودي | <%= yield(:title) %></title>
   <%= include_gon %>
-  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -280,6 +278,7 @@
 
       </footer>
 
-
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
 </body>
 </html>
