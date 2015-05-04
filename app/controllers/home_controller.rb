@@ -26,9 +26,14 @@ class HomeController < ApplicationController
     @applicants = @q.result
   end
 
-  def fresh_graduate
+  def fresh_graduate_jobs
     @q = Job.where(:applicant_status => "fresh-graduate").ransack(params[:q])
     @jobs = @q.result
+  end
+
+  def fresh_graduate_applicants
+    @q = Applicant.where(:applicant_status => "fresh-graduate").ransack(params[:q])
+    @applicants = @q.result
   end
 
   def experienced

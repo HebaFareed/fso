@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'home/men_jobs'
   get 'home/women_applicants'
   get 'home/men_applicants'
-  get 'home/fresh_graduate'
+  get 'home/fresh_graduate_jobs'
+  get 'home/fresh_graduate_applicants'
   get 'home/experienced'
   get 'home/internship'
 

@@ -241,7 +241,6 @@ body {
 }
 
 .header .nav {
-  max-height:60px;
   margin-top:50px !important;
 }
 
@@ -249,10 +248,10 @@ body {
   color: $brand-primary;
   font-family: 'Droid Arabic Kufi', serif;
   font-size: 1.8rem;
-
+display: table-caption;
 }
 
-.header .nav a:hover, .nav a:active, .header .nav .active {
+.header .nav a:hover {
   background:$brand-primary !important;
   border-radius: 5px 5px 0 0;
   color: #fff;
