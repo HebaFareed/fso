@@ -1,6 +1,6 @@
         <% title "الصفحة الشخصية للشركة"%>
         <div class="breadcrumps">
-            <div class="content"><%= link_to "الشركات", applicant_index_path %> <span>\</span><p><%= employer.co_name %></p></div>
+            <div class="content"><%= link_to "الشركات", employers_path %> <span>\</span><p><%= employer.co_name %></p></div>
         </div>
 
               <!-- Error Message -->
@@ -42,6 +42,7 @@
       <%= render "jobs/job_list"%>
     <% else %>
           <div class="empty-content">
-            <h1>لا توجد وظائف. <% if current_employer %> <%= link_to "أضف وظيفة جديدة", new_job_path(current_employer) %> <% else %><%= link_to "تصفح الوظائف المتاحة", employer_index_path %> <%end%></h1>
+            <h1>لا توجد وظائف. <% if current_employer %> <%= link_to "أضف وظيفة جديدة", new_job_path(current_employer) %> <% else %><%= link_to "تصفح الوظائف المتاحة", employers_path %> <%end%></h1>
           </div>
     <%end%>
+</div>
