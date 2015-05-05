@@ -50,7 +50,7 @@
                 <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
 
                   <% @testmonials.each do |testmonial| %>
-                    <li role="presentation" class="active">
+                    <li role="presentation" <%= 'class="active"' if @testmonials.first == testmonial %>>
                         <a href="#testmonial_<%= testmonial.id%>" aria-controls="testmonial_<%= testmonial.id%>" role="tab" data-toggle="tab">
                             <% if testmonial.logo != "" %><img class="img-circle" src="<%= testmonial.logo %>" /><%else%> <i class="fa fa-user"></i><%end%>
                             <span class="quote"><i class="fa fa-quote-left"></i></span>
@@ -63,7 +63,7 @@
                 <!-- Tab panes -->
                 <% @testmonials.each do |testmonial| %>
                 <div class="tab-content" id="tabs-collapse">
-                    <div role="tabpanel" class="tab-pane fade in active" id="<%= testmonial.id%>">
+                    <div role="tabpanel" class="tab-pane  <%= 'active' if @testmonials.first == testmonial %>" id="testmonial_<%= testmonial.id%>">
                         <div class="tab-inner">
                             <% if testmonial.quote %><p class="lead"> <%= testmonial.quote %></p><%end%>
                             <hr>
