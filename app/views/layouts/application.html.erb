@@ -270,8 +270,6 @@
 </div>
 </div>
 </div>
-
-<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
 
 <%= yield %>
@@ -281,6 +279,8 @@
       <div class="text-center"><p>جميع الحقوق محفوظة ©</p></div>
 
       </footer>
+<%= javascript_include_tag 'common',media: 'all', 'data-turbolinks-track' => true %>
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
 
 </body>
