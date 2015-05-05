@@ -6,13 +6,24 @@
           <%= search_form_for @q do |f| %>
         <div class="col-md-1"><p>بحث حسب:</p></div>
       <div class="col-md-10">
-<div class="col-md-4">
+<div class="col-md-2">
                 <%= f.search_field :city_cont, :class=>"form-control", :placeholder=>"المدينة" %>
 </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
             <%= f.search_field :education_field_cont, :class=>"form-control", :placeholder=>"المجال" %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-2">
+            <%= f.select(:status_cont, [["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {include_blank: 'الحالة'}, {:class =>'form-control job_condition'})%>
+          </div>
+
+          <div class="col-md-2 experience" style="display:none;">
+            <%= f.search_field :experience_period_cont, :class=>"form-control ", :placeholder=>"سنوات الخبرة" %>
+          </div>
+
+          <div class="col-md-2 graduation" style="display:none;">
+            <%= f.search_field :education_graduation_year_cont, :class=>"form-control ", :placeholder=>"سنة التخرج" %>
+          </div>
+          <div class="col-md-2">
             <%= f.search_field :skill_skill_or_experience_description_cont, :class=>"form-control", :placeholder=>"بحث متقدم" %>
           </div>
 </div>
@@ -33,3 +44,24 @@
     <%end%>
 
   </div>
+
+
+  <script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('select.job_condition').change( function() {
+      if ($(this).val() == "experienced") {
+        $('.experience').show();
+        $('.graduation').hide();
+      }
+    else if ($(this).val() == "fresh-graduate") {
+      $('.experience').hide();
+      $('.graduation').show();
+    }
+  else {
+    $('.experience').hide();
+    $('.graduation').hide();
+  }
+
+  });
+  });
+  </script>

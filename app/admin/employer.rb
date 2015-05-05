@@ -13,5 +13,6 @@ ActiveAdmin.register Employer do
 #   permitted
 # end
 
+permit_params :first_name, :second_name, :email, :password, :phone, :co_name, :co_type, :co_address, :co_desc, :avatar, :paid_account
 
 end

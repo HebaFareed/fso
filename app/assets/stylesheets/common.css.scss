@@ -1,0 +1,135 @@
+// Place all the styles related to the courses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$brand-primary: #006C35;
+
+@import "bootstrap";
+@import "bootstrap-rtl.min";
+
+
+.page-head {
+  color: $brand-primary;
+}
+
+.page-head  .btn-default {
+  background: #fff;
+  color: $brand-primary;
+}
+.applicant-title .profile-pic i {
+
+  border: solid 4px $brand-primary;
+
+}
+
+.applicant-title .profile-pic img {
+
+  border: solid 4px $brand-primary;
+}
+
+
+
+.page-head.registering {
+   color:#fff;
+   background: $brand-primary !important;
+}
+
+.breadcrumps {
+    background: $brand-primary;
+}
+
+.page-head .sign-progress .nav a {
+  color: $brand-primary;
+}
+
+.page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav li.complete a, .page-head .sign-progress .nav li.active a {
+
+  background: $brand-primary;
+}
+
+.page-head .sign-progress .split.complete {
+  background: $brand-primary;
+}
+
+#sign-up .nav-tabs li.active a, #sign-in .nav-tabs li.active a {
+  background: $brand-primary;
+}
+
+/*Reviews
+---------------------------------------*/
+
+.reviews .nav.nav-justified > li > a { position: relative; }
+.reviews .nav.nav-justified > li > a:hover,
+.reviews .nav.nav-justified > li > a:focus { background-color: transparent; }
+.reviews .nav.nav-justified > li > a > .quote {
+
+    background-color: $brand-primary;
+
+}
+.reviews .nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px $brand-primary; }
+
+/* CUSTOMIZE THE Header
+-------------------------------------------------- */
+
+
+.header .nav a {
+  color: $brand-primary;
+
+}
+
+.header .nav a:hover {
+  background:$brand-primary !important;
+
+}
+
+.job-item.experienced {
+  border-color: #62A4CB;
+}
+
+.search-job-filter.experienced {
+  background: #62A4CB;
+}
+
+.job-item.fresh-graduate {
+  border-color: #00A651;
+}
+
+.search-job-filter.fresh-graduate, .search-job-filter.female {
+  background: #F93A6B;
+}
+
+.job-item .job-pic i {
+
+  border: solid 4px $brand-primary;
+
+}
+
+.job-item .job-pic img {
+
+    border: solid 4px $brand-primary;
+
+}
+/*Job Search
+------------------------*/
+
+.search-job-filter {
+  background: $brand-primary;
+
+}
+
+.search-job-filter .dropdown .btn-default{
+  color: $brand-primary;
+}
+
+.search-job-filter .dropdown a {
+  color: $brand-primary;
+}
+/*Footer
+--------------------------------------------*/
+
+footer {
+   background:$brand-primary;
+}
+
+.applicant-cv .detail-description .company, .applicant-cv .detail-description .graduation-year {
+  color: $brand-primary;
+}

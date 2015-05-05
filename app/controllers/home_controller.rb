@@ -4,6 +4,10 @@ class HomeController < ApplicationController
         @jobs = Job.all.order('created_at DESC').take(4)
       end
 
+      if Testmonial.count != 0
+        @testmonials = Testmonial.all
+      end
+
   end
 
   def women_jobs

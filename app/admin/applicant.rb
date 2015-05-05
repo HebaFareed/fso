@@ -13,5 +13,5 @@ ActiveAdmin.register Applicant do
 #   permitted
 # end
 
-
+permit_params :first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar, :status, :cv , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]
 end

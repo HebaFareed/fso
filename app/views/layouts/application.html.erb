@@ -3,6 +3,14 @@
 <head>
   <title>ملتقى الوظائف السعودي | <%= yield(:title) %></title>
   <%= include_gon %>
+
+  <% if (current_page? (home_women_jobs_path)) || (current_page? (home_women_applicants_path))%>
+  <%= stylesheet_link_tag    'women', media: 'all', 'data-turbolinks-track' => true %>
+  <% elsif (current_page? (home_men_jobs_path)) || (current_page? (home_men_applicants_path))%>
+  <%= stylesheet_link_tag    'men', media: 'all', 'data-turbolinks-track' => true %>
+  <%else%>
+<%= stylesheet_link_tag    'common', media: 'all', 'data-turbolinks-track' => true %>
+  <%end%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -19,7 +27,6 @@
   <li role="presentation" <% if current_page?(root_path)%> class="active" <%end%>><a href="/">الرئيسية</a></li>
   <li role="presentation" <% if current_page?(home_men_jobs_path)%> class="active" <%end%>><a href="<%=home_men_jobs_path%>">وظائف للرجال</a></li>
   <li role="presentation" <% if current_page?(home_women_jobs_path)%> class="active" <%end%>><a href="<%=home_women_jobs_path%>">وظائف للسيدات</a></li>
-  <li role="presentation" <% if current_page?(home_fresh_graduate_jobs_path)%> class="active" <%end%>><a href="<%=home_fresh_graduate_jobs_path%>">وظائف للخريجين</a></li>
   <li role="presentation" <% if current_page?(home_men_applicants_path)%> class="active" <%end%>><a href="<%=home_men_applicants_path%>">باحثي العمل</a></li>
   <li role="presentation" <% if current_page?(home_women_applicants_path)%> class="active" <%end%>><a href="<%= home_women_applicants_path%>">باحثات العمل</a></li>
   <li role="presentation" <% if current_page?(home_fresh_graduate_applicants_path)%> class="active" <%end%>><a href="<%= home_fresh_graduate_applicants_path%>">حديثي التخرج</a></li>
@@ -264,7 +271,8 @@
 </div>
 </div>
 
-
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
 
 <%= yield %>
 </div>
@@ -274,7 +282,6 @@
 
       </footer>
 
-<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-<%= javascript_include_tag 'application',media: 'all', 'data-turbolinks-track' => true %>
+
 </body>
 </html>

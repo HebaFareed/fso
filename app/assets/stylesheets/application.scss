@@ -15,12 +15,9 @@
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
-
-$brand-primary: #006C35;
-
-@import "bootstrap";
-@import "bootstrap-rtl.min";
 @import "font-awesome";
+
+
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 /* GLOBAL STYLES
@@ -44,13 +41,11 @@ body {
 
 .page-head {
   min-height:50px;
-  color: $brand-primary;
   padding: 10px 0;
 }
 
 .page-head  .btn-default {
   background: #fff;
-  color: $brand-primary;
 }
 
 .page-head .applicant-title .btn {
@@ -86,7 +81,6 @@ body {
   width: 150px;
   content: "";
   border-radius: 200px;
-  border: solid 4px $brand-primary;
   text-align: center;
     font-size: 6rem;
     color:#ccc;
@@ -98,7 +92,6 @@ body {
   width: 150px;
 
   border-radius: 200px;
-  border: solid 4px $brand-primary;
 }
 
 .applicant-title .name {
@@ -107,7 +100,6 @@ body {
 
 .page-head.registering {
    color:#fff;
-   background: $brand-primary !important;
 }
 
 .page-head.registering .content {
@@ -118,9 +110,6 @@ body {
   margin: 2% 0;
 }
 
-.breadcrumps {
-    background: $brand-primary;
-}
 .breadcrumps p, .breadcrumps a {
   color: #fff !important;
   display: inline-block;
@@ -175,7 +164,6 @@ body {
   text-align: center;
   margin-left: 50px;
   background: #fff;
-  color: $brand-primary;
   font-size: 3rem;
 }
 
@@ -188,7 +176,6 @@ body {
 .page-head .sign-progress .nav a:hover, .page-head .sign-progress .nav li.complete a, .page-head .sign-progress .nav li.active a {
 
   color: #fff;
-  background: $brand-primary;
   border: solid 10px #fff;
 }
 
@@ -204,7 +191,6 @@ body {
 }
 
 .page-head .sign-progress .split.complete {
-  background: $brand-primary;
   z-index: 99999;
   margin-right: -20px;
 }
@@ -221,7 +207,6 @@ body {
   font-size: 2rem;
 }
 #sign-up .nav-tabs li.active a, #sign-in .nav-tabs li.active a {
-  background: $brand-primary;
   color: #fff;
 }
 /* CUSTOMIZE THE Header
@@ -245,14 +230,12 @@ body {
 }
 
 .header .nav a {
-  color: $brand-primary;
   font-family: 'Droid Arabic Kufi', serif;
   font-size: 1.8rem;
 display: table-caption;
 }
 
 .header .nav a:hover {
-  background:$brand-primary !important;
   border-radius: 5px 5px 0 0;
   color: #fff;
 }
@@ -363,7 +346,6 @@ display: table-caption;
   width: 70px;
   content: "";
   border-radius: 200px;
-  border: solid 4px $brand-primary;
   text-align: center;
     font-size: 3rem;
     color:#ccc;
@@ -375,7 +357,6 @@ display: table-caption;
   width: 70px;
   background: #ddd;
   border-radius: 200px;
-    border: solid 4px $brand-primary;
   margin: 5px 0px;
   display:inline-block;
 }
@@ -458,14 +439,13 @@ display: table-caption;
     width: 30px;
     height: 30px;
     padding: 5px;
-    background-color: $brand-primary;
     border-radius: 15px;
     color: #fff;
 }
 .reviews .nav.nav-justified > li.active > a > .quote { opacity: 1; }
-.reviews .nav.nav-justified > li > a > img { box-shadow: 0 0 0 5px $brand-primary; }
-.reviews .nav.nav-justified > li > a > img {
-    max-width: 100%;
+.reviews .nav.nav-justified > li > a > img, .reviews .nav.nav-justified > li > a > i {
+    width: 100px;
+    height: 100px;
     opacity: .3;
     -webkit-transform: scale(.8,.8);
             transform: scale(.8,.8);
@@ -474,7 +454,10 @@ display: table-caption;
 }
 .reviews .nav.nav-justified > li.active > a > img,
 .reviews .nav.nav-justified > li:hover > a > img,
-.reviews .nav.nav-justified > li:focus > a > img {
+.reviews .nav.nav-justified > li:focus > a > img,
+.reviews .nav.nav-justified > li.active > a > i,
+.reviews .nav.nav-justified > li:hover > a > i,
+.reviews .nav.nav-justified > li:focus > a > i  {
     opacity: 1;
     -webkit-transform: none;
             transform: none;
@@ -621,7 +604,6 @@ display: table-caption;
 ------------------------*/
 
 .search-job-filter {
-  background: $brand-primary;
   min-height: 100px;
   color: #fff;
   padding: 20px 0;
@@ -629,7 +611,6 @@ display: table-caption;
 
 .search-job-filter .dropdown .btn-default{
   background: #fff;
-  color: $brand-primary;
 }
 
 .search-job-filter p {
@@ -652,9 +633,6 @@ display: table-caption;
   width: 100%;
 }
 
-.search-job-filter .dropdown a {
-  color: $brand-primary;
-}
 .job-list .col-md-3 .job-pic {
   height: 70px;
   width: 70px;
@@ -675,7 +653,6 @@ display: table-caption;
 footer {
    height:30px;
    width:100%;
-   background:$brand-primary;
   color: #fff;
   padding: 5px 0px;
   margin-bottom:0;
@@ -698,7 +675,6 @@ footer p {
 
 .applicant-cv .detail-description .company, .applicant-cv .detail-description .graduation-year {
   font-family: "Droid Arabic Naskh", serif;
-  color: $brand-primary;
 }
 
 .applicant-cv .detail-description .col-md-6 p {

@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-7">
           <p class="name"><% if applicant.sex == "male" %> <i class="fa fa-male"></i> <% else %> <i class="fa fa-female"></i> <% end %> <%= applicant.first_name %> <%= applicant.second_name %></p>
-          <p class="job-title"><%= applicant.status %></p>
+          <p class="job-title"><% if applicant.status == "fresh-graduate" %>خريج<% elsif applicant.status == "experienced"%>صاحب خبرة <%end%></p>
         </div>
         <div class="applicant-buttons">
         <div class="col-md-3">
@@ -32,10 +32,10 @@
               <% else %>
                             <div class="row">
             <% if applicant.paid_account %>
-              <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+              <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
               <% elsif employer_signed_in? %>
                 <% if current_employer.paid_account %>
-                 <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+                 <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
                 <%end%>
                   <% end%>
               <!-- Modal -->
@@ -61,7 +61,11 @@
 
                 <%end%>
           </div>
+        <div class="col-md-12">
+          <% if applicant.cv%><%= link_to "تحميل السيرة الذاتية", applicant.cv.url, :class => "btn btn-block btn-danger"%><%end%>
         </div>
+        </div>
+
       </div>
       </div>
     </div>

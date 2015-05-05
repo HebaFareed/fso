@@ -14,7 +14,10 @@ class Applicant < ActiveRecord::Base
     accepts_nested_attributes_for :experience, :reject_if => :all_blank, :allow_destroy => true
  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :cv, :url => "/:class/:attachment/:id/:basename.:extension", :path => ":rails_root/public/:class/:attachment/:id/:basename.:extension"
+  validates_attachment :cv, :content_type => { :content_type => "application/pdf" }, :size => { :in => 0..5.megabytes }
 
 
- validates_presence_of :first_name, :second_name, :sex, :status, :phone, :city, :account_paid
+
+ validates_presence_of :first_name, :second_name, :sex, :status, :phone, :city, :paid_account
 end

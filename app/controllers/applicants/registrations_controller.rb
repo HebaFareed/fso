@@ -30,7 +30,7 @@ class Applicants::RegistrationsController < Devise::RegistrationsController
     end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar, :status , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
-    devise_parameter_sanitizer.for(:edit) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar, :status, :cv , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
+    devise_parameter_sanitizer.for(:edit) { |u| u.permit(:first_name, :second_name, :sex, :city, :email, :password, :phone, :birthday, :paid_account, :avatar,:cv , education_attributes: [:id, :degree, :field, :graduation_place, :graduation_year, :_destroy], experience_attributes:[:id, :title, :company, :period, :description, :_destroy], skill_attributes: [:id,:skill,:_destroy]) }
   end
 end

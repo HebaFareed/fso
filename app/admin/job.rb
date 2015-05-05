@@ -13,5 +13,6 @@ ActiveAdmin.register Job do
 #   permitted
 # end
 
+permit_params :title, :experience, :field, :place, :internship, :description, :applicant_status, :sex
 
 end

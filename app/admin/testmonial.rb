@@ -1,4 +1,4 @@
-ActiveAdmin.register Course do
+ActiveAdmin.register Testmonial do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -13,5 +13,6 @@ ActiveAdmin.register Course do
 #   permitted
 # end
 
-permit_params :title, :link, :description
+permit_params :name, :company, :logo, :quote
+
 end

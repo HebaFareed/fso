@@ -38,10 +38,10 @@
           </div>
           <div class="row">
             <% if applicant.paid_account %>
-              <div class="col-md-6"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+              <div class="col-md-7"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
               <% elsif employer_signed_in? %>
                 <% if current_employer.paid_account %>
-                 <div class="col-md-6"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact">بيانات التواصل</a></div>
+                 <div class="col-md-7"><a class="btn btn-block btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
                 <%end%>
                   <% end%>
               <!-- Modal -->
@@ -63,7 +63,7 @@
     </div>
   </div>
 </div>
-            <div class="col-md-6"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-danger" %> </div>
+            <div class="col-md-5"> <%= link_to "المزيد", applicant_path(applicant), :class => "btn btn-block btn-danger" %> </div>
           </div>
         </div>
         </div><!-- /job item -->
