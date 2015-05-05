@@ -62,7 +62,7 @@
                 <%end%>
           </div>
         <div class="col-md-12">
-          <% if applicant.cv%><%= link_to "تحميل السيرة الذاتية", applicant.cv.url, :class => "btn btn-block btn-danger"%><%end%>
+          <% if applicant.cv.exists? %><%= link_to "تحميل السيرة الذاتية", applicant.cv.url, :class => "btn btn-block btn-danger"%><%end%>
         </div>
         </div>
 
