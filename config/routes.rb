@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'home/fresh_graduate_applicants'
   get 'home/experienced'
   get 'home/internship'
+  get 'home/about'
 
   devise_for :applicants, :controllers => {:registrations => "applicants/registrations", :sessions => "applicants/sessions"}
   devise_for :employers, :controllers => {:registrations => "employers/registrations", :sessions => "employers/sessions"}

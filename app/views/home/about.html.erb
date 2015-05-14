@@ -1,0 +1,12 @@
+<div class="content">
+  <% if @about %>
+  <h2>من نحن؟</h2>
+  <p><%= @about.who %></p>
+  <h2>حقوق الموقع</h2>
+  <p><%= @about.copyrights %></p>
+  <%else%>
+  <div class="content-empty">
+    <h1>عذراً لم تكتب التعريف بالموقع بعد!</h1>
+  </div>
+  <%end%>
+</div>

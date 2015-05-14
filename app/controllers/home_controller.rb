@@ -45,6 +45,10 @@ class HomeController < ApplicationController
     @jobs = @q.result.order('created_at DESC')
   end
 
+  def about
+    @about = About.first
+  end
+
       def internship
       @internships = Job.where('internship'=>true)
       if @internships.count != 0
