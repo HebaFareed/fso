@@ -19,7 +19,7 @@
           <div class="row">
             <div class="job-conditions col-md-12">
               <p><%= applicant.city%></p>
-<% if applicant.education[0] %>              <p><%= applicant.education[0].degree %> <%= applicant.education[0].field %> - <%= applicant.education[0].graduation_place %> </p>
+<% if applicant.education[0] %>              <p class="education"><%= applicant.education[0].degree %> <%= applicant.education[0].field %> - <%= applicant.education[0].graduation_place %> </p>
               <p> <%= applicant.education[0].graduation_year %></p><%end%>
             </div>
           </div>
@@ -71,7 +71,3 @@
       <%end%>
     </div>
     </div>
-
-    <script type="text/javascript">
-    $('.job-title').flowtype();
-    </script>
