@@ -1,5 +1,50 @@
 ---
 ar:
+  activerecord:
+    attributes:
+      applicant:
+        email: "البريد الإلكتروني"
+        password: "كلمة السر"
+        first_name: "الاسم الأول"
+        second_name: "اسم العائلة"
+        sex: "النوع"
+        phone: "رقم الهاتف"
+        city: "المدينة"
+        status: "الحالة"
+      employer:
+        email: "البريد الإلكتروني"
+        password: "كلمة السر"
+        first_name: "الاسم الأول"
+        second_name: "اسم العائلة"
+        phone: "رقم الهاتف"
+        co_name: "اسم الشركة"
+        co_type: "نوع الشركة"
+        co_address: "عنوان الشركة"
+        co_desc: "وصف الشركة"
+      job:
+        title: "الوظيفة"
+        applicant_status: "حالة المتقدم"
+        sex: "النوع"
+        place: "المكان"
+    errors:
+      models:
+        applicant:
+          attributes:
+            email:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            password:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            first_name:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            second_name:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            sex:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            phone:
+              blank: "فارغ، يرجى ملئ الحقل!"
+            city:
+              blank: "فارغ، يرجى ملئ الحقل!"
+
   date:
     abbr_day_names:
     - الأحد

@@ -19,8 +19,7 @@ class Applicant < ActiveRecord::Base
   validates_attachment :cv, :content_type => { :content_type => "application/pdf" }, :size => { :in => 0..5.megabytes }
 
 
-validates_presence_of :email, :message => "من فضلك اكتب البريد الإلكتروني"
-validates_presence_of :password, :message => "من فضلك اكتب كلمة السر"
+
  validates_presence_of :first_name, :message => "من فضلك اكتب الاسم الأول"
  validates_presence_of :second_name, :message => "من فضلك اكتب اسم العائلة"
  validates_presence_of :sex, :message => "من فضلك حدد النوع"

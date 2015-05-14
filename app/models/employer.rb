@@ -10,8 +10,6 @@ class Employer < ActiveRecord::Base
 
   validates_presence_of :first_name, :messege => "من فضلك اكتب الاسم الأول"
   validates_presence_of :second_name, :messege => "من فضلك اكتب اسم العائلة"
-  validates_presence_of :email, :messege => "من فضلك اكتب البريد الإلكتروني"
-  validates_presence_of :password, :messege => "من فضلك اكتب كلمة السر"
   validates_presence_of :phone, :messege => "من فضلك اكتب رقم الهاتف"
   validates_presence_of :co_name, :messege => "من فضلك اكتب اسم الشركة"
   validates_presence_of :co_address, :messege => "من فضلك اكتب عنوان الشركة"
