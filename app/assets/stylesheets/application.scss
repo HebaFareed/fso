@@ -376,6 +376,7 @@ display: table-caption;
   display:inline-block;
   padding:10% 0;
   min-height: 130px;
+  word-break: break-all;
 }
 .job-item .job-title a {
   display: block;
