@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Applicant < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,6 +19,13 @@ class Applicant < ActiveRecord::Base
   validates_attachment :cv, :content_type => { :content_type => "application/pdf" }, :size => { :in => 0..5.megabytes }
 
 
+validates_presence_of :email, :message => "من فضلك اكتب البريد الإلكتروني"
+validates_presence_of :password, :message => "من فضلك اكتب كلمة السر"
+ validates_presence_of :first_name, :message => "من فضلك اكتب الاسم الأول"
+ validates_presence_of :second_name, :message => "من فضلك اكتب اسم العائلة"
+ validates_presence_of :sex, :message => "من فضلك حدد النوع"
+validates_presence_of :status,:message => "من فضلك حدد حالتك: خريج، أم صاحب خبرة"
+validates_presence_of :phone, :message => "من فضلك اكتب رقم الهاتف"
+validates_presence_of :city, :message => "من فضلك اختر المدينة"
 
- validates_presence_of :first_name, :second_name, :sex, :status, :phone, :city, :paid_account
 end

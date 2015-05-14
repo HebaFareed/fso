@@ -16,7 +16,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "font-awesome";
-
+@import "jquery-ui.min";
 
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
@@ -224,6 +224,18 @@ body {
   padding: 0 20px;
   height: 90px;
 }
+
+
+.header .nav a {
+  color: #006C35;
+
+}
+
+.header .nav a:hover, .header .nav li.active a {
+  background: #006C35 !important;
+  color: #fff;
+}
+
 
 .header .nav {
   margin-top:50px !important;

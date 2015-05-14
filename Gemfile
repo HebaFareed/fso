@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mysql2'
 gem 'bson_ext'
 gem 'therubyracer'
-
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3.4'
@@ -57,4 +57,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

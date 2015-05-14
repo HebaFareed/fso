@@ -6,7 +6,7 @@ class JobsController < ApplicationController
 
   def index
   @q = Job.ransack(params[:q])
-  @jobs = @q.result
+  @jobs = @q.result.order('created_at DESC')
   end
 
 

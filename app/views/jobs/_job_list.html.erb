@@ -16,6 +16,7 @@
               <div class="job-title">
                 <a href="<%= job_path(job) %>" class="employee"> <% if job.sex == "male" %> <i class="fa fa-male"></i> <% elsif job.sex == "female" %> <i class="fa fa-female"></i> <% end %> <%= job.title %></a>
                 <a href=" <%= employer_path(job.employer) %>" class="employer danger"><%= job.employer.co_name %></a>
+                <%= l(job.created_at, format: "%e %B %Y") %>
               </div>
             </div>
           </div>
@@ -33,14 +34,14 @@
           </div>
           <div class="row">
           <% if applicant_signed_in? %>
-          <div class="col-md-6"> <%= link_to "قدم",  job_create_follower_path(job), :method => :post, :class => "btn btn-block btn-primary" %></div>
+          <div class="col-md-6"> <%= link_to "قدم",  job_create_follower_path(job), :method => :post, :class => "btn btn-block has-effect  btn-primary" %></div>
           <% elsif employer_signed_in? %>
           <% if job.employer == current_employer %>
-          <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block btn-primary" %></div>
+          <div class="col-md-6"><%= link_to "تعديل", edit_job_path(job), :class => "btn btn-block has-effect  btn-primary" %></div>
           <%end%>
           <% else %>
 
-          <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block btn-primary" %></div>
+          <div class="col-md-6"> <%= link_to "قدم", new_applicant_registration_path, :class => "btn btn-block has-effect  btn-primary" %></div>
           <%end%>
           </div>
         </div>

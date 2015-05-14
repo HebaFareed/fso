@@ -1,0 +1,46 @@
+<%= search_form_for @q, url: request.original_url do |f| %>
+<div class="col-md-1"><p>بحث حسب:</p></div>
+<div class="col-md-10">
+<div class="col-md-2">
+      <%= f.search_field :place_cont, :class=>"form-control", :placeholder=>"المدينة" %>
+</div>
+<div class="col-md-2">
+  <%= f.search_field :field_cont, :class=>"form-control", :placeholder=>"المجال" %>
+</div>
+
+<% if current_page?(home_fresh_graduate_jobs_path) %>
+
+<div class="col-md-3">
+  <%= f.select(:sex_cont, [["للرجال", "male"], ["للسيدات", "female"], ["للرجال والسيدات", "both"] ], {include_blank: 'النوع'}, {:class =>'form-control'})%>
+</div>
+<%else%>
+<div class="col-md-2">
+  <%= f.select(:applicant_status_cont, [["خريج حديث", "fresh-graduate"], ["صاحب خبرة","experienced"]], {include_blank: 'الحالة'}, {:class =>'form-control job_condition'})%>
+</div>
+
+<div class="col-md-2 experience" style="display:none;">
+  <%= f.search_field :experience_cont, :class=>"form-control ", :placeholder=>"سنوات الخبرة" %>
+</div>
+
+<%end%>
+
+<div class="col-md-3">
+  <%= f.search_field :description_cont, :class=>"form-control", :placeholder=>"بحث متقدم" %>
+</div>
+</div>
+<div class="col-md-1"><%= f.submit "بحث", :class => "btn btn-block has-effect  btn-danger" %></div>
+<%end%>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  $('select.job_condition').change( function() {
+    if ($(this).val() == "experienced") {
+      $('.experience').show();
+    }
+  else {
+    $('.experience').hide();
+  }
+
+});
+});
+</script>

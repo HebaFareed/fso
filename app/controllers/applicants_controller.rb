@@ -5,7 +5,7 @@ class ApplicantsController < ApplicationController
 
   def index
             @q = Applicant.ransack(params[:q])
-            @applicants = @q.result.includes(:education, :experience, :skill)
+            @applicants = @q.result.includes(:education, :experience, :skill).order('created_at DESC')
   end
 
   def show

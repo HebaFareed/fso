@@ -26,16 +26,16 @@
         <div class="col-md-3">
           <div class="row">
               <% if current_applicant %>
-                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant), :class => "btn btn-block btn-danger btn-sm" %> </div>
-                <div class="col-md-6"> <%= link_to "تصفح الوظائف", jobs_path, :class => "btn btn-block btn-danger btn-sm" %></div>
-                <% if applicant.paid_account != true %><div class="col-md-12"> <a href="<%= new_payment_path%>" class="btn btn-block btn-danger btn-sm"> الترقية للحساب المدفوع</a></div><%end%>
+                <div class="col-md-6"> <%= link_to "تعديل البيانات", edit_applicant_registration_path(current_applicant), :class => "btn btn-block has-effect  btn-danger btn-sm" %> </div>
+                <div class="col-md-6"> <%= link_to "تصفح الوظائف", jobs_path, :class => "btn btn-block has-effect  btn-danger btn-sm" %></div>
+                <% if applicant.paid_account != true %><div class="col-md-12"> <a href="<%= new_payment_path%>" class="btn btn-block has-effect  btn-danger btn-sm"> الترقية للحساب المدفوع</a></div><%end%>
               <% else %>
                             <div class="row">
             <% if applicant.paid_account %>
-              <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
+              <div class="col-md-6"><a class="btn btn-block has-effect  btn-md btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone  faa-tada animated fa-lg"></i> بيانات التواصل</a></div>
               <% elsif employer_signed_in? %>
                 <% if current_employer.paid_account %>
-                 <div class="col-md-6"><a class="btn btn-block btn-lg btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> بيانات التواصل</a></div>
+                 <div class="col-md-6"><a class="btn btn-block has-effect btm-md btn-danger" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-phone  faa-tada animated fa-lg"></i> بيانات التواصل</a></div>
                 <%end%>
                   <% end%>
               <!-- Modal -->
@@ -52,8 +52,7 @@
         <label>رقم التليفون</label><p><%= applicant.phone%></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>
@@ -62,7 +61,7 @@
                 <%end%>
           </div>
         <div class="col-md-12">
-          <% if applicant.cv.exists? %><%= link_to "تحميل السيرة الذاتية", applicant.cv.url, :class => "btn btn-block btn-danger"%><%end%>
+          <% if applicant.cv.exists? %><%= link_to "تحميل السيرة الذاتية", applicant.cv.url, :class => "btn btn-block has-effect  btn-danger"%><%end%>
         </div>
         </div>
 

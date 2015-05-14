@@ -12,37 +12,37 @@ class HomeController < ApplicationController
 
   def women_jobs
     @q = Job.where(:sex => "female").ransack(params[:q])
-    @jobs = @q.result
+    @jobs = @q.result.order('created_at DESC')
   end
 
   def men_jobs
     @q = Job.where(:sex => "male").ransack(params[:q])
-    @jobs = @q.result
+    @jobs = @q.result.order('created_at DESC')
   end
 
   def women_applicants
     @q = Applicant.where(:sex => "female").ransack(params[:q])
-    @applicants = @q.result
+    @applicants = @q.result.order('created_at DESC')
   end
 
   def men_applicants
     @q = Applicant.where(:sex => "male").ransack(params[:q])
-    @applicants = @q.result
+    @applicants = @q.result.order('created_at DESC')
   end
 
   def fresh_graduate_jobs
     @q = Job.where(:applicant_status => "fresh-graduate").ransack(params[:q])
-    @jobs = @q.result
+    @jobs = @q.result.order('created_at DESC')
   end
 
   def fresh_graduate_applicants
     @q = Applicant.where(:applicant_status => "fresh-graduate").ransack(params[:q])
-    @applicants = @q.result
+    @applicants = @q.result.order('created_at DESC')
   end
 
   def experienced
     @q = Job.where(:applicant_status => "experienced").ransack(params[:q])
-    @jobs = @q.result
+    @jobs = @q.result.order('created_at DESC')
   end
 
       def internship

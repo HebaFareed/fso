@@ -12,6 +12,8 @@
 <%= stylesheet_link_tag    'common', media: 'all', 'data-turbolinks-track' => true %>
   <%end%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'font-awesome-animation.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'booterial.min', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -37,10 +39,10 @@
 <div class=" col-md-4 sign">
 
 
-        <div class="col-md-4"> <%= link_to "الصفحة الشخصية", applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
+        <div class="col-md-4"> <%= link_to "الصفحة الشخصية", applicant_path(current_applicant), :method => :get, :class =>"btn btn-block has-effect  btn-sm btn-danger" %></div>
 
-        <div class="col-md-4"> <%= link_to "الطلبات المقدمة", following_applicant_path(current_applicant), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
-        <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <div class="col-md-4"> <%= link_to "الطلبات المقدمة", following_applicant_path(current_applicant), :method => :get, :class =>"btn btn-block has-effect  btn-sm btn-danger" %></div>
+        <div class="col-md-4"> <button class="btn btn-sm btn-primary btn-block has-effect  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     الإعدادات
     <span class="caret"></span>
   </button>
@@ -57,13 +59,13 @@
 
 
 
-        <div class="col-md-6"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></div>
-        <div class="col-md-6"> <button class="btn btn-sm btn-primary btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <div class="col-md-6"> <%= link_to "الوظائف الخاصة", job_employer_path(current_employer), :method => :get, :class =>"btn btn-block has-effect  btn-sm btn-danger" %></div>
+        <div class="col-md-6"> <button class="btn btn-sm btn-primary btn-block has-effect  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     الإعدادات
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-      <li role="presentation"> <%= link_to "الصفحة الشخصية", employer_path(current_employer), :method => :get, :class =>"btn btn-block btn-sm btn-danger" %></li>
+      <li role="presentation"> <%= link_to "الصفحة الشخصية", employer_path(current_employer), :method => :get, :class =>"btn btn-block has-effect  btn-sm btn-danger" %></li>
     <li role="presentation"><%= link_to "تسجيل الخروج", destroy_employer_session_path, :method => :delete%></li>
   </ul></div>
 
@@ -72,8 +74,8 @@
 
 <div class=" col-md-4 sign">
   <div class="row">
-<div class="col-md-6"><a class="btn btn-block btn-sm btn-danger" href="#sign_up" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
-<div class="col-md-6"><a class="btn btn-block btn-sm btn-primary" href="#sign_in" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
+<div class="col-md-6"><a class="btn btn-block has-effect  btn-sm btn-danger" href="#sign_up" data-toggle="modal" data-target="#sign-up">تسجيل حساب جديد</a></div>
+<div class="col-md-6"><a class="btn btn-block has-effect  btn-sm btn-primary" href="#sign_in" data-toggle="modal" data-target="#sign-in">تسجيل الدخول</a></div>
 </div>
 </div>
 <%end%>
@@ -114,7 +116,7 @@
                           <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
 
                         </ul>
-                        <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                        <a href="<%= new_employer_registration_path %>" class="btn btn-block has-effect  btn-lg btn-danger">سجل</a>
                       </div>
                     </div>
                   </div>
@@ -129,7 +131,7 @@
                             <li ><span class="plan-feature-name">وظائف لانهائية!</span></li>
                             <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
                           </ul>
-                          <a href="<%= new_employer_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                          <a href="<%= new_employer_registration_path %>" class="btn btn-block has-effect  btn-lg btn-danger">سجل</a>
                         </div>
                       </div>
                     </div>
@@ -151,7 +153,7 @@
                         <li> <span class="plan-feature-name">التواصل مع العضويات المدفوعة فقط.</span></li>
 
                       </ul>
-                      <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                      <a href="<%= new_applicant_registration_path %>" class="btn btn-block has-effect  btn-lg btn-danger">سجل</a>
                     </div>
                   </div>
                 </div>
@@ -165,7 +167,7 @@
                         <ul class="plan-features">
                           <li> <span class="plan-feature-name">إمكانية التواصل مع جميع العضويات</span></li>
                         </ul>
-                        <a href="<%= new_applicant_registration_path %>" class="btn btn-block btn-lg btn-danger">سجل</a>
+                        <a href="<%= new_applicant_registration_path %>" class="btn btn-block has-effect  btn-lg btn-danger">سجل</a>
                       </div>
                     </div>
                   </div>
@@ -224,7 +226,7 @@
                 <% end -%>
 
                 <div class="col-sm-4 col-sm-offset-9">
-                  <%= f.submit "دخول", class: "btn btn-block btn-danger" %>
+                  <%= f.submit "دخول", class: "btn btn-block has-effect  btn-danger" %>
                 </div>
               <% end %>
             </div>
@@ -252,7 +254,7 @@
                 <% end -%>
 
                 <div class="col-sm-4 col-sm-offset-9">
-                  <%= f.submit "دخول", class: "btn btn-block btn-danger" %>
+                  <%= f.submit "دخول", class: "btn btn-block has-effect  btn-danger" %>
                 </div>
               <% end %>
             </div>
@@ -281,7 +283,28 @@
       </footer>
 <%= javascript_include_tag 'common',media: 'all', 'data-turbolinks-track' => true %>
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script type="text/javascript">
+function replaceNumbers(node) {
+  if (node.nodeType==3) //Text nodes only
+      node.nodeValue = node.nodeValue.replace(/[0-9]/g, getArabicNumber);
+}
 
+function getArabicNumber(n) {
+  return String.fromCharCode(1632 + parseInt(n,10));
+}
+
+function walk(node, func) {
+  func(node);
+  node = node.firstChild;
+  while (node) {
+      walk(node, func);
+      node = node.nextSibling;
+  }
+};
+
+walk(document.body, replaceNumbers);
+
+</script>
 
 </body>
 </html>
